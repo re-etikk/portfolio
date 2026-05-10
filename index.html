@@ -2389,6 +2389,20 @@
         }
 
         // ============================================
+        // AUTO DARK MODE BASED ON DEVICE PREFERENCE
+        // ============================================
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        function updateTheme() {
+            if (prefersDark.matches) {
+                document.body.classList.remove('light-mode');
+            } else {
+                document.body.classList.add('light-mode');
+            }
+        }
+        updateTheme(); // Initial check
+        prefersDark.addEventListener('change', updateTheme); // Listen for changes
+
+        // ============================================
         // KEYBOARD NAVIGATION (J/K or Arrow keys)
         // ============================================
         document.addEventListener('keydown', function(e) {
