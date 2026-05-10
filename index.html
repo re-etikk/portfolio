@@ -11,25 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Swiper CSS for Carousels -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <!-- Theme pre-load to reduce flash -->
-    <script>
-        (function() {
-            const storedTheme = localStorage.getItem('portfolioTheme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const preferLight = storedTheme === 'light' || (storedTheme === null && !prefersDark);
-            if (preferLight) {
-                document.documentElement.classList.add('portfolio-light');
-            }
-        })();
-    </script>
     <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-    <!-- Lenis Smooth Scroll -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/dist/lenis.min.js"></script>
-    <!-- Three.js 3D Background -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js">
+    </script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js">
+    </script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -78,7 +69,6 @@
             --z-overlay: 500;
         }
         /* Light theme overrides */
-        html.portfolio-light body,
         body.light-mode {
             --bg-primary: #f8f9fc;
             --bg-secondary: #ffffff;
@@ -163,7 +153,6 @@
             pointer-events: none;
             z-index: 0;
         }
-        html.portfolio-light body::before,
         body.light-mode::before {
             background:
                 radial-gradient(ellipse at 15% 20%, rgba(0,200,180,0.06) 0%, transparent 60%),
@@ -222,17 +211,8 @@
             border-color: var(--accent-purple);
             background: rgba(139, 92, 246, 0.2);
         }
-        html.portfolio-light body .cursor-ring,
         body.light-mode .cursor-ring {
             border-color: rgba(0,0,0,0.4);
-        }
-        body.no-custom-cursor {
-            cursor: auto;
-        }
-        body.no-custom-cursor .cursor-dot,
-        body.no-custom-cursor .cursor-ring,
-        body.no-custom-cursor .cursor-trail {
-            display: none !important;
         }
 
         /* ============================================
@@ -299,7 +279,7 @@
         }
 
         /* ============================================
-           THREE.JS BACKGROUND
+           PARTICLES BACKGROUND
            ============================================ */
         #particles-js {
             position: fixed;
@@ -309,157 +289,6 @@
             height: 100%;
             z-index: var(--z-particles);
             pointer-events: none;
-            overflow: hidden;
-        }
-        #particles-js canvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-            pointer-events: none;
-        }
-
-        .floating-avatar {
-            position: fixed;
-            right: 30px;
-            bottom: 30px;
-            width: 72px;
-            height: 72px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--glass-border);
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            font-size: 2rem;
-            color: var(--accent-cyan);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.25);
-            z-index: calc(var(--z-nav) - 1);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            pointer-events: none;
-        }
-        .floating-avatar.hover {
-            transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 24px 90px rgba(0, 255, 200, 0.25);
-        }
-        .floating-avatar::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 1px solid rgba(0, 240, 200, 0.12);
-            opacity: 0.8;
-            transform: scale(1.2);
-        }
-
-        .magnetic {
-            will-change: transform;
-            transition: transform 0.35s ease-out;
-        }
-
-        .cursor-trail {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(0, 240, 200, 0.18);
-            pointer-events: none;
-            z-index: var(--z-cursor);
-            transform: translate(-50%, -50%);
-            mix-blend-mode: screen;
-            transition: transform 0.15s ease-out, opacity 0.2s ease;
-        }
-
-        .glitch-title {
-            position: relative;
-            display: inline-block;
-            cursor: none;
-        }
-        .glitch-title::before,
-        .glitch-title::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 0.8;
-            clip-path: inset(0 0 0 0);
-        }
-        .glitch-title::before {
-            left: 2px;
-            text-shadow: -2px 0 var(--accent-cyan);
-            animation: glitchTop 2.8s infinite linear alternate-reverse;
-        }
-        .glitch-title::after {
-            left: -2px;
-            text-shadow: -2px 0 var(--accent-purple);
-            animation: glitchBottom 2.6s infinite linear alternate-reverse;
-        }
-        .glitch-title:hover::before,
-        .glitch-title:hover::after {
-            opacity: 1;
-        }
-        @keyframes glitchTop {
-            0% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
-            20% { clip-path: inset(0 0 60% 0); transform: translate(-2px, -2px); }
-            40% { clip-path: inset(10% 0 50% 0); transform: translate(2px, 0); }
-            60% { clip-path: inset(20% 0 40% 0); transform: translate(-2px, 1px); }
-            80% { clip-path: inset(0 0 60% 0); transform: translate(1px, -1px); }
-            100% { clip-path: inset(10% 0 20% 0); transform: translate(0, 2px); }
-        }
-        @keyframes glitchBottom {
-            0% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
-            20% { clip-path: inset(10% 0 50% 0); transform: translate(2px, 2px); }
-            40% { clip-path: inset(0 0 60% 0); transform: translate(-2px, 0); }
-            60% { clip-path: inset(20% 0 30% 0); transform: translate(1px, -1px); }
-            80% { clip-path: inset(10% 0 40% 0); transform: translate(-1px, 1px); }
-            100% { clip-path: inset(0 0 50% 0); transform: translate(0, -2px); }
-        }
-
-        .project-image {
-            position: relative;
-            overflow: hidden;
-        }
-        .project-image i {
-            transition: transform 0.35s ease;
-        }
-        .project-card:hover .project-image i {
-            transform: translateY(-6px) rotate(-4deg);
-        }
-        .project-card:hover .project-overlay {
-            filter: saturate(1.2) brightness(1.1);
-            transform: translateY(-4px);
-        }
-
-        .project-overlay {
-            transition: transform 0.4s ease, filter 0.4s ease;
-        }
-
-        .btn:focus-visible,
-        .theme-toggle-btn:focus-visible,
-        .nav-links a:focus-visible,
-        .social-link:focus-visible,
-        .project-card:focus-visible,
-        .contact-detail:focus-visible {
-            outline: 2px dashed var(--accent-cyan);
-            outline-offset: 4px;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-            .cursor-dot,
-            .cursor-ring,
-            .cursor-trail,
-            .glow-orb,
-            .floating-avatar {
-                display: none !important;
-            }
         }
 
         /* ============================================
@@ -1613,7 +1442,6 @@
             <i class="fas fa-moon"></i>
         </button>
     </nav>
-    <div class="floating-avatar" id="floatingAvatar" aria-label="Interactive avatar">👨‍💻</div>
 
     <!-- ============================================
     HOME SECTION
@@ -1624,7 +1452,7 @@
         <div class="section-inner">
             <div class="hero-content">
                 <p class="hero-greeting">✦ Hello, I'm</p>
-                <h1 class="hero-name gradient-text glitch-title" data-text="R i t i k">R i t i k</h1>
+                <h1 class="hero-name gradient-text">R i t i k</h1>
                 <div class="hero-title-wrapper">
                     <span class="hero-title">Creative Full-Stack Developer</span>
                     <span class="hero-typing" id="typingText"></span><span class="cursor-blink"></span>
@@ -2014,41 +1842,22 @@
         };
 
         // ============================================
-        // THEME TOGGLE + PERSISTENT SETTINGS
+        // THEME TOGGLE
         // ============================================
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-        const prefersDarkMedia = window.matchMedia('(prefers-color-scheme: dark)');
-        const storedTheme = localStorage.getItem('portfolioTheme');
-
-        const setTheme = (mode) => {
-            const isLight = mode === 'light';
-            body.classList.toggle('light-mode', isLight);
-            document.documentElement.classList.toggle('portfolio-light', isLight);
-            const icon = themeToggle.querySelector('i');
-            icon.classList.toggle('fa-sun', isLight);
-            icon.classList.toggle('fa-moon', !isLight);
-            localStorage.setItem('portfolioTheme', mode);
-            drawRadar();
-        };
-
-        const initializeTheme = () => {
-            const defaultTheme = prefersDarkMedia.matches ? 'dark' : 'light';
-            const activeTheme = storedTheme || defaultTheme;
-            setTheme(activeTheme);
-        };
-
-        initializeTheme();
-
         themeToggle.addEventListener('click', () => {
-            const nextTheme = body.classList.contains('light-mode') ? 'dark' : 'light';
-            setTheme(nextTheme);
-        });
-
-        prefersDarkMedia.addEventListener('change', () => {
-            if (!localStorage.getItem('portfolioTheme')) {
-                setTheme(prefersDarkMedia.matches ? 'dark' : 'light');
+            body.classList.toggle('light-mode');
+            const icon = themeToggle.querySelector('i');
+            if (body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
             }
+            // Redraw radar chart with new colors
+            drawRadar();
         });
 
         // ============================================
@@ -2066,72 +1875,29 @@
         });
 
         // ============================================
-        // LENIS SMOOTH SCROLL + SCROLL PROGRESS
+        // SCROLL PROGRESS BAR (throttled for mobile performance)
         // ============================================
-        let lenis = null;
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const scrollProgress = document.getElementById('scroll-progress');
-
-        const getScrollY = () => lenis ? lenis.scroll.instance.scroll.y : window.scrollY;
-        const updateProgress = (scrollY = getScrollY()) => {
-            const height = document.documentElement.scrollHeight - window.innerHeight;
-            scrollProgress.style.width = height > 0 ? `${Math.min(100, (scrollY / height) * 100)}%` : '0%';
-        };
-        updateProgress();
-
-        if (!isMobile() && !prefersReducedMotion) {
-            lenis = new Lenis({
-                duration: 1.2,
-                easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                smooth: true,
-                smoothTouch: false,
-                direction: 'vertical',
-                gestureDirection: 'vertical',
-                infinite: false
-            });
-
-            ScrollTrigger.scrollerProxy(document.body, {
-                scrollTop(value) {
-                    return arguments.length ? lenis.scrollTo(value, { immediate: true }) : lenis.scroll.instance.scroll.y;
-                },
-                getBoundingClientRect() {
-                    return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-                },
-                pinType: document.body.style.transform ? 'transform' : 'fixed'
-            });
-
-            lenis.on('scroll', ({ scroll }) => {
-                ScrollTrigger.update();
-                updateProgress(scroll);
-            });
-            gsap.ticker.add(time => lenis.raf(time * 1000));
-        } else {
-            let scrollTimeout;
-            window.addEventListener('scroll', () => {
-                if (scrollTimeout) return;
-                updateProgress();
-                if (isMobile()) {
-                    scrollTimeout = setTimeout(() => { scrollTimeout = null; }, 100);
-                }
-            }, { passive: true });
-        }
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) return;
+            
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('scroll-progress').style.width = (winScroll / height) * 100 + '%';
+            
+            if (isMobile()) {
+                scrollTimeout = setTimeout(() => { scrollTimeout = null; }, 100);
+            }
+        }, { passive: true });
 
         // ============================================
-        // CUSTOM CURSOR + MAGNETIC INTERACTIONS
+        // CUSTOM CURSOR (hidden on touch)
         // ============================================
-        if (!('ontouchstart' in window) && !prefersReducedMotion) {
+        if (!('ontouchstart' in window)) {
             const cursorDot = document.getElementById('cursorDot');
             const cursorRing = document.getElementById('cursorRing');
-            const trailDots = [];
             let mouseX = 0, mouseY = 0;
             let ringX = 0, ringY = 0;
-
-            for (let i = 0; i < 4; i += 1) {
-                const trail = document.createElement('div');
-                trail.className = 'cursor-trail';
-                document.body.appendChild(trail);
-                trailDots.push(trail);
-            }
 
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
@@ -2142,21 +1908,14 @@
             function animateRing() {
                 ringX += (mouseX - ringX) * 0.2;
                 ringY += (mouseY - ringY) * 0.2;
-                cursorRing.style.left = `${ringX}px`;
-                cursorRing.style.top = `${ringY}px`;
-                trailDots.forEach((dot, index) => {
-                    const factor = (index + 1) / trailDots.length;
-                    const x = mouseX - (mouseX - ringX) * factor * 0.65;
-                    const y = mouseY - (mouseY - ringY) * factor * 0.65;
-                    dot.style.transform = `translate(${x - 5}px, ${y - 5}px)`;
-                    dot.style.opacity = `${1 - factor * 0.45}`;
-                });
+                cursorRing.style.left = ringX + 'px';
+                cursorRing.style.top = ringY + 'px';
                 requestAnimationFrame(animateRing);
             }
             animateRing();
 
             const hoverTargets = document.querySelectorAll(
-                'a, button, .btn, input, textarea, .project-card, .social-link, .back-to-top, .hero-scroll-indicator, .filter-btn, .theme-toggle-btn'
+                'a, button, .btn, input, textarea, .project-card, .skill-category, .social-link, .back-to-top, .hero-scroll-indicator, .filter-btn'
             );
             hoverTargets.forEach(el => {
                 el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
@@ -2164,122 +1923,67 @@
                 el.addEventListener('mousedown', () => cursorRing.classList.add('clicking'));
                 el.addEventListener('mouseup', () => cursorRing.classList.remove('clicking'));
             });
-
-            const magneticTargets = document.querySelectorAll('a, button, .btn, .social-link, .project-card, .theme-toggle-btn');
-            magneticTargets.forEach(target => {
-                target.addEventListener('mousemove', (e) => {
-                    const rect = target.getBoundingClientRect();
-                    const relX = e.clientX - (rect.left + rect.width / 2);
-                    const relY = e.clientY - (rect.top + rect.height / 2);
-                    gsap.to(target, {
-                        x: relX * 0.06,
-                        y: relY * 0.06,
-                        duration: 0.35,
-                        ease: 'power3.out'
-                    });
-                });
-                target.addEventListener('mouseleave', () => {
-                    gsap.to(target, { x: 0, y: 0, duration: 0.45, ease: 'power3.out' });
-                });
-            });
         } else {
             document.body.classList.add('no-custom-cursor');
         }
 
         // ============================================
-        // THREE.JS BACKGROUND
+        // PARTICLES.JS CONFIGURATION (disabled on mobile for performance)
         // ============================================
-        const initThreeBackground = () => {
-            const container = document.getElementById('particles-js');
-            if (!container || isMobile() || prefersReducedMotion) {
-                if (container) container.style.display = 'none';
-                return;
+        if (!isMobile()) {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 60, density: { enable: true, value_area: 1000 } },
+                    color: { value: ['#00f0c8', '#8b5cf6', '#f472b6', '#ffffff'] },
+                    shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
+                    opacity: {
+                        value: 0.5,
+                        random: true,
+                        anim: { enable: true, speed: 0.3, opacity_min: 0.1, sync: false }
+                    },
+                    size: {
+                        value: 2.5,
+                        random: true,
+                        anim: { enable: true, speed: 0.8, size_min: 0.3, sync: false }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#ffffff',
+                        opacity: 0.08,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1.2,
+                        direction: 'none',
+                        random: true,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: { enable: true, rotateX: 600, rotateY: 1200 }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: { enable: true, mode: 'grab' },
+                        onclick: { enable: true, mode: 'push' },
+                        resize: true
+                    },
+                    modes: {
+                        grab: { distance: 180, line_linked: { opacity: 0.25 } },
+                        push: { particles_nb: 4 }
+                    }
+                },
+                retina_detect: true
+            });
+        } else {
+            // On mobile, hide particles canvas for better performance
+            const particlesContainer = document.getElementById('particles-js');
+            if (particlesContainer) {
+                particlesContainer.style.display = 'none';
             }
-
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.set(0, 0, 35);
-
-            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.domElement.style.pointerEvents = 'none';
-            container.appendChild(renderer.domElement);
-
-            const torus = new THREE.TorusKnotGeometry(10, 2.5, 120, 20);
-            const material = new THREE.MeshStandardMaterial({
-                color: 0xffffff,
-                emissive: 0x00f0c8,
-                emissiveIntensity: 0.35,
-                metalness: 0.2,
-                roughness: 0.1,
-                transparent: true,
-                opacity: 0.95
-            });
-            const mesh = new THREE.Mesh(torus, material);
-            scene.add(mesh);
-
-            const wireframe = new THREE.LineSegments(
-                new THREE.WireframeGeometry(new THREE.TorusKnotGeometry(10, 2.5, 80, 16)),
-                new THREE.LineBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.18 })
-            );
-            scene.add(wireframe);
-
-            const pointLight = new THREE.PointLight(0x00f0c8, 1.1, 100);
-            pointLight.position.set(20, 20, 20);
-            scene.add(pointLight);
-            const ambientLight = new THREE.AmbientLight(0x5f34ff, 0.45);
-            scene.add(ambientLight);
-
-            const mouse = { x: 0, y: 0 };
-            document.addEventListener('mousemove', (event) => {
-                mouse.x = ((event.clientX / window.innerWidth) - 0.5) * 2;
-                mouse.y = ((event.clientY / window.innerHeight) - 0.5) * 2;
-            });
-
-            const resizeScene = () => {
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(container.clientWidth, container.clientHeight);
-            };
-            window.addEventListener('resize', resizeScene);
-
-            const animate = () => {
-                mesh.rotation.x += 0.0025;
-                mesh.rotation.y += 0.0045;
-                mesh.rotation.z += 0.002;
-                mesh.rotation.x += mouse.y * 0.003;
-                mesh.rotation.y += mouse.x * 0.003;
-                wireframe.rotation.copy(mesh.rotation);
-                renderer.render(scene, camera);
-                requestAnimationFrame(animate);
-            };
-            animate();
-        };
-        initThreeBackground();
-
-        // ============================================
-        // FLOATING AVATAR INTERACTION
-        // ============================================
-        const floatingAvatar = document.getElementById('floatingAvatar');
-        if (floatingAvatar && !isMobile() && !prefersReducedMotion) {
-            let targetX = 0;
-            let targetY = 0;
-            let currentX = 0;
-            let currentY = 0;
-
-            document.addEventListener('mousemove', (e) => {
-                targetX = e.clientX - window.innerWidth * 0.75;
-                targetY = e.clientY - window.innerHeight * 0.75;
-            });
-
-            const animateAvatar = () => {
-                currentX += (targetX - currentX) * 0.09;
-                currentY += (targetY - currentY) * 0.09;
-                floatingAvatar.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${currentX * 0.04}deg)`;
-                requestAnimationFrame(animateAvatar);
-            };
-            animateAvatar();
         }
 
         // ============================================
@@ -2532,115 +2236,6 @@
             });
         });
 
-        // ADVANCED SCROLL-TRIGGER ANIMATIONS
-        ScrollTrigger.matchMedia({
-            '(min-width: 769px)': function() {
-                gsap.to('.hero-name', {
-                    scale: 1.03,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: '#home',
-                        start: 'top top',
-                        end: 'bottom top',
-                        scrub: true
-                    }
-                });
-
-                gsap.to('.glow-orb-1', {
-                    x: 30,
-                    y: -40,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: '#home',
-                        start: 'top top',
-                        end: 'bottom top',
-                        scrub: true
-                    }
-                });
-                gsap.to('.glow-orb-2', {
-                    x: -30,
-                    y: 45,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: '#home',
-                        start: 'top top',
-                        end: 'bottom top',
-                        scrub: true
-                    }
-                });
-
-                gsap.utils.toArray('.timeline-item').forEach((item, index) => {
-                    gsap.from(item, {
-                        x: index % 2 === 0 ? -60 : 60,
-                        opacity: 0,
-                        duration: 1.1,
-                        ease: 'power3.out',
-                        scrollTrigger: {
-                            trigger: item,
-                            start: 'top 85%',
-                            toggleActions: 'play none none none'
-                        }
-                    });
-                });
-
-                gsap.from('#radarChart', {
-                    scale: 0.88,
-                    opacity: 0,
-                    duration: 1.2,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: '#skills',
-                        start: 'top 80%',
-                        toggleActions: 'play none none none'
-                    }
-                });
-
-                gsap.utils.toArray('.project-card').forEach((card, index) => {
-                    gsap.from(card, {
-                        y: 80,
-                        rotationX: 6,
-                        opacity: 0,
-                        duration: 1.1,
-                        ease: 'power3.out',
-                        scrollTrigger: {
-                            trigger: card,
-                            start: 'top 90%',
-                            toggleActions: 'play none none none'
-                        }
-                    });
-                });
-
-                gsap.fromTo('.testimonial-card',
-                    { y: 80, opacity: 0, rotationX: 6 },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        rotationX: 0,
-                        duration: 1,
-                        stagger: 0.1,
-                        ease: 'power3.out',
-                        scrollTrigger: {
-                            trigger: '#testimonials',
-                            start: 'top 85%',
-                            toggleActions: 'play none none none'
-                        }
-                    }
-                );
-
-                gsap.from('.contact-form-wrapper', {
-                    y: 50,
-                    opacity: 0,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: '#contact',
-                        start: 'top 85%',
-                        toggleActions: 'play none none none'
-                    }
-                });
-            }
-        });
-
         // Stat counters animation
         ScrollTrigger.create({
             trigger: '.about-stats',
@@ -2669,7 +2264,7 @@
         const sectionIds = ['home', 'about', 'skills', 'projects', 'testimonials', 'contact'];
         function updateActiveNav() {
             let current = 'home';
-            const scrollPos = getScrollY() + 150;
+            const scrollPos = window.scrollY + 150;
             sectionIds.forEach(id => {
                 const sec = document.getElementById(id);
                 if (sec && sec.offsetTop <= scrollPos && (sec.offsetTop + sec.offsetHeight) > scrollPos) {
@@ -2683,11 +2278,7 @@
                 }
             });
         }
-        if (lenis) {
-            lenis.on('scroll', updateActiveNav);
-        } else {
-            window.addEventListener('scroll', updateActiveNav, { passive: true });
-        }
+        window.addEventListener('scroll', updateActiveNav);
         updateActiveNav();
 
         // Smooth scroll for nav links (with mobile-aware offset)
@@ -2698,16 +2289,11 @@
                 const target = document.getElementById(targetId);
                 if (target) {
                     const offset = isMobile() ? 100 : 80;
-                    const targetY = target.offsetTop - offset;
-                    if (lenis) {
-                        lenis.scrollTo(targetY);
-                    } else {
-                        gsap.to(window, {
-                            scrollTo: { y: targetY, autoKill: false },
-                            duration: 1.2,
-                            ease: 'power3.inOut'
-                        });
-                    }
+                    gsap.to(window, {
+                        scrollTo: { y: target.offsetTop - offset, autoKill: false },
+                        duration: 1.2,
+                        ease: 'power3.inOut'
+                    });
                 }
             });
         });
@@ -2716,31 +2302,20 @@
         // BACK TO TOP BUTTON
         // ============================================
         const backToTopBtn = document.getElementById('backToTop');
-        const updateBackToTop = () => {
-            const scrollY = getScrollY();
-            if (scrollY > 600) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
                 backToTopBtn.classList.add('visible');
             } else {
                 backToTopBtn.classList.remove('visible');
             }
             const nav = document.getElementById('mainNav');
+            // Only add scrolled effect on desktop
             if (!isMobile()) {
-                nav.classList.toggle('scrolled', scrollY > 50);
+                nav.classList.toggle('scrolled', window.scrollY > 50);
             }
-        };
-
-        if (lenis) {
-            lenis.on('scroll', updateBackToTop);
-        } else {
-            window.addEventListener('scroll', updateBackToTop, { passive: true });
-        }
-
+        }, { passive: true });
         backToTopBtn.addEventListener('click', () => {
-            if (lenis) {
-                lenis.scrollTo(0);
-            } else {
-                gsap.to(window, { scrollTo: { y: 0, autoKill: false }, duration: 1, ease: 'power3.inOut' });
-            }
+            gsap.to(window, { scrollTo: { y: 0, autoKill: false }, duration: 1, ease: 'power3.inOut' });
         });
 
         // ============================================
@@ -2815,8 +2390,18 @@
         }
 
         // ============================================
-        // The theme is initialized earlier and stored in localStorage.
+        // AUTO DARK MODE BASED ON DEVICE PREFERENCE
         // ============================================
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        function updateTheme() {
+            if (prefersDark.matches) {
+                document.body.classList.remove('light-mode');
+            } else {
+                document.body.classList.add('light-mode');
+            }
+        }
+        updateTheme(); // Initial check
+        prefersDark.addEventListener('change', updateTheme); // Listen for changes
 
         // ============================================
         // KEYBOARD NAVIGATION (J/K or Arrow keys)
