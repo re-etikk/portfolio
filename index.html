@@ -1819,6 +1819,13 @@
     ============================================ -->
     <script>
         // ============================================
+        // DEVICE DETECTION (MOBILE vs DESKTOP)
+        // ============================================
+        const isMobile = () => {
+            return window.innerWidth <= 768 || ('ontouchstart' in window);
+        };
+
+        // ============================================
         // THEME TOGGLE
         // ============================================
         const themeToggle = document.getElementById('themeToggle');
@@ -1838,26 +1845,34 @@
         });
 
         // ============================================
-        // PRELOADER
+        // PRELOADER (optimized for mobile)
         // ============================================
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
+            const delay = isMobile() ? 0.4 : 0.8;
             gsap.to(preloader, {
                 opacity: 0,
                 duration: 0.6,
-                delay: 0.8,
+                delay: delay,
                 onComplete: () => preloader.classList.add('hidden')
             });
         });
 
         // ============================================
-        // SCROLL PROGRESS BAR
+        // SCROLL PROGRESS BAR (throttled for mobile performance)
         // ============================================
+        let scrollTimeout;
         window.addEventListener('scroll', () => {
+            if (scrollTimeout) return;
+            
             const winScroll = document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById('scroll-progress').style.width = (winScroll / height) * 100 + '%';
-        });
+            
+            if (isMobile()) {
+                scrollTimeout = setTimeout(() => { scrollTimeout = null; }, 100);
+            }
+        }, { passive: true });
 
         // ============================================
         // CUSTOM CURSOR (hidden on touch)
@@ -1897,55 +1912,63 @@
         }
 
         // ============================================
-        // PARTICLES.JS CONFIGURATION
+        // PARTICLES.JS CONFIGURATION (disabled on mobile for performance)
         // ============================================
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 60, density: { enable: true, value_area: 1000 } },
-                color: { value: ['#00f0c8', '#8b5cf6', '#f472b6', '#ffffff'] },
-                shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
-                opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: { enable: true, speed: 0.3, opacity_min: 0.1, sync: false }
+        if (!isMobile()) {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 60, density: { enable: true, value_area: 1000 } },
+                    color: { value: ['#00f0c8', '#8b5cf6', '#f472b6', '#ffffff'] },
+                    shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
+                    opacity: {
+                        value: 0.5,
+                        random: true,
+                        anim: { enable: true, speed: 0.3, opacity_min: 0.1, sync: false }
+                    },
+                    size: {
+                        value: 2.5,
+                        random: true,
+                        anim: { enable: true, speed: 0.8, size_min: 0.3, sync: false }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#ffffff',
+                        opacity: 0.08,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1.2,
+                        direction: 'none',
+                        random: true,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: { enable: true, rotateX: 600, rotateY: 1200 }
+                    }
                 },
-                size: {
-                    value: 2.5,
-                    random: true,
-                    anim: { enable: true, speed: 0.8, size_min: 0.3, sync: false }
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: { enable: true, mode: 'grab' },
+                        onclick: { enable: true, mode: 'push' },
+                        resize: true
+                    },
+                    modes: {
+                        grab: { distance: 180, line_linked: { opacity: 0.25 } },
+                        push: { particles_nb: 4 }
+                    }
                 },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#ffffff',
-                    opacity: 0.08,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 1.2,
-                    direction: 'none',
-                    random: true,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: { enable: true, rotateX: 600, rotateY: 1200 }
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: { enable: true, mode: 'grab' },
-                    onclick: { enable: true, mode: 'push' },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 180, line_linked: { opacity: 0.25 } },
-                    push: { particles_nb: 4 }
-                }
-            },
-            retina_detect: true
-        });
+                retina_detect: true
+            });
+        } else {
+            // On mobile, hide particles canvas for better performance
+            const particlesContainer = document.getElementById('particles-js');
+            if (particlesContainer) {
+                particlesContainer.style.display = 'none';
+            }
+        }
 
         // ============================================
         // TYPING TEXT EFFECT (configurable phrases)
@@ -2138,7 +2161,7 @@
         });
         new Swiper('.testimonials-swiper', {
             loop: true,
-            autoplay: { delay: 4000, disableOnInteraction: false },
+            autoplay: isMobile() ? false : { delay: 4000, disableOnInteraction: false },
             pagination: { el: '.swiper-pagination', clickable: true },
             breakpoints: {
                 320: { slidesPerView: 1, spaceBetween: 20 },
@@ -2152,36 +2175,41 @@
         // ============================================
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-        // Hero animations
+        // Hero animations (optimized for mobile)
         function initHeroAnimations() {
-            gsap.fromTo('.hero-greeting', { opacity:0, y:30 }, { opacity:1, y:0, duration:0.8, ease:'power3.out', delay:0.3 });
-            gsap.fromTo('.hero-name', { opacity:0, y:40 }, { opacity:1, y:0, duration:1, ease:'power3.out', delay:0.5 });
-            gsap.fromTo('.hero-title-wrapper', { opacity:0, y:35 }, { opacity:1, y:0, duration:0.9, ease:'power3.out', delay:0.7 });
-            gsap.fromTo('.hero-desc', { opacity:0, y:30 }, { opacity:1, y:0, duration:0.8, ease:'power3.out', delay:0.9 });
-            gsap.fromTo('.hero-btns', { opacity:0, y:25 }, { opacity:1, y:0, duration:0.8, ease:'power3.out', delay:1.1 });
+            const duration = isMobile() ? 0.5 : 0.8;
+            const delay = isMobile() ? 0.1 : 0.3;
+            gsap.fromTo('.hero-greeting', { opacity:0, y:30 }, { opacity:1, y:0, duration:duration, ease:'power3.out', delay:delay });
+            gsap.fromTo('.hero-name', { opacity:0, y:40 }, { opacity:1, y:0, duration:duration, ease:'power3.out', delay:delay + (isMobile() ? 0.05 : 0.2) });
+            gsap.fromTo('.hero-title-wrapper', { opacity:0, y:35 }, { opacity:1, y:0, duration:duration, ease:'power3.out', delay:delay + (isMobile() ? 0.1 : 0.4) });
+            gsap.fromTo('.hero-desc', { opacity:0, y:30 }, { opacity:1, y:0, duration:duration, ease:'power3.out', delay:delay + (isMobile() ? 0.15 : 0.6) });
+            gsap.fromTo('.hero-btns', { opacity:0, y:25 }, { opacity:1, y:0, duration:duration, ease:'power3.out', delay:delay + (isMobile() ? 0.2 : 0.8) });
         }
         initHeroAnimations();
 
-        // Section entry animations
+        // Section entry animations (optimized for mobile)
         gsap.utils.toArray('.section').forEach(section => {
             ScrollTrigger.create({
                 trigger: section,
                 start: 'top 75%',
                 onEnter: () => {
+                    const stagger = isMobile() ? 0.05 : 0.1;
+                    const duration = isMobile() ? 0.4 : 0.7;
                     gsap.fromTo(section.querySelectorAll('.skill-category, .project-card, .stat-card, .about-text h3, .about-text p, .contact-detail, .social-link, .timeline-item, .testimonial-card'),
                         { opacity: 0, y: 50 },
-                        { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out', overwrite: 'auto' }
+                        { opacity: 1, y: 0, duration: duration, stagger: stagger, ease: 'power3.out', overwrite: 'auto' }
                     );
                 },
                 once: true
             });
         });
 
-        // Skill bar fill animation
+        // Skill bar fill animation (optimized for mobile)
         gsap.utils.toArray('.skill-fill').forEach(bar => {
+            const duration = isMobile() ? 0.8 : 1.5;
             gsap.fromTo(bar, { width: 0 }, {
                 width: bar.dataset.width + '%',
-                duration: 1.5,
+                duration: duration,
                 ease: 'power3.out',
                 scrollTrigger: {
                     trigger: bar,
@@ -2304,20 +2332,22 @@
         });
 
         // ============================================
-        // PARALLAX ORBS ON HERO
+        // PARALLAX ORBS ON HERO (desktop only)
         // ============================================
-        document.addEventListener('mousemove', (e) => {
-            const hero = document.getElementById('home');
-            if (!hero) return;
-            const rect = hero.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                const x = (e.clientX - rect.left) / rect.width - 0.5;
-                const y = (e.clientY - rect.top) / rect.height - 0.5;
-                const orbs = hero.querySelectorAll('.glow-orb');
-                if (orbs[0]) gsap.to(orbs[0], { x: x*40, y: y*40, duration:2, ease:'power2.out', overwrite:'auto' });
-                if (orbs[1]) gsap.to(orbs[1], { x: -x*30, y: -y*30, duration:2.5, ease:'power2.out', overwrite:'auto' });
-            }
-        });
+        if (!isMobile()) {
+            document.addEventListener('mousemove', (e) => {
+                const hero = document.getElementById('home');
+                if (!hero) return;
+                const rect = hero.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    const orbs = hero.querySelectorAll('.glow-orb');
+                    if (orbs[0]) gsap.to(orbs[0], { x: x*40, y: y*40, duration:2, ease:'power2.out', overwrite:'auto' });
+                    if (orbs[1]) gsap.to(orbs[1], { x: -x*30, y: -y*30, duration:2.5, ease:'power2.out', overwrite:'auto' });
+                }
+            });
+        }
 
         // ============================================
         // 3D TILT ON PROJECT CARDS (desktop)
