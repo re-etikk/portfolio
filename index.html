@@ -1310,27 +1310,35 @@
         }
         @media (max-width: 768px) {
             .main-nav {
-                top: auto;
-                bottom: 16px;
+                position: fixed;
+                top: 8px;
+                bottom: auto;
                 left: 50%;
                 transform: translateX(-50%);
                 border-radius: var(--radius-full);
-                padding: 6px 10px;
+                padding: 4px 6px;
                 gap: 1px;
+                width: calc(100% - 20px);
+                max-width: 380px;
             }
             .nav-logo {
                 display: none;
             }
             .nav-links a {
-                padding: 8px 12px;
-                font-size: 0.78rem;
+                padding: 6px 10px;
+                font-size: 0.7rem;
             }
             .nav-links a span.nav-text {
                 display: none;
             }
             .nav-links a i {
                 margin-right: 0;
-                font-size: 1rem;
+                font-size: 0.9rem;
+            }
+            .theme-toggle-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
             }
             .hero-name {
                 font-size: clamp(2.5rem, 10vw, 4rem);
@@ -1369,6 +1377,9 @@
             }
             .hero-scroll-indicator {
                 bottom: 100px;
+            }
+            #home {
+                padding-top: 80px;
             }
         }
         @media (max-width: 480px) {
@@ -2264,15 +2275,16 @@
         window.addEventListener('scroll', updateActiveNav);
         updateActiveNav();
 
-        // Smooth scroll for nav links
+        // Smooth scroll for nav links (with mobile-aware offset)
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('data-section');
                 const target = document.getElementById(targetId);
                 if (target) {
+                    const offset = isMobile() ? 100 : 80;
                     gsap.to(window, {
-                        scrollTo: { y: target.offsetTop - 80, autoKill: false },
+                        scrollTo: { y: target.offsetTop - offset, autoKill: false },
                         duration: 1.2,
                         ease: 'power3.inOut'
                     });
@@ -2291,8 +2303,11 @@
                 backToTopBtn.classList.remove('visible');
             }
             const nav = document.getElementById('mainNav');
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
+            // Only add scrolled effect on desktop
+            if (!isMobile()) {
+                nav.classList.toggle('scrolled', window.scrollY > 50);
+            }
+        }, { passive: true });
         backToTopBtn.addEventListener('click', () => {
             gsap.to(window, { scrollTo: { y: 0, autoKill: false }, duration: 1, ease: 'power3.inOut' });
         });
