@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Ritik Kumar — Full Stack Web Developer &amp; ML/DL Engineer</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
@@ -24,21 +25,30 @@
             --footer-sub: #9e9686;
             --footer-rule: #2a2721;
         }
+
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
+
         html {
             scroll-behavior: smooth;
+            width: 100%;
+            overflow-x: hidden;
         }
+
         body {
-            margin: 0;
             background: var(--paper);
             color: var(--ink);
             font-family: 'Source Serif 4', Georgia, serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            width: 100%;
+            position: relative;
             cursor: default;
         }
+
         body::before {
             content: "";
             position: fixed;
@@ -48,23 +58,30 @@
             opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
+
         a {
             color: inherit;
         }
+
         .wrap {
             max-width: 1220px;
             margin: 0 auto;
             padding: 0 32px;
+            width: 100%;
         }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5 {
+
+        @media (max-width: 768px) {
+            .wrap {
+                padding: 0 18px;
+            }
+        }
+
+        h1, h2, h3, h4, h5 {
             font-family: 'Playfair Display', Georgia, serif;
             font-weight: 700;
             margin: 0;
         }
+
         .mono {
             font-family: 'IBM Plex Mono', monospace;
         }
@@ -74,7 +91,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            height: 3px;
+            height: 3.5px;
             background: linear-gradient(90deg, var(--red), #d4af37);
             z-index: 99999;
             width: 0%;
@@ -83,107 +100,52 @@
             box-shadow: 0 0 8px rgba(164, 52, 37, .4);
         }
 
-        /* Reveal animations */
-        .js .reveal-up {
+        /* Scroll Reveal Animations */
+        .reveal-up {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
+            transform: translateY(35px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
-        .js .reveal-up.visible {
+        .reveal-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        .js .reveal-left {
+
+        .reveal-left {
             opacity: 0;
-            transform: translateX(-35px);
-            transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
+            transform: translateX(-40px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
-        .js .reveal-left.visible {
+        .reveal-left.visible {
             opacity: 1;
             transform: translateX(0);
         }
-        .js .reveal-right {
+
+        .reveal-right {
             opacity: 0;
-            transform: translateX(35px);
-            transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
+            transform: translateX(40px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
-        .js .reveal-right.visible {
+        .reveal-right.visible {
             opacity: 1;
             transform: translateX(0);
         }
-        .js .reveal-scale {
+
+        .reveal-scale {
             opacity: 0;
-            transform: scale(.94);
-            transition: opacity .6s cubic-bezier(.16, 1, .3, 1), transform .6s cubic-bezier(.16, 1, .3, 1);
+            transform: scale(0.94);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
-        .js .reveal-scale.visible {
+        .reveal-scale.visible {
             opacity: 1;
             transform: scale(1);
         }
 
-        /* Staggered delays */
-        .delay-1 {
-            transition-delay: .1s;
-        }
-        .delay-2 {
-            transition-delay: .2s;
-        }
-        .delay-3 {
-            transition-delay: .3s;
-        }
-        .delay-4 {
-            transition-delay: .4s;
-        }
-
-        /* Image hover zoom */
-        .portrait-img {
-            transition: transform .6s cubic-bezier(.16, 1, .3, 1), filter .6s ease;
-        }
-        .portrait-wrapper:hover .portrait-img {
-            transform: scale(1.03);
-        }
-        .shot-preview-box iframe,
-        .shot-preview-box img,
-        .shot-preview-box .shot-canvas-art {
-            transition: transform .5s ease, filter .5s ease;
-        }
-        .shot-frame-wrapper:hover .shot-preview-box iframe,
-        .shot-frame-wrapper:hover .shot-preview-box img,
-        .shot-frame-wrapper:hover .shot-preview-box .shot-canvas-art {
-            transform: scale(1.04);
-            filter: grayscale(20%) sepia(8%) contrast(102%) brightness(102%);
-        }
-
-        /* Nav shadow */
-        .mainnav {
-            transition: box-shadow .3s ease, transform .3s ease;
-        }
-        .mainnav.scrolled {
-            box-shadow: 0 6px 24px rgba(0, 0, 0, .12);
-        }
-
-        /* Magnetic buttons */
-        .btn {
-            will-change: transform;
-            transition: transform .2s ease, background .2s, border-color .2s, box-shadow .2s;
-        }
-
-        /* Smooth fade for case file */
-        #case-file-overlay {
-            transition: opacity .4s ease;
-        }
-
-        /* Subtle hero parallax */
-        .portrait-wrapper {
-            transition: transform .2s ease;
-        }
-
-        /* Stats counter */
-        .stat-bar .big {
-            font-variant-numeric: tabular-nums;
-        }
-
-        /* Double rules */
+        /* Rules & Lines */
         .double-rule {
             border-top: 2px solid var(--rule);
             border-bottom: 1px solid var(--rule);
@@ -201,7 +163,13 @@
             margin: 0;
         }
 
-        /* Custom cursor */
+        /* Staggered Delays */
+        .delay-1 { transition-delay: 0.12s; }
+        .delay-2 { transition-delay: 0.22s; }
+        .delay-3 { transition-delay: 0.32s; }
+        .delay-4 { transition-delay: 0.42s; }
+
+        /* Custom Desktop Cursor */
         .custom-cursor-dot {
             position: fixed;
             width: 8px;
@@ -249,28 +217,24 @@
             animation: pulseIcon 1.5s infinite alternate ease-in-out;
         }
         @keyframes pulseIcon {
-            0% {
-                transform: scale(.92);
-            }
-            100% {
-                transform: scale(1.08);
-            }
+            0% { transform: scale(.92); }
+            100% { transform: scale(1.08); }
         }
-        @media (max-width:768px) {
-            .custom-cursor-dot,
-            .custom-cursor-ring {
+        @media (max-width: 900px) {
+            .custom-cursor-dot, .custom-cursor-ring {
                 display: none !important;
             }
         }
 
-        /* Intro screen */
+        /* -------------------------------------------------------------
+           RESPONSIVE INTRO SCREEN (MOBILE + TABLET + DESKTOP READY)
+           ------------------------------------------------------------- */
         #intro-screen {
             position: fixed;
             inset: 0;
-            z-index: 2000;
-            background: #e8e1d0;
+            z-index: 3000;
+            background: #eae2d2;
             overflow: hidden;
-            cursor: none;
             transition: opacity .75s cubic-bezier(.16, 1, .3, 1), visibility .75s ease;
         }
         #intro-screen.hide {
@@ -278,78 +242,108 @@
             visibility: hidden;
             pointer-events: none;
         }
+
         .newspaper-canvas {
             width: 100vw;
             height: 100vh;
-            padding: 70px 90px;
+            padding: 70px 80px;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 32px;
+            gap: 28px;
             box-sizing: border-box;
             font-family: 'Playfair Display', serif;
             color: var(--ink-soft);
             user-select: none;
-            line-height: 1.8;
+            line-height: 1.75;
             background: #eae2d2;
         }
+        @media (max-width: 1024px) {
+            .newspaper-canvas {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 60px 30px;
+                gap: 20px;
+            }
+        }
+        @media (max-width: 640px) {
+            .newspaper-canvas {
+                grid-template-columns: 1fr;
+                padding: 60px 18px 80px 18px;
+                gap: 16px;
+                overflow-y: hidden;
+            }
+        }
+
         .news-col {
             border-right: 1px solid rgba(24, 22, 19, .18);
-            padding-right: 24px;
-            font-size: 13.5px;
+            padding-right: 20px;
+            font-size: 13px;
         }
         .news-col:last-child {
             border-right: none;
             padding-right: 0;
         }
+        @media (max-width: 640px) {
+            .news-col {
+                border-right: none;
+                padding-right: 0;
+                font-size: 12.5px;
+            }
+            .news-col:nth-child(n+4) {
+                display: none;
+            }
+        }
+
         .news-col h4 {
-            font-size: 16px;
-            margin-bottom: 10px;
+            font-size: 15px;
+            margin-bottom: 8px;
             text-transform: uppercase;
             border-bottom: 1px solid var(--ink);
             padding-bottom: 4px;
         }
         .news-col p {
-            margin: 0 0 14px;
+            margin: 0 0 12px;
             text-align: justify;
         }
         .news-headline {
-            grid-column: span 5;
+            grid-column: 1 / -1;
             border-bottom: 3px double var(--ink);
-            padding-bottom: 14px;
-            margin-bottom: 8px;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
             text-align: center;
         }
         .news-headline h2 {
-            font-size: clamp(32px, 4.8vw, 58px);
+            font-size: clamp(24px, 4.5vw, 56px);
             letter-spacing: .02em;
             font-weight: 800;
+            line-height: 1.1;
         }
         .news-headline .sub {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
-            letter-spacing: .16em;
+            font-size: clamp(9px, 1.8vw, 12px);
+            letter-spacing: .14em;
             text-transform: uppercase;
             margin-top: 6px;
         }
         .classified-box {
-            border: 2px solid var(--ink);
-            padding: 12px;
+            border: 1.5px solid var(--ink);
+            padding: 10px;
             background: #f4efe6;
-            margin: 12px 0;
+            margin: 10px 0;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
-            line-height: 1.6;
+            font-size: 10.5px;
+            line-height: 1.5;
         }
         .classified-box b {
             display: block;
-            font-size: 12.5px;
+            font-size: 11.5px;
             color: var(--red);
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
+
         #intro-blurred-layer {
             position: absolute;
             inset: 0;
-            filter: blur(7px) contrast(.92);
+            filter: blur(6px) contrast(.92);
             transform: scale(1.02);
             pointer-events: none;
         }
@@ -363,14 +357,14 @@
         }
         #glass-lens {
             position: absolute;
-            width: 250px;
-            height: 250px;
-            left: -125px;
-            top: -125px;
+            width: clamp(160px, 45vw, 240px);
+            height: clamp(160px, 45vw, 240px);
+            left: calc(clamp(160px, 45vw, 240px) / -2);
+            top: calc(clamp(160px, 45vw, 240px) / -2);
             border-radius: 50%;
             overflow: hidden;
-            border: 5px solid #161513;
-            box-shadow: 0 0 0 2px #d4af37, 0 18px 45px rgba(0, 0, 0, .4), inset 0 0 22px rgba(0, 0, 0, .22);
+            border: 4px solid #161513;
+            box-shadow: 0 0 0 2px #d4af37, 0 16px 40px rgba(0, 0, 0, .4), inset 0 0 20px rgba(0, 0, 0, .22);
             background: #f4efe6;
         }
         #glass-lens::after {
@@ -391,63 +385,73 @@
         }
         .glass-handle {
             position: absolute;
-            top: 82px;
-            left: 82px;
-            width: 22px;
-            height: 125px;
+            top: 70px;
+            left: 70px;
+            width: 18px;
+            height: 110px;
             background: linear-gradient(90deg, #0d0c0b 0%, #302d29 45%, #0d0c0b 100%);
-            border-radius: 6px;
+            border-radius: 5px;
             transform: rotate(-45deg);
             transform-origin: top center;
-            box-shadow: 6px 14px 24px rgba(0, 0, 0, .45);
+            box-shadow: 5px 12px 20px rgba(0, 0, 0, .45);
             border: 1px solid #000;
+        }
+        @media (max-width: 640px) {
+            .glass-handle {
+                top: 55px;
+                left: 55px;
+                width: 14px;
+                height: 75px;
+            }
         }
         .glass-handle::before {
             content: "";
             position: absolute;
-            top: -8px;
+            top: -6px;
             left: 50%;
             transform: translateX(-50%);
-            width: 16px;
-            height: 9px;
+            width: 14px;
+            height: 8px;
             background: #c5a059;
             border-radius: 2px;
         }
+
         .intro-controls {
             position: absolute;
-            top: 26px;
-            right: 36px;
-            z-index: 20;
+            top: 16px;
+            right: 16px;
+            z-index: 100;
         }
         .skip-btn {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: clamp(10px, 2.5vw, 11.5px);
             letter-spacing: .12em;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             background: var(--paper);
             color: var(--ink);
             border: 1.5px solid var(--ink);
-            padding: 12px 24px;
+            padding: 9px 16px;
             cursor: pointer;
-            box-shadow: 3px 3px 0 var(--ink);
+            box-shadow: 2.5px 2.5px 0 var(--ink);
             transition: all .2s ease;
+            white-space: nowrap;
         }
-        .skip-btn:hover {
+        .skip-btn:hover, .skip-btn:active {
             background: var(--ink);
             color: var(--paper);
-            transform: translate(2px, 2px);
+            transform: translate(1.5px, 1.5px);
             box-shadow: 1px 1px 0 var(--ink);
         }
         .intro-prompt {
             position: absolute;
-            bottom: 28px;
-            left: 0;
-            right: 0;
+            bottom: 22px;
+            left: 12px;
+            right: 12px;
             text-align: center;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
-            letter-spacing: .2em;
+            font-size: clamp(9px, 2.2vw, 11px);
+            letter-spacing: .16em;
             text-transform: uppercase;
             color: var(--ink-faint);
             pointer-events: none;
@@ -466,18 +470,27 @@
         .topstrip .wrap {
             display: flex;
             justify-content: space-between;
-            padding-top: 12px;
-            padding-bottom: 12px;
+            padding-top: 10px;
+            padding-bottom: 10px;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
+        @media (max-width: 768px) {
+            .topstrip .wrap {
+                justify-content: center;
+                text-align: center;
+                font-size: 10px;
+            }
+        }
+
+        /* Masthead */
         .masthead {
             text-align: center;
-            padding: 42px 0 24px;
+            padding: 38px 0 20px;
             border-bottom: 2px solid var(--rule);
         }
         .masthead h1 {
-            font-size: clamp(54px, 10vw, 115px);
+            font-size: clamp(42px, 9.5vw, 115px);
             letter-spacing: -.01em;
             line-height: .95;
             font-weight: 800;
@@ -485,46 +498,53 @@
         .masthead .tag {
             font-family: 'IBM Plex Mono', monospace;
             text-transform: uppercase;
-            letter-spacing: .22em;
-            font-size: 12.5px;
+            letter-spacing: .2em;
+            font-size: clamp(10.5px, 2.2vw, 12.5px);
             color: var(--ink-soft);
-            margin-top: 14px;
+            margin-top: 12px;
             font-weight: 600;
         }
         .masthead .subline {
-            margin-top: 18px;
-            padding-top: 12px;
+            margin-top: 14px;
+            padding-top: 10px;
             border-top: 1px solid var(--rule);
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: clamp(9.5px, 2vw, 11px);
             letter-spacing: .06em;
             color: var(--ink-soft);
             text-transform: uppercase;
         }
+
+        /* Sticky Navigation */
         nav.mainnav {
             position: sticky;
             top: 0;
             z-index: 1000;
             background: var(--paper);
             border-bottom: 1.5px solid var(--rule);
+            transition: box-shadow .3s ease;
+        }
+        nav.mainnav.scrolled {
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
         }
         nav.mainnav .wrap {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 15px;
-            padding-bottom: 15px;
+            padding-top: 12px;
+            padding-bottom: 12px;
         }
         nav.mainnav .brand {
             font-family: 'Playfair Display', serif;
             font-weight: 800;
-            font-size: 22px;
+            font-size: 20px;
             text-decoration: none;
+            letter-spacing: -.01em;
         }
         nav.mainnav .links {
             display: flex;
             align-items: center;
-            gap: 26px;
+            gap: 24px;
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11.5px;
             letter-spacing: .08em;
@@ -532,7 +552,7 @@
         }
         nav.mainnav .links a {
             text-decoration: none;
-            padding-bottom: 4px;
+            padding-bottom: 3px;
             border-bottom: 1.5px solid transparent;
             transition: border-color .2s;
             font-weight: 500;
@@ -543,10 +563,10 @@
         nav.mainnav .hire {
             background: var(--ink);
             color: var(--paper);
-            padding: 10px 22px;
+            padding: 8px 18px;
             text-decoration: none;
             font-weight: 600;
-            border: 1px solid var(--ink);
+            border: 1.5px solid var(--ink);
             transition: all .2s;
         }
         nav.mainnav .hire:hover {
@@ -555,14 +575,15 @@
         }
         .navToggle {
             display: none;
-            background: none;
+            background: var(--paper-card);
             border: 1.5px solid var(--ink);
-            padding: 8px 14px;
+            padding: 6px 12px;
             font-family: 'IBM Plex Mono', monospace;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 11.5px;
+            font-weight: 600;
         }
-        @media (max-width:820px) {
+        @media (max-width: 860px) {
             nav.mainnav .links {
                 display: none;
             }
@@ -578,8 +599,19 @@
                 right: 0;
                 background: var(--paper);
                 border-bottom: 2px solid var(--rule);
-                padding: 22px 32px;
+                padding: 18px 24px;
                 gap: 16px;
+                box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+            }
+            nav.mainnav.open .links a {
+                padding: 8px 0;
+                border-bottom: 1px solid var(--rule-light);
+                width: 100%;
+            }
+            nav.mainnav.open .links .hire {
+                border-bottom: 1.5px solid var(--ink);
+                text-align: center;
+                margin-top: 6px;
             }
         }
 
@@ -588,40 +620,43 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 24px 0 14px;
+            padding: 22px 0 12px;
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11px;
             letter-spacing: .12em;
             text-transform: uppercase;
             color: var(--ink-soft);
+            flex-wrap: wrap;
+            gap: 6px;
         }
         .hero {
-            padding-bottom: 50px;
+            padding-bottom: 45px;
         }
         .hero-grid {
             display: grid;
             grid-template-columns: 1.15fr .85fr;
-            gap: 54px;
-            padding-top: 26px;
+            gap: 50px;
+            padding-top: 20px;
             align-items: start;
         }
-        @media (max-width:950px) {
+        @media (max-width: 950px) {
             .hero-grid {
                 grid-template-columns: 1fr;
+                gap: 36px;
             }
         }
         .kicker {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
+            font-size: 11.5px;
             letter-spacing: .1em;
             text-transform: uppercase;
             color: var(--red);
-            margin-bottom: 16px;
-            font-weight: 600;
+            margin-bottom: 14px;
+            font-weight: 700;
         }
         .hero h2 {
-            font-size: clamp(36px, 4.6vw, 62px);
-            line-height: 1.05;
+            font-size: clamp(32px, 4.4vw, 60px);
+            line-height: 1.06;
             letter-spacing: -.01em;
         }
         .hero h2 em {
@@ -629,34 +664,34 @@
             font-weight: 500;
         }
         blockquote.dek {
-            margin: 22px 0 0;
-            padding-left: 20px;
+            margin: 20px 0 0;
+            padding-left: 18px;
             border-left: 3px solid var(--ink);
             font-style: italic;
             color: var(--ink-soft);
-            font-size: 19px;
+            font-size: clamp(16px, 2.4vw, 19px);
             line-height: 1.55;
         }
         .byline {
-            margin-top: 22px;
+            margin-top: 20px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 11px;
             color: var(--ink-faint);
             text-transform: uppercase;
             letter-spacing: .06em;
         }
         .cta-row {
             display: flex;
-            gap: 16px;
-            margin-top: 28px;
+            gap: 14px;
+            margin-top: 26px;
             flex-wrap: wrap;
         }
         .btn {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
+            font-size: 11.5px;
             letter-spacing: .08em;
             text-transform: uppercase;
-            padding: 15px 24px;
+            padding: 13px 22px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -664,6 +699,7 @@
             border: 1.5px solid var(--ink);
             font-weight: 600;
             cursor: pointer;
+            transition: transform .2s ease, background .2s, border-color .2s, box-shadow .2s;
         }
         .btn-solid {
             background: var(--ink);
@@ -689,10 +725,10 @@
             grid-template-columns: repeat(4, 1fr);
             border-top: 1.5px solid var(--rule);
             border-bottom: 1.5px solid var(--rule);
-            margin-top: 36px;
+            margin-top: 32px;
         }
         .stat-bar div {
-            padding: 18px 14px;
+            padding: 16px 12px;
             border-right: 1px solid var(--rule-light);
         }
         .stat-bar div:last-child {
@@ -700,35 +736,43 @@
         }
         .stat-bar .big {
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             line-height: 1;
+            font-variant-numeric: tabular-nums;
         }
         .stat-bar .small {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10px;
+            font-size: 9.5px;
             letter-spacing: .05em;
             text-transform: uppercase;
             color: var(--ink-faint);
             margin-top: 6px;
         }
-        @media (max-width:600px) {
+        @media (max-width: 600px) {
             .stat-bar {
                 grid-template-columns: repeat(2, 1fr);
             }
             .stat-bar div:nth-child(2) {
                 border-right: none;
             }
+            .stat-bar div:nth-child(3) {
+                border-top: 1px solid var(--rule-light);
+            }
+            .stat-bar div:nth-child(4) {
+                border-top: 1px solid var(--rule-light);
+            }
         }
+
         .portrait-wrapper {
             border: 2px solid var(--ink);
             background: var(--paper-card);
-            padding: 10px;
-            box-shadow: 6px 6px 0 rgba(24, 22, 19, .12);
+            padding: 8px;
+            box-shadow: 5px 5px 0 rgba(24, 22, 19, .12);
             transition: transform .3s ease, box-shadow .3s ease;
         }
         .portrait-wrapper:hover {
-            box-shadow: 8px 10px 0 rgba(24, 22, 19, .15);
+            box-shadow: 7px 9px 0 rgba(24, 22, 19, .16);
             transform: translateY(-2px);
         }
         .portrait-img {
@@ -736,38 +780,44 @@
             height: auto;
             display: block;
             border: 1px solid var(--ink);
+            transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+        }
+        .portrait-wrapper:hover .portrait-img {
+            transform: scale(1.02);
         }
         .caption-line {
             display: flex;
             justify-content: space-between;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10.5px;
+            font-size: 10px;
             text-transform: uppercase;
             letter-spacing: .06em;
             color: var(--ink-faint);
-            padding-top: 10px;
+            padding-top: 8px;
             border-top: 1px solid var(--rule-light);
-            margin-top: 8px;
+            margin-top: 6px;
         }
         .about-copy {
-            margin-top: 24px;
-            font-size: 15.5px;
+            margin-top: 20px;
+            font-size: 15px;
             line-height: 1.75;
             color: var(--ink-soft);
         }
         .about-copy p {
-            margin: 0 0 14px;
+            margin: 0 0 12px;
         }
 
-        /* Selected Works */
+        /* -------------------------------------------------------------
+           SELECTED WORKS (EXHIBITS)
+           ------------------------------------------------------------- */
         #work {
-            padding: 60px 0 20px;
+            padding: 50px 0 20px;
         }
         .exhibit-card {
             display: grid;
             grid-template-columns: 1.1fr .9fr;
-            gap: 48px;
-            padding: 50px 0;
+            gap: 44px;
+            padding: 44px 0;
             border-bottom: 1px solid var(--rule-light);
             align-items: center;
             transition: background .3s;
@@ -778,9 +828,11 @@
         .exhibit-card:nth-child(even) .shot-frame-wrapper {
             order: 2;
         }
-        @media (max-width:900px) {
+        @media (max-width: 900px) {
             .exhibit-card {
                 grid-template-columns: 1fr;
+                gap: 28px;
+                padding: 34px 0;
             }
             .exhibit-card:nth-child(even) .shot-frame-wrapper {
                 order: 0;
@@ -788,27 +840,27 @@
         }
         .shot-frame-wrapper {
             position: relative;
-            padding: 14px 10px 10px 10px;
+            padding: 12px 8px 8px 8px;
             background: var(--paper-card);
             border: 1.5px solid var(--ink);
-            box-shadow: 5px 6px 0 rgba(24, 22, 19, .15);
+            box-shadow: 4px 5px 0 rgba(24, 22, 19, .15);
             cursor: pointer;
             overflow: hidden;
             transition: transform .3s ease, box-shadow .3s ease;
         }
         .shot-frame-wrapper:hover {
             transform: translateY(-4px);
-            box-shadow: 8px 12px 0 rgba(24, 22, 19, .18);
+            box-shadow: 7px 10px 0 rgba(24, 22, 19, .18);
         }
         .shot-frame-wrapper::before {
             content: "";
             position: absolute;
-            top: -7px;
+            top: -6px;
             left: 50%;
             transform: translateX(-50%) rotate(-1deg);
-            width: 86px;
-            height: 18px;
-            background: rgba(220, 210, 185, .82);
+            width: 80px;
+            height: 16px;
+            background: rgba(220, 210, 185, .85);
             border: 1px dashed rgba(160, 150, 130, .5);
             box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
             z-index: 15;
@@ -820,10 +872,15 @@
         .shot-preview-box {
             position: relative;
             width: 100%;
-            height: 310px;
+            height: 300px;
             background: #e2dbce;
             overflow: hidden;
             border: 1px solid var(--ink);
+        }
+        @media (max-width: 600px) {
+            .shot-preview-box {
+                height: 220px;
+            }
         }
         .shot-preview-box iframe,
         .shot-preview-box img,
@@ -834,6 +891,19 @@
             display: block;
             filter: grayscale(88%) sepia(26%) contrast(108%) brightness(96%);
             object-fit: cover;
+            transition: transform .5s ease, filter .5s ease;
+        }
+        .shot-frame-wrapper:hover .shot-preview-box iframe,
+        .shot-frame-wrapper:hover .shot-preview-box img,
+        .shot-frame-wrapper:hover .shot-preview-box .shot-canvas-art {
+            transform: scale(1.03);
+            filter: grayscale(15%) sepia(8%) contrast(102%) brightness(102%);
+        }
+        .shot-preview-box .iframe-overlay-touch {
+            position: absolute;
+            inset: 0;
+            z-index: 8;
+            background: transparent;
         }
         .shot-frame-footer {
             display: flex;
@@ -841,7 +911,7 @@
             align-items: center;
             padding-top: 8px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10.5px;
+            font-size: 10px;
             color: var(--ink-faint);
             text-transform: uppercase;
             letter-spacing: .04em;
@@ -849,7 +919,7 @@
         .circled-stamp {
             border: 1.5px solid var(--red);
             color: var(--red);
-            padding: 1px 7px;
+            padding: 1px 6px;
             border-radius: 12px;
             font-weight: 700;
             transform: rotate(-3deg);
@@ -861,29 +931,29 @@
         }
         .stamp-badge-overlay {
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 14px;
+            right: 14px;
             z-index: 10;
             border: 2px solid var(--red);
             color: var(--red);
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 10.5px;
             letter-spacing: .12em;
             text-transform: uppercase;
             font-weight: 800;
-            padding: 4px 10px;
-            transform: rotate(-8deg);
+            padding: 4px 9px;
+            transform: rotate(-7deg);
             background: rgba(244, 239, 230, .94);
             box-shadow: 2px 2px 0 rgba(164, 52, 37, .25);
             pointer-events: none;
             transition: transform .3s ease;
         }
         .shot-frame-wrapper:hover .stamp-badge-overlay {
-            transform: rotate(-4deg) scale(1.05);
+            transform: rotate(-3deg) scale(1.05);
         }
         .exhibit-tag {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 10.5px;
             letter-spacing: .1em;
             text-transform: uppercase;
             color: var(--red);
@@ -892,38 +962,38 @@
         }
         .exhibit-client {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 11px;
             letter-spacing: .05em;
             text-transform: uppercase;
             color: var(--ink-faint);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .exhibit-info h3 {
-            font-size: 32px;
-            margin-bottom: 14px;
+            font-size: clamp(24px, 3.5vw, 34px);
+            margin-bottom: 12px;
             line-height: 1.15;
         }
         .exhibit-info p {
-            font-size: 15.5px;
+            font-size: 15px;
             line-height: 1.7;
             color: var(--ink-soft);
-            margin: 0 0 18px;
+            margin: 0 0 16px;
         }
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 7px;
+            margin-bottom: 18px;
         }
         .tags span {
-            border: 1.5px solid var(--rule-light);
+            border: 1px solid var(--rule-light);
             background: var(--paper-card);
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
-            padding: 5px 10px;
+            font-size: 10.5px;
+            padding: 4px 8px;
             color: var(--ink);
             font-weight: 500;
-            transition: background .3s, border-color .3s, transform .3s;
+            transition: background .3s, border-color .3s, transform .2s;
         }
         .exhibit-card:hover .tags span {
             background: var(--paper);
@@ -935,7 +1005,9 @@
             justify-content: space-between;
             align-items: center;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
+            font-size: 11.5px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         .open-case-btn {
             display: inline-flex;
@@ -957,7 +1029,9 @@
             transform: translateX(3px);
         }
 
-        /* Case file */
+        /* -------------------------------------------------------------
+           CASE FILE OVERLAY & STAGGERED DOSSIER ANIMATIONS
+           ------------------------------------------------------------- */
         #case-file-overlay {
             position: fixed;
             inset: 0;
@@ -966,7 +1040,7 @@
             overflow-y: auto;
             display: none;
             opacity: 0;
-            transition: opacity .35s ease;
+            transition: opacity .4s cubic-bezier(.16, 1, .3, 1);
         }
         #case-file-overlay.active {
             display: block;
@@ -978,43 +1052,86 @@
             z-index: 100;
             background: var(--paper-card);
             border-bottom: 2px solid var(--rule);
-            padding: 14px 32px;
+            padding: 12px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
+            font-size: 11.5px;
             text-transform: uppercase;
             letter-spacing: .08em;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 768px) {
+            .case-file-header-strip {
+                padding: 10px 16px;
+                font-size: 10.5px;
+            }
         }
         .back-broadsheet-btn {
             background: var(--ink);
             color: var(--paper);
             border: 1px solid var(--ink);
-            padding: 8px 18px;
+            padding: 8px 16px;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
             transition: all .2s;
         }
         .back-broadsheet-btn:hover {
             background: var(--red);
             border-color: var(--red);
+            transform: translateY(-1px);
         }
         .case-file-content {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 32px 80px 32px;
+            padding: 36px 32px 80px 32px;
         }
+        @media (max-width: 768px) {
+            .case-file-content {
+                padding: 20px 16px 60px 16px;
+            }
+        }
+
+        .dossier-anim-banner {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: dossierFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+        }
+        .dossier-anim-story {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: dossierFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.22s forwards;
+        }
+        .dossier-anim-specs {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: dossierFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.34s forwards;
+        }
+        @keyframes dossierFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .case-file-banner-frame {
+            position: relative;
             border: 2px solid var(--ink);
             background: var(--paper-card);
-            padding: 10px;
-            margin-bottom: 30px;
-            box-shadow: 6px 6px 0 rgba(24, 22, 19, .12);
+            padding: 8px;
+            margin-bottom: 26px;
+            box-shadow: 5px 5px 0 rgba(24, 22, 19, .12);
         }
         .case-file-banner-frame iframe,
         .case-file-banner-frame img,
@@ -1026,43 +1143,88 @@
             filter: grayscale(40%) sepia(15%) contrast(105%);
             object-fit: cover;
         }
+        @media (max-width: 768px) {
+            .case-file-banner-frame iframe,
+            .case-file-banner-frame img,
+            .case-file-banner-frame .case-canvas {
+                height: 230px;
+            }
+        }
+
+        .case-stamp-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 15;
+            border: 2.5px solid var(--red);
+            color: var(--red);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-weight: 800;
+            padding: 6px 14px;
+            background: rgba(244, 239, 230, .96);
+            box-shadow: 3px 3px 0 rgba(164, 52, 37, .25);
+            pointer-events: none;
+            transform-origin: center center;
+            animation: stampSlam 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.35s both;
+        }
+        @keyframes stampSlam {
+            0% {
+                transform: scale(2.4) rotate(-22deg);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(0.92) rotate(-5deg);
+                opacity: 0.95;
+            }
+            100% {
+                transform: scale(1) rotate(-7deg);
+                opacity: 1;
+            }
+        }
+
         .case-file-caption {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 10.5px;
             text-transform: uppercase;
             color: var(--ink-faint);
-            padding-top: 10px;
+            padding-top: 8px;
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px;
         }
         .case-file-article-grid {
             display: grid;
             grid-template-columns: 1.25fr .75fr;
-            gap: 48px;
+            gap: 44px;
             align-items: start;
         }
-        @media (max-width:860px) {
+        @media (max-width: 860px) {
             .case-file-article-grid {
                 grid-template-columns: 1fr;
+                gap: 28px;
             }
         }
         .case-story-col {
-            font-size: 16px;
+            font-size: 15.5px;
             line-height: 1.8;
             color: var(--ink-soft);
         }
         .case-story-col h2 {
-            font-size: 34px;
-            margin-bottom: 16px;
+            font-size: clamp(26px, 4vw, 36px);
+            margin-bottom: 14px;
             color: var(--ink);
             line-height: 1.15;
         }
         .case-drop-cap::first-letter {
             font-family: 'Playfair Display', serif;
-            font-size: 78px;
+            font-size: 72px;
             float: left;
             line-height: .8;
-            margin-right: 14px;
+            margin-right: 12px;
             margin-top: 4px;
             font-weight: 800;
             color: var(--ink);
@@ -1070,12 +1232,13 @@
         .how-it-was-built-box {
             border: 2px solid var(--ink);
             background: var(--paper-card);
+            box-shadow: 4px 4px 0 rgba(24, 22, 19, .12);
         }
         .how-header {
             background: var(--ink);
             color: var(--paper);
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 700;
             letter-spacing: .12em;
             text-transform: uppercase;
@@ -1085,10 +1248,10 @@
             width: 100%;
             border-collapse: collapse;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 11px;
         }
         .how-table td {
-            padding: 12px 16px;
+            padding: 11px 16px;
             border-bottom: 1px solid var(--rule-light);
         }
         .how-table tr:last-child td {
@@ -1106,18 +1269,18 @@
             font-weight: 500;
         }
         .case-launch-box {
-            margin-top: 24px;
+            margin-top: 20px;
             text-align: center;
         }
         .case-launch-btn {
             display: block;
             width: 100%;
-            padding: 16px;
+            padding: 15px;
             text-align: center;
             background: var(--ink);
             color: var(--paper);
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: .1em;
@@ -1128,30 +1291,43 @@
         .case-launch-btn:hover {
             background: var(--red);
             border-color: var(--red);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(164, 52, 37, .3);
         }
 
-        /* Lab Report */
+        /* -------------------------------------------------------------
+           FORENSICS / LAB REPORT (RESPONSIVE TABLE)
+           ------------------------------------------------------------- */
         #stack {
-            padding: 60px 0 20px;
+            padding: 50px 0 20px;
+        }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 18px;
+            border: 1px solid var(--rule-light);
         }
         table.lab {
             width: 100%;
+            min-width: 600px;
             border-collapse: collapse;
-            margin-top: 20px;
             font-size: 14.5px;
+            background: var(--paper);
         }
         table.lab th {
             text-align: left;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 10.5px;
             text-transform: uppercase;
             letter-spacing: .08em;
             color: var(--ink-faint);
             border-bottom: 2px solid var(--rule);
             padding: 12px 14px;
+            background: var(--paper-card);
         }
         table.lab td {
-            padding: 14px 14px;
+            padding: 13px 14px;
             border-bottom: 1px solid var(--rule-light);
             vertical-align: middle;
             transition: background .2s;
@@ -1161,20 +1337,20 @@
         }
         table.lab .subst {
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
         }
         table.lab .code {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--ink-faint);
         }
         .typewriter-badge {
             display: inline-block;
             border: 1.5px solid var(--ink);
-            padding: 3px 10px;
+            padding: 2.5px 9px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: .08em;
@@ -1187,16 +1363,16 @@
         }
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 14px;
-            margin-top: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 22px;
         }
         .cert-item {
             border: 1.5px solid var(--ink);
             background: var(--paper-card);
-            padding: 14px 18px;
+            padding: 12px 16px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 11px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1208,18 +1384,20 @@
         }
         .cert-item i {
             color: var(--red);
-            font-size: 14px;
+            font-size: 13.5px;
         }
 
-        /* Career Ledger */
+        /* -------------------------------------------------------------
+           CAREER LEDGER
+           ------------------------------------------------------------- */
         #ledger {
-            padding: 60px 0 20px;
+            padding: 50px 0 20px;
         }
         .ledger-row {
             display: grid;
             grid-template-columns: 180px 1.1fr 1.7fr;
-            gap: 30px;
-            padding: 24px 0;
+            gap: 28px;
+            padding: 22px 0;
             border-bottom: 1px solid var(--rule-light);
             align-items: baseline;
             transition: background .3s, transform .3s;
@@ -1228,142 +1406,307 @@
             background: rgba(234, 226, 211, .3);
             transform: translateX(4px);
         }
-        @media (max-width:800px) {
+        @media (max-width: 800px) {
             .ledger-row {
                 grid-template-columns: 1fr;
-                gap: 8px;
+                gap: 6px;
+                padding: 18px 0;
             }
         }
         .ledger-date {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--ink-faint);
             text-transform: uppercase;
             font-weight: 600;
         }
         .ledger-title h3 {
-            font-size: 21px;
+            font-size: 20px;
             margin-bottom: 4px;
         }
         .ledger-title .company {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 10.5px;
             text-transform: uppercase;
             color: var(--red);
             font-weight: 600;
         }
         .ledger-desc {
-            font-size: 15px;
+            font-size: 14.5px;
             line-height: 1.65;
             color: var(--ink-soft);
         }
 
-        /* Contact */
+        /* -------------------------------------------------------------
+           LETTERS & COMMISSIONS — ROBERT TRAN STYLE FORM SECTION
+           (MATCHING USER'S FIRST UPLOADED IMAGE EXACTLY)
+           ------------------------------------------------------------- */
         #contact {
-            padding: 60px 0 30px;
+            padding: 55px 0 35px;
         }
-        .contact-strip {
+        .contact-heading {
+            font-size: clamp(34px, 5.5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: -.01em;
+        }
+        .contact-box-wrapper {
             border: 2px solid var(--ink);
-            background: var(--paper-card);
+            background: var(--paper);
             display: grid;
-            grid-template-columns: 1fr auto auto;
-            align-items: center;
-            box-shadow: 5px 5px 0 rgba(24, 22, 19, .12);
-            transition: box-shadow .3s ease;
+            grid-template-columns: 1.22fr 0.78fr;
+            box-shadow: 6px 6px 0 rgba(24, 22, 19, .14);
+            margin-top: 24px;
         }
-        .contact-strip:hover {
-            box-shadow: 8px 8px 0 rgba(24, 22, 19, .15);
-        }
-        @media (max-width:800px) {
-            .contact-strip {
+        @media (max-width: 900px) {
+            .contact-box-wrapper {
                 grid-template-columns: 1fr;
             }
         }
-        .contact-strip .status-note {
-            padding: 22px 28px;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
-            font-weight: 600;
+
+        /* Left Column: Put it in writing Form */
+        .contact-form-side {
+            padding: 40px 36px;
         }
-        .contact-strip .action-btn {
-            padding: 22px 34px;
-            background: var(--ink);
-            color: var(--paper);
+        @media (max-width: 600px) {
+            .contact-form-side {
+                padding: 26px 18px;
+            }
+        }
+        .contact-form-side h3 {
+            font-size: clamp(26px, 3.8vw, 36px);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .contact-form-side .form-sub {
+            font-size: 15px;
+            color: var(--ink-soft);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-row-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 600px) {
+            .form-row-two {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+        .field-label {
+            display: block;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
-            letter-spacing: .1em;
+            font-size: 11px;
+            letter-spacing: .08em;
             text-transform: uppercase;
             font-weight: 700;
-            text-decoration: none;
-            border-left: 2px solid var(--ink);
-            border-right: 2px solid var(--ink);
-            transition: background .2s;
-            text-align: center;
+            margin-bottom: 6px;
+            color: var(--ink);
         }
-        .contact-strip .action-btn:hover {
-            background: var(--red);
+        .broadsheet-input,
+        .broadsheet-textarea {
+            width: 100%;
+            border: 1.5px solid var(--ink);
+            background: var(--paper);
+            padding: 12px 14px;
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 14.5px;
+            color: var(--ink);
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+            border-radius: 0;
+            box-sizing: border-box;
         }
-        .contact-strip .icon-links {
+        .broadsheet-input:focus,
+        .broadsheet-textarea:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 0 1px var(--red);
+            background: #fff;
+        }
+        .broadsheet-input::placeholder,
+        .broadsheet-textarea::placeholder {
+            color: #9e9686;
+            font-style: italic;
+        }
+        .broadsheet-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-bottom-bar {
             display: flex;
-            padding: 14px 20px;
-            gap: 10px;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 24px;
+            flex-wrap: wrap;
+            gap: 14px;
         }
-        .icon-box {
-            width: 42px;
-            height: 42px;
+        .form-notice {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10.5px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            font-weight: 600;
+        }
+        .send-letter-btn {
+            background: var(--ink);
+            color: var(--paper);
+            border: 1.5px solid var(--ink);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 14px 28px;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .send-letter-btn:hover {
+            background: var(--red);
+            border-color: var(--red);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(164, 52, 37, .3);
+        }
+        @media (max-width: 600px) {
+            .send-letter-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        .form-status-msg {
+            display: none;
+            margin-top: 16px;
+            padding: 12px;
+            border: 1.5px solid var(--red);
+            background: var(--paper-card);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            color: var(--red);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Right Column: Direct Line & Availability */
+        .contact-info-side {
+            border-left: 1.5px solid var(--rule-light);
+            background: var(--paper-card);
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        @media (max-width: 900px) {
+            .contact-info-side {
+                border-left: none;
+                border-top: 1.5px solid var(--rule-light);
+                padding: 30px 24px;
+            }
+        }
+        .info-block {
+            padding-bottom: 22px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--rule-light);
+        }
+        .info-block:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .info-block-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: var(--ink-faint);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .info-block-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+        .info-block-value a {
+            text-decoration: none;
+            border-bottom: 1px solid var(--ink);
+            transition: color .2s, border-color .2s;
+        }
+        .info-block-value a:hover {
+            color: var(--red);
+            border-color: var(--red);
+        }
+        .info-block-note {
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: var(--ink-soft);
+        }
+        .contact-social-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .contact-social-row a {
+            width: 40px;
+            height: 40px;
             border: 1.5px solid var(--ink);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             color: var(--ink);
-            font-family: 'IBM Plex Mono', monospace;
             font-size: 15px;
             background: var(--paper);
             transition: all .2s;
         }
-        .icon-box:hover {
+        .contact-social-row a:hover {
             background: var(--ink);
             color: var(--paper);
             transform: translateY(-2px);
         }
 
-        /* Footer */
+        /* -------------------------------------------------------------
+           FOOTER
+           ------------------------------------------------------------- */
         footer.dark-footer {
             background: var(--footer-bg);
             color: var(--footer-text);
             margin-top: 60px;
-            padding: 90px 0 45px;
+            padding: 80px 0 40px;
             border-top: 3px double #2a2721;
             position: relative;
         }
         .footer-name {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(48px, 9vw, 95px);
+            font-size: clamp(44px, 8.5vw, 95px);
             font-weight: 800;
             letter-spacing: -.01em;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             color: #f5efe6;
         }
         .foot-cols {
             display: grid;
             grid-template-columns: 1.4fr 1fr 1fr 1fr;
-            gap: 40px;
-            padding-bottom: 60px;
+            gap: 36px;
+            padding-bottom: 50px;
             border-bottom: 1px solid var(--footer-rule);
         }
-        @media (max-width:900px) {
+        @media (max-width: 900px) {
             .foot-cols {
                 grid-template-columns: 1fr 1fr;
+                gap: 28px;
             }
         }
-        @media (max-width:600px) {
+        @media (max-width: 600px) {
             .foot-cols {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
         }
         .foot-cols h5 {
@@ -1372,21 +1715,21 @@
             text-transform: uppercase;
             letter-spacing: .12em;
             color: var(--footer-sub);
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             font-weight: 600;
         }
         .foot-cols p {
-            font-size: 14px;
+            font-size: 13.5px;
             line-height: 1.7;
             color: #c4bdad;
             margin: 0;
         }
         .foot-cols a {
             display: block;
-            font-size: 13.5px;
+            font-size: 13px;
             text-decoration: none;
             color: #c4bdad;
-            margin-bottom: 10px;
+            margin-bottom: 9px;
             transition: color .2s, transform .2s;
         }
         .foot-cols a:hover {
@@ -1395,10 +1738,10 @@
         }
         .stamp-container {
             text-align: center;
-            margin: 40px 0 20px;
+            margin: 36px 0 16px;
         }
         .stamp-image {
-            max-width: 170px;
+            max-width: 160px;
             height: auto;
             transform: rotate(-6deg);
             display: inline-block;
@@ -1412,9 +1755,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 36px;
+            padding-top: 30px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 11px;
             color: var(--footer-sub);
             letter-spacing: .06em;
             text-transform: uppercase;
@@ -1426,8 +1769,8 @@
             gap: 10px;
         }
         .footer-bar .social-box {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border: 1px solid var(--footer-rule);
             display: flex;
             align-items: center;
@@ -1441,6 +1784,7 @@
             color: #f5efe6;
             transform: translateY(-2px);
         }
+
         ::selection {
             background: var(--red);
             color: #fff;
@@ -1451,17 +1795,25 @@
     <!-- Scroll Progress -->
     <div id="scroll-progress"></div>
 
-    <!-- Custom Cursor -->
+    <!-- Custom Desktop Cursor -->
     <div class="custom-cursor-dot" id="cursorDot"></div>
     <div class="custom-cursor-ring" id="cursorRing"><i class="fas fa-search cursor-icon"></i></div>
 
-    <!-- Intro Screen -->
+    <!-- Responsive Magnifying Glass Intro Screen -->
     <div id="intro-screen">
-        <div class="intro-controls"><button id="skipIntro" class="skip-btn">SKIP INTRO →</button></div>
-        <div class="intro-prompt">MOVE THE GLASS ACROSS THE EVIDENCE · CLICK TO ENTER</div>
-        <div id="intro-blurred-layer"><div class="newspaper-canvas" id="canvas-blurred"></div></div>
+        <div class="intro-controls">
+            <button id="skipIntro" class="skip-btn">SKIP INTRO →</button>
+        </div>
+        <div class="intro-prompt">MOVE GLASS TO INSPECT · TAP TO ENTER</div>
+        <div id="intro-blurred-layer">
+            <div class="newspaper-canvas" id="canvas-blurred"></div>
+        </div>
         <div id="glass-rig">
-            <div id="glass-lens"><div id="intro-sharp-layer"><div class="newspaper-canvas" id="canvas-sharp"></div></div></div>
+            <div id="glass-lens">
+                <div id="intro-sharp-layer">
+                    <div class="newspaper-canvas" id="canvas-sharp"></div>
+                </div>
+            </div>
             <div class="glass-handle"></div>
         </div>
     </div>
@@ -1478,32 +1830,35 @@
     <!-- Masthead -->
     <header class="masthead">
         <div class="wrap">
-            <h1>Ritik Kumar</h1>
-            <div class="tag">The Personal Record of a Full Stack Developer &amp; ML/DL Engineer</div>
-            <div class="subline" id="dateline">· Selected Works, Neural Models &amp; Notes · Price: One Good Cup of Chai</div>
+            <h1 class="reveal-scale">Ritik Kumar</h1>
+            <div class="tag reveal-up delay-1">The Personal Record of a Full Stack Developer &amp; ML/DL Engineer</div>
+            <div class="subline reveal-up delay-2" id="dateline">· Selected Works, Neural Models &amp; Notes · Price: One Good Cup of Chai</div>
         </div>
     </header>
 
-    <!-- Nav -->
+    <!-- Sticky Nav -->
     <nav class="mainnav" id="mainnav">
         <div class="wrap">
             <a href="#" class="brand">Ritik Kumar</a>
-            <div class="links">
+            <div class="links" id="navLinks">
                 <a href="#work">Selected Works</a>
                 <a href="#stack">Forensics</a>
                 <a href="#ledger">Career Ledger</a>
                 <a href="#contact">Contact</a>
                 <a class="hire" href="javascript:void(0)" onclick="generatePrintableCV()">Download CV</a>
             </div>
-            <button class="navToggle" id="navToggle">Menu</button>
+            <button class="navToggle" id="navToggle" aria-label="Toggle navigation menu">MENU ☰</button>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="wrap">
-            <div class="section-label reveal-up"><span>Front Page</span><span>Filed under: Open Investigations · Noida Bureau</span></div>
-            <div class="double-rule"></div>
+            <div class="section-label reveal-up">
+                <span>Front Page</span>
+                <span>Filed under: Open Investigations · Noida Bureau</span>
+            </div>
+            <div class="double-rule reveal-up delay-1"></div>
             <div class="hero-grid">
                 <div class="reveal-left">
                     <div class="kicker">Case No. 01 — Findings Published</div>
@@ -1516,16 +1871,31 @@
                         <a class="btn btn-outline" href="#contact"><i class="fas fa-envelope"></i> Inquire</a>
                     </div>
                     <div class="stat-bar">
-                        <div><div class="big">JSSATE</div><div class="small">B.Tech in IT (2025–29)</div></div>
-                        <div><div class="big" data-count="7" data-suffix="+">7+</div><div class="small">Shipped Web &amp; ML Builds</div></div>
-                        <div><div class="big" data-count="150" data-suffix="+">150+</div><div class="small">DSA Problems Solved</div></div>
-                        <div><div class="big">Active</div><div class="small">Open for Hire &amp; GSoC</div></div>
+                        <div>
+                            <div class="big">JSSATE</div>
+                            <div class="small">B.Tech in IT (2025–29)</div>
+                        </div>
+                        <div>
+                            <div class="big" data-count="7" data-suffix="+">7+</div>
+                            <div class="small">Shipped Web &amp; ML Builds</div>
+                        </div>
+                        <div>
+                            <div class="big" data-count="150" data-suffix="+">150+</div>
+                            <div class="small">DSA Problems Solved</div>
+                        </div>
+                        <div>
+                            <div class="big">Active</div>
+                            <div class="small">Open for Hire &amp; GSoC</div>
+                        </div>
                     </div>
                 </div>
-                <div class="reveal-right delay-1">
+                <div class="reveal-right delay-2">
                     <div class="portrait-wrapper">
                         <img src="portrait.png" id="hero-img" alt="Ritik Kumar — Working at desk" class="portrait-img" />
-                        <div class="caption-line"><span>[ Pictured: The Subject · Fig. 1.0 ]</span><span>Broadsheet Engraving</span></div>
+                        <div class="caption-line">
+                            <span>[ Pictured: The Subject · Fig. 1.0 ]</span>
+                            <span>Broadsheet Engraving</span>
+                        </div>
                     </div>
                     <div class="about-copy">
                         <p>Full-stack developer transitioning into <strong>Machine Learning &amp; Deep Learning</strong>. With a strong engineering foundation in web technologies, he channels his passion into building neural networks, computer vision tools, and NLP pipelines.</p>
@@ -1536,27 +1906,41 @@
         </div>
     </section>
 
-    <!-- Selected Works -->
+    <!-- Selected Works Section -->
     <section id="work">
         <div class="wrap">
-            <div class="section-label reveal-up"><span>The Evidence</span><span>Exhibits A – D · Entered 2024 – Now</span></div>
-            <div class="double-rule"></div>
-            <h2 style="font-size: clamp(34px,4.5vw,54px); margin-bottom:20px;" class="reveal-up">Selected Works</h2>
+            <div class="section-label reveal-up">
+                <span>The Evidence</span>
+                <span>Exhibits A – D · Entered 2024 – Now</span>
+            </div>
+            <div class="double-rule reveal-up delay-1"></div>
+            <h2 style="font-size: clamp(32px,4.5vw,54px); margin-bottom:18px;" class="reveal-up">Selected Works</h2>
 
             <!-- Exhibit A -->
             <article class="exhibit-card inspectable-item reveal-up" onclick="openCaseFile('redo-trucks')">
                 <div class="shot-frame-wrapper">
                     <div class="stamp-badge-overlay">CONFIRMED</div>
-                    <div class="shot-preview-box"><iframe src="https://redo-trucks.vercel.app/" loading="lazy" title="REDO Fleet Portal"></iframe></div>
-                    <div class="shot-frame-footer"><span class="circled-stamp">EXHIBIT A</span><span>recovered from redo-trucks.vercel.app</span></div>
+                    <div class="shot-preview-box">
+                        <div class="iframe-overlay-touch"></div>
+                        <iframe src="https://redo-trucks.vercel.app/" loading="lazy" title="REDO Fleet Portal"></iframe>
+                    </div>
+                    <div class="shot-frame-footer">
+                        <span class="circled-stamp">EXHIBIT A</span>
+                        <span>recovered from redo-trucks.vercel.app</span>
+                    </div>
                 </div>
                 <div class="exhibit-info">
                     <div class="exhibit-tag">Exhibit A · Full Stack Logistics</div>
                     <div class="exhibit-client">Client · REDO Fleet Platform</div>
                     <h3>REDO — Fleet &amp; Truck Owner Portal</h3>
                     <p>A logistics portal built for truck owners and fleet operators to manage their vehicles, trips and bookings from one place — replacing scattered calls and spreadsheets with a single dashboard. Built front to back, from the interface down to the data layer.</p>
-                    <div class="tags"><span>React</span><span>Python</span><span>Fleet Telemetry</span><span>REST APIs</span><span>Dashboard</span></div>
-                    <div class="exhibit-action-row"><span>2024–2025 · Lead Architect</span><span class="open-case-btn">Open case file →</span></div>
+                    <div class="tags">
+                        <span>React</span><span>Python</span><span>Fleet Telemetry</span><span>REST APIs</span><span>Dashboard</span>
+                    </div>
+                    <div class="exhibit-action-row">
+                        <span>2024–2025 · Lead Architect</span>
+                        <span class="open-case-btn">Open case file →</span>
+                    </div>
                 </div>
             </article>
 
@@ -1564,16 +1948,27 @@
             <article class="exhibit-card inspectable-item reveal-up delay-1" onclick="openCaseFile('redo-customer')">
                 <div class="shot-frame-wrapper">
                     <div class="stamp-badge-overlay">CONFIRMED</div>
-                    <div class="shot-preview-box"><iframe src="https://redo-customer.vercel.app/" loading="lazy" title="REDO Customer App"></iframe></div>
-                    <div class="shot-frame-footer"><span class="circled-stamp">EXHIBIT B</span><span>recovered from redo-customer.vercel.app</span></div>
+                    <div class="shot-preview-box">
+                        <div class="iframe-overlay-touch"></div>
+                        <iframe src="https://redo-customer.vercel.app/" loading="lazy" title="REDO Customer App"></iframe>
+                    </div>
+                    <div class="shot-frame-footer">
+                        <span class="circled-stamp">EXHIBIT B</span>
+                        <span>recovered from redo-customer.vercel.app</span>
+                    </div>
                 </div>
                 <div class="exhibit-info">
                     <div class="exhibit-tag">Exhibit B · Consumer Marketplace</div>
                     <div class="exhibit-client">Client · REDO Logistics</div>
                     <h3>REDO — Customer App</h3>
                     <p>The customer-facing half of REDO — where shippers place and track bookings against the fleet managed on the owner side. Built to talk to the same backend as the truck owner portal, keeping both sides of the marketplace in sync.</p>
-                    <div class="tags"><span>React</span><span>Python</span><span>Booking Flow</span><span>Real-time Sync</span><span>Full Stack</span></div>
-                    <div class="exhibit-action-row"><span>2024–2025 · Lead Architect</span><span class="open-case-btn">Open case file →</span></div>
+                    <div class="tags">
+                        <span>React</span><span>Python</span><span>Booking Flow</span><span>Real-time Sync</span><span>Full Stack</span>
+                    </div>
+                    <div class="exhibit-action-row">
+                        <span>2024–2025 · Lead Architect</span>
+                        <span class="open-case-btn">Open case file →</span>
+                    </div>
                 </div>
             </article>
 
@@ -1581,16 +1976,30 @@
             <article class="exhibit-card inspectable-item reveal-up delay-2" onclick="openCaseFile('cnn-classifier')">
                 <div class="shot-frame-wrapper">
                     <div class="stamp-badge-overlay">94% ACCURACY</div>
-                    <div class="shot-preview-box"><div class="shot-canvas-art" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#1b1916; color:#eae2d3; padding:20px; text-align:center;"><i class="fas fa-brain" style="font-size:3.5rem; margin-bottom:12px; color:#a43425;"></i><div style="font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:700;">CONVOLUTIONAL NEURAL NETWORK</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#888; margin-top:6px;">[ TENSORFLOW · KERAS · FEATURE EXTRACTION ]</div></div></div>
-                    <div class="shot-frame-footer"><span class="circled-stamp">EXHIBIT C</span><span>recovered from github.com/re-etikk</span></div>
+                    <div class="shot-preview-box">
+                        <div class="shot-canvas-art" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#1b1916; color:#eae2d3; padding:20px; text-align:center;">
+                            <i class="fas fa-brain" style="font-size:3.2rem; margin-bottom:12px; color:#a43425;"></i>
+                            <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700;">CONVOLUTIONAL NEURAL NETWORK</div>
+                            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#888; margin-top:6px;">[ TENSORFLOW · KERAS · FEATURE EXTRACTION ]</div>
+                        </div>
+                    </div>
+                    <div class="shot-frame-footer">
+                        <span class="circled-stamp">EXHIBIT C</span>
+                        <span>recovered from github.com/re-etikk</span>
+                    </div>
                 </div>
                 <div class="exhibit-info">
                     <div class="exhibit-tag">Exhibit C · Deep Learning Model</div>
                     <div class="exhibit-client">AI Research &amp; Computer Vision</div>
                     <h3>Image Classifier (CNN Architecture)</h3>
                     <p>Deep learning convolutional network engineered to classify multi-category visual patterns with 94% accuracy. Optimized with dropout regularization, Adam optimizer, and convolutional feature map visualization.</p>
-                    <div class="tags"><span>Python</span><span>TensorFlow</span><span>Keras</span><span>CNN</span><span>Computer Vision</span></div>
-                    <div class="exhibit-action-row"><span>2026 · Deep Learning Model</span><span class="open-case-btn">Open case file →</span></div>
+                    <div class="tags">
+                        <span>Python</span><span>TensorFlow</span><span>Keras</span><span>CNN</span><span>Computer Vision</span>
+                    </div>
+                    <div class="exhibit-action-row">
+                        <span>2026 · Deep Learning Model</span>
+                        <span class="open-case-btn">Open case file →</span>
+                    </div>
                 </div>
             </article>
 
@@ -1598,22 +2007,36 @@
             <article class="exhibit-card inspectable-item reveal-up delay-3" onclick="openCaseFile('nlp-sentiment')">
                 <div class="shot-frame-wrapper">
                     <div class="stamp-badge-overlay">TRANSFORMER</div>
-                    <div class="shot-preview-box"><div class="shot-canvas-art" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#1b1916; color:#eae2d3; padding:20px; text-align:center;"><i class="fas fa-comments" style="font-size:3.5rem; margin-bottom:12px; color:#00e5c0;"></i><div style="font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:700;">TRANSFORMER SENTIMENT ENGINE</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#888; margin-top:6px;">[ HUGGINGFACE · PYTORCH · ATTENTION HEADS ]</div></div></div>
-                    <div class="shot-frame-footer"><span class="circled-stamp">EXHIBIT D</span><span>recovered from github.com/re-etikk</span></div>
+                    <div class="shot-preview-box">
+                        <div class="shot-canvas-art" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#1b1916; color:#eae2d3; padding:20px; text-align:center;">
+                            <i class="fas fa-comments" style="font-size:3.2rem; margin-bottom:12px; color:#00e5c0;"></i>
+                            <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700;">TRANSFORMER SENTIMENT ENGINE</div>
+                            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#888; margin-top:6px;">[ HUGGINGFACE · PYTORCH · ATTENTION HEADS ]</div>
+                        </div>
+                    </div>
+                    <div class="shot-frame-footer">
+                        <span class="circled-stamp">EXHIBIT D</span>
+                        <span>recovered from github.com/re-etikk</span>
+                    </div>
                 </div>
                 <div class="exhibit-info">
                     <div class="exhibit-tag">Exhibit D · Natural Language Processing</div>
                     <div class="exhibit-client">NLP Systems Pipeline</div>
                     <h3>Sentiment Analysis &amp; Transformer Engine</h3>
                     <p>NLP-powered transformer pipeline classifying nuanced textual sentiment into positive, negative, and neutral categories. Evaluates customer feedback and support tickets in real time.</p>
-                    <div class="tags"><span>Python</span><span>PyTorch</span><span>HuggingFace</span><span>Transformers</span><span>NLP</span></div>
-                    <div class="exhibit-action-row"><span>2026 · Open Source</span><span class="open-case-btn">Open case file →</span></div>
+                    <div class="tags">
+                        <span>Python</span><span>PyTorch</span><span>HuggingFace</span><span>Transformers</span><span>NLP</span>
+                    </div>
+                    <div class="exhibit-action-row">
+                        <span>2026 · Open Source</span>
+                        <span class="open-case-btn">Open case file →</span>
+                    </div>
                 </div>
             </article>
         </div>
     </section>
 
-    <!-- Case File Overlay -->
+    <!-- Case File Dossier Modal (With Rich Staggered Animations) -->
     <div id="case-file-overlay">
         <div class="case-file-header-strip">
             <span>The Ritik Kumar Times · Case Dossier File</span>
@@ -1622,29 +2045,38 @@
         <div class="case-file-content" id="caseFileDynamicContent"></div>
     </div>
 
-    <!-- Forensics -->
+    <!-- Forensics Section -->
     <section id="stack">
         <div class="wrap">
-            <div class="section-label reveal-up"><span>Forensics</span><span>As of this edition</span></div>
-            <div class="double-rule"></div>
+            <div class="section-label reveal-up">
+                <span>Forensics</span>
+                <span>As of this edition</span>
+            </div>
+            <div class="double-rule reveal-up delay-1"></div>
             <h2 style="font-size:34px;" class="reveal-up">The Lab Report</h2>
-            <p class="mono" style="font-size:12px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; margin-top:6px;" class="reveal-up">Substances detected on the subject</p>
-            <table class="lab reveal-up">
-                <thead><tr><th>Substance</th><th>Code</th><th>Frequency</th><th>Finding</th></tr></thead>
-                <tbody>
-                    <tr><td class="subst">Python (3.11)</td><td class="code">PY-CORE</td><td class="code">Daily</td><td><span class="typewriter-badge">Primary Tool</span></td></tr>
-                    <tr><td class="subst">Machine Learning / Deep Learning</td><td class="code">AI-NEURAL</td><td class="code">Active focus</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                    <tr><td class="subst">TensorFlow &amp; PyTorch</td><td class="code">DL-FRAME</td><td class="code">Coursework &amp; Projects</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                    <tr><td class="subst">React &amp; Next.js</td><td class="code">UI-REACT</td><td class="code">Most days</td><td><span class="typewriter-badge">Primary Tool</span></td></tr>
-                    <tr><td class="subst">Pandas, NumPy, Matplotlib</td><td class="code">DATA-SCI</td><td class="code">Daily</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                    <tr><td class="subst">C++ (Data Structures &amp; Algorithms)</td><td class="code">DSA-CPP</td><td class="code">150+ Solved</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                    <tr><td class="subst">Node.js, Express &amp; MongoDB</td><td class="code">BACK-API</td><td class="code">Most days</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                    <tr><td class="subst">Docker &amp; AWS Cloud</td><td class="code">INFRA-OPS</td><td class="code">Learning</td><td><span class="typewriter-badge">Trace Amount</span></td></tr>
-                </tbody>
-            </table>
-            <p class="mono" style="margin-top:14px; font-size:11px; color:var(--ink-faint); font-style:italic;">Findings are illustrative — what he reaches for day to day, not a ranking.</p>
-            <h3 style="margin-top:40px; font-size:24px;" class="reveal-up">Official Certifications On File</h3>
-            <div class="cert-grid reveal-up">
+            <p class="mono reveal-up" style="font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; margin-top:6px;">Substances detected on the subject</p>
+            
+            <div class="table-responsive reveal-up delay-1">
+                <table class="lab">
+                    <thead>
+                        <tr><th>Substance</th><th>Code</th><th>Frequency</th><th>Finding</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="subst">Python (3.11)</td><td class="code">PY-CORE</td><td class="code">Daily</td><td><span class="typewriter-badge">Primary Tool</span></td></tr>
+                        <tr><td class="subst">Machine Learning / Deep Learning</td><td class="code">AI-NEURAL</td><td class="code">Active focus</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">TensorFlow &amp; PyTorch</td><td class="code">DL-FRAME</td><td class="code">Coursework &amp; Projects</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">React &amp; Next.js</td><td class="code">UI-REACT</td><td class="code">Most days</td><td><span class="typewriter-badge">Primary Tool</span></td></tr>
+                        <tr><td class="subst">Pandas, NumPy, Matplotlib</td><td class="code">DATA-SCI</td><td class="code">Daily</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">C++ (Data Structures &amp; Algorithms)</td><td class="code">DSA-CPP</td><td class="code">150+ Solved</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">Node.js, Express &amp; MongoDB</td><td class="code">BACK-API</td><td class="code">Most days</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">Docker &amp; AWS Cloud</td><td class="code">INFRA-OPS</td><td class="code">Learning</td><td><span class="typewriter-badge">Trace Amount</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mono" style="margin-top:12px; font-size:10.5px; color:var(--ink-faint); font-style:italic;">Findings are illustrative — what he reaches for day to day, not a ranking.</p>
+
+            <h3 style="margin-top:36px; font-size:24px;" class="reveal-up">Official Certifications On File</h3>
+            <div class="cert-grid reveal-up delay-1">
                 <div class="cert-item"><i class="fas fa-certificate"></i> TensorFlow Developer Certificate</div>
                 <div class="cert-item"><i class="fas fa-certificate"></i> Deep Learning Specialization</div>
                 <div class="cert-item"><i class="fas fa-certificate"></i> AWS Cloud Practitioner</div>
@@ -1657,50 +2089,130 @@
         </div>
     </section>
 
-    <!-- Career Ledger -->
+    <!-- Career Ledger Section -->
     <section id="ledger">
         <div class="wrap">
-            <div class="section-label reveal-up"><span>Known Whereabouts</span><span>Movements on record since 2022</span></div>
-            <div class="double-rule"></div>
-            <h2 style="font-size:34px; margin-bottom:24px;" class="reveal-up">The Career Ledger</h2>
+            <div class="section-label reveal-up">
+                <span>Known Whereabouts</span>
+                <span>Movements on record since 2022</span>
+            </div>
+            <div class="double-rule reveal-up delay-1"></div>
+            <h2 style="font-size:34px; margin-bottom:22px;" class="reveal-up">The Career Ledger</h2>
+            
             <div class="ledger-row reveal-up">
                 <div class="ledger-date">2025 — 2029</div>
-                <div class="ledger-title"><h3>B.Tech in Information Technology</h3><div class="company">JSSATE (NOIDA)</div></div>
+                <div class="ledger-title">
+                    <h3>B.Tech in Information Technology</h3>
+                    <div class="company">JSSATE (NOIDA)</div>
+                </div>
                 <div class="ledger-desc">Undergraduate engineering curriculum covering computational theory, neural architectures, linear algebra, data science pipelines, algorithms, and full-stack software development.</div>
             </div>
+
             <div class="ledger-row reveal-up delay-1">
                 <div class="ledger-date">2025 — Present</div>
-                <div class="ledger-title"><h3>Full-Stack Developer</h3><div class="company">FREELANCE PRACTICE</div></div>
+                <div class="ledger-title">
+                    <h3>Full-Stack Developer</h3>
+                    <div class="company">FREELANCE PRACTICE</div>
+                </div>
                 <div class="ledger-desc">Observed building web applications — the REDO fleet management platform, customer booking engine, real-time dispatch systems, and REST API architectures.</div>
             </div>
+
             <div class="ledger-row reveal-up delay-2">
                 <div class="ledger-date">6 Months</div>
-                <div class="ledger-title"><h3>Web Developer Intern</h3><div class="company">AI WITH RAJNISH</div></div>
+                <div class="ledger-title">
+                    <h3>Web Developer Intern</h3>
+                    <div class="company">AI WITH RAJNISH</div>
+                </div>
                 <div class="ledger-desc">Embedded with the engineering team at aiwithrajnish.com, shipping user-facing features, resolving bug tickets, and participating in live agile sprint cycles.</div>
             </div>
+
             <div class="ledger-row reveal-up delay-3">
                 <div class="ledger-date">2022 — 2024</div>
-                <div class="ledger-title"><h3>Higher Secondary (12th Science)</h3><div class="company">PURNEA COLLEGE (BIHAR)</div></div>
+                <div class="ledger-title">
+                    <h3>Higher Secondary (12th Science)</h3>
+                    <div class="company">PURNEA COLLEGE (BIHAR)</div>
+                </div>
                 <div class="ledger-desc">Completed senior secondary education focusing on Mathematics, Physics, and analytical problem-solving foundation.</div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
+    <!-- -------------------------------------------------------------
+         LETTERS & COMMISSIONS — ROBERT TRAN STYLE FORM SECTION
+         (MATCHING USER'S FIRST UPLOADED IMAGE EXACTLY)
+         ------------------------------------------------------------- -->
     <section id="contact">
         <div class="wrap">
-            <div class="section-label reveal-up"><span>Submit a Tip</span><span>The desk is open · Direct dispatch</span></div>
-            <div class="double-rule"></div>
-            <div style="margin-top:32px;" class="reveal-scale">
-                <div class="contact-strip">
-                    <div class="status-note">USUALLY REPLIES WITHIN 24 HOURS · COMMISSIONS &amp; ROLES OPEN</div>
-                    <a href="mailto:ritik45chaurasia@gmail.com" class="action-btn">SEND THE LETTER →</a>
-                    <div class="icon-links">
-                        <a href="https://github.com/re-etikk" target="_blank" rel="noopener" class="icon-box" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/in/reetikk" target="_blank" rel="noopener" class="icon-box" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://x.com/re_etikk" target="_blank" rel="noopener" class="icon-box" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
-                        <a href="tel:+917250171036" class="icon-box" title="Phone: +91 7250171036"><i class="fas fa-phone"></i></a>
-                        <a href="mailto:ritik45chaurasia@gmail.com" class="icon-box" title="Email"><i class="fas fa-envelope"></i></a>
+            <h2 class="contact-heading reveal-up">Letters &amp; Commissions</h2>
+            <hr class="rule reveal-up delay-1">
+            
+            <div class="contact-box-wrapper reveal-scale delay-2">
+                <!-- Left: Put it in writing Form -->
+                <div class="contact-form-side">
+                    <h3>Put it in writing</h3>
+                    <p class="form-sub">A project in mind, a role to fill, or just a good question - send it through and he'll get back to you.</p>
+                    
+                    <form id="broadsheetContactForm" onsubmit="handleLetterSubmit(event)">
+                        <div class="form-row-two">
+                            <div class="form-group">
+                                <label class="field-label" for="authorName">YOUR NAME</label>
+                                <input type="text" id="authorName" class="broadsheet-input" placeholder="Jane Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="field-label" for="authorEmail">EMAIL</label>
+                                <input type="email" id="authorEmail" class="broadsheet-input" placeholder="jane@company.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="field-label" for="letterSubject">SUBJECT</label>
+                            <input type="text" id="letterSubject" class="broadsheet-input" placeholder="A new product, a rebuild, a contract..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="field-label" for="letterStory">THE STORY</label>
+                            <textarea id="letterStory" class="broadsheet-textarea" placeholder="Tell him what you're building." required></textarea>
+                        </div>
+
+                        <div class="form-bottom-bar">
+                            <span class="form-notice">USUALLY REPLIES WITHIN 24 HOURS</span>
+                            <button type="submit" class="send-letter-btn" id="submitLetterBtn">SEND THE LETTER</button>
+                        </div>
+
+                        <div class="form-status-msg" id="formStatusMsg"></div>
+                    </form>
+                </div>
+
+                <!-- Right: Direct Line & Availability -->
+                <div class="contact-info-side">
+                    <div>
+                        <div class="info-block">
+                            <div class="info-block-label">DIRECT LINE</div>
+                            <div class="info-block-value">
+                                <a href="mailto:ritik45chaurasia@gmail.com">ritik45chaurasia@gmail.com</a>
+                            </div>
+                            <div class="info-block-note">For commissions, contracts, and the occasional good discussion about neural architectures or systems.</div>
+                        </div>
+
+                        <div class="info-block">
+                            <div class="info-block-label">THE DESK</div>
+                            <div class="info-block-value">Noida, Uttar Pradesh</div>
+                            <div class="info-block-note">IST (UTC+5:30) - working with teams worldwide, remote-first.</div>
+                        </div>
+
+                        <div class="info-block">
+                            <div class="info-block-label">AVAILABILITY</div>
+                            <div class="info-block-value">Open for Hire &amp; Contracts</div>
+                            <div class="info-block-note">Pursuing B.Tech in IT at JSSATE, Noida. Taking on select freelance engineering builds, research internships, and full-time roles.</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social-row">
+                        <a href="https://github.com/re-etikk" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/reetikk" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:ritik45chaurasia@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://x.com/re_etikk" target="_blank" rel="noopener" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="tel:+917250171036" title="Phone: +91 7250171036"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
             </div>
@@ -1712,12 +2224,34 @@
         <div class="wrap">
             <div class="footer-name reveal-up">Ritik Kumar</div>
             <div class="foot-cols">
-                <div class="reveal-up"><h5>Biography</h5><p>Full-stack developer &amp; aspiring Machine Learning / Deep Learning engineer based in Noida, India. Pursuing B.Tech in IT at JSSATE, building intelligent systems from front to back.</p></div>
-                <div class="reveal-up delay-1"><h5>Sections</h5><a href="#work">Selected Works</a><a href="#stack">Forensics &amp; Stack</a><a href="#ledger">Career Ledger</a><a href="#contact">Contact</a><a href="javascript:void(0)" onclick="generatePrintableCV()">Download Dossier (CV)</a></div>
-                <div class="reveal-up delay-2"><h5>The Desk</h5><p>JSSATE, Noida · Uttar Pradesh<br>India · IST (UTC+5:30)<br>Phone: +91 7250171036</p><a href="mailto:ritik45chaurasia@gmail.com" style="margin-top:10px; color:#eae4d8;">ritik45chaurasia@gmail.com</a></div>
-                <div class="reveal-up delay-3"><h5>Wire Services</h5><a href="https://github.com/re-etikk" target="_blank" rel="noopener">GitHub: @re-etikk</a><a href="https://linkedin.com/in/reetikk" target="_blank" rel="noopener">LinkedIn: @reetikk</a><a href="https://x.com/re_etikk" target="_blank" rel="noopener">Twitter / X: @re_etikk</a><a href="https://www.youtube.com/@AiWithRajnish" target="_blank" rel="noopener">YouTube: @AiWithRajnish</a></div>
+                <div class="reveal-up">
+                    <h5>Biography</h5>
+                    <p>Full-stack developer &amp; aspiring Machine Learning / Deep Learning engineer based in Noida, India. Pursuing B.Tech in IT at JSSATE, building intelligent systems from front to back.</p>
+                </div>
+                <div class="reveal-up delay-1">
+                    <h5>Sections</h5>
+                    <a href="#work">Selected Works</a>
+                    <a href="#stack">Forensics &amp; Stack</a>
+                    <a href="#ledger">Career Ledger</a>
+                    <a href="#contact">Contact</a>
+                    <a href="javascript:void(0)" onclick="generatePrintableCV()">Download Dossier (CV)</a>
+                </div>
+                <div class="reveal-up delay-2">
+                    <h5>The Desk</h5>
+                    <p>JSSATE, Noida · Uttar Pradesh<br>India · IST (UTC+5:30)<br>Phone: +91 7250171036</p>
+                    <a href="mailto:ritik45chaurasia@gmail.com" style="margin-top:10px; color:#eae4d8;">ritik45chaurasia@gmail.com</a>
+                </div>
+                <div class="reveal-up delay-3">
+                    <h5>Wire Services</h5>
+                    <a href="https://github.com/re-etikk" target="_blank" rel="noopener">GitHub: @re-etikk</a>
+                    <a href="https://linkedin.com/in/reetikk" target="_blank" rel="noopener">LinkedIn: @reetikk</a>
+                    <a href="https://x.com/re_etikk" target="_blank" rel="noopener">Twitter / X: @re_etikk</a>
+                    <a href="https://www.youtube.com/@AiWithRajnish" target="_blank" rel="noopener">YouTube: @AiWithRajnish</a>
+                </div>
             </div>
-            <div class="stamp-container"><img src="case-closed-stamp.png" alt="CASE CLOSED" class="stamp-image"></div>
+            <div class="stamp-container">
+                <img src="case-closed-stamp.png" alt="CASE CLOSED" class="stamp-image">
+            </div>
             <div class="footer-bar">
                 <div>© 2026 THE RITIK KUMAR TIMES · ALL RIGHTS RESERVED · NOIDA BUREAU</div>
                 <div class="social-boxes">
@@ -1731,8 +2265,6 @@
     </footer>
 
     <script>
-        document.body.classList.add('js');
-
         // Dateline
         (function() {
             var d = new Date();
@@ -1741,20 +2273,33 @@
             if (el) el.prepend(d.toLocaleDateString('en-US', opts) + ' · ');
         })();
 
-        // Nav toggle
-        document.getElementById('navToggle').addEventListener('click', function() {
-            document.getElementById('mainnav').classList.toggle('open');
-        });
+        // Mobile Nav Toggle
+        (function() {
+            var toggle = document.getElementById('navToggle');
+            var nav = document.getElementById('mainnav');
+            var links = document.querySelectorAll('#navLinks a');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function() {
+                    nav.classList.toggle('open');
+                });
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('open');
+                    });
+                });
+            }
+        })();
 
-        // Custom Cursor
+        // Custom Cursor (Desktop Only)
         (function() {
             var dot = document.getElementById('cursorDot');
             var ring = document.getElementById('cursorRing');
-            if (!dot || !ring) return;
+            if (!dot || !ring || window.innerWidth < 900) return;
             var mouseX = window.innerWidth / 2;
             var mouseY = window.innerHeight / 2;
             var ringX = mouseX;
             var ringY = mouseY;
+            
             window.addEventListener('mousemove', function(e) {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
@@ -1771,44 +2316,86 @@
             }
             requestAnimationFrame(cursorLoop);
 
-            document.querySelectorAll('.inspectable-item, .shot-frame-wrapper, .open-case-btn').forEach(function(el) {
+            document.querySelectorAll('.inspectable-item, .shot-frame-wrapper, .open-case-btn, .btn, .send-letter-btn').forEach(function(el) {
                 el.addEventListener('mouseenter', function() { document.body.classList.add('cursor-lens'); });
                 el.addEventListener('mouseleave', function() { document.body.classList.remove('cursor-lens'); });
             });
         })();
 
-        // Intro text
+        // Intro Newsprint Text
         (function() {
             var newsContent = `
-                <div class="news-headline"><h2>THE SPECIAL INVESTIGATION DESK</h2><div class="sub">VOL. I · INQUIRY INTO FULL STACK WEB ARCHITECTURE &amp; DEEP LEARNING · NOIDA BUREAU</div></div>
-                <div class="news-col"><h4>Front-End &amp; Systems</h4><p>React and Next.js interfaces engineered with strict state boundaries and performant render cycles. The subject crafts solutions balancing high-density information with fluid responsive aesthetics.</p><div class="classified-box"><b>SPECIAL NOTICE</b>Subject: Ritik Kumar.<br>Affiliation: JSSATE, Noida (B.Tech IT).<br>Inquiries: ritik45chaurasia@gmail.com</div><p>Observed shipping the REDO fleet marketplace and customer booking pipelines with full synchronization.</p></div>
-                <div class="news-col"><h4>Machine Learning Dossier</h4><p>Deep neural architectures verified: CNNs trained with 94% accuracy in TensorFlow/Keras, alongside transformer sentiment models using HuggingFace and PyTorch.</p><p>Rigorous study in computational mathematics, linear algebra, and data science pipelines running on Python.</p></div>
-                <div class="news-col"><h4>Academic Docket</h4><p>Enrolled in B.Tech Information Technology (2025–2029) at JSS Academy of Technical Education, Noida.</p><p>Prior academic record logged at Purnea College, Bihar. 150+ competitive programming challenges logged on CodeChef and LeetCode.</p></div>
-                <div class="news-col"><h4>Field Testimony</h4><p>Six months of continuous development at AI With Rajnish tested the subject's ability to ship under production conditions and collaborate in live repositories.</p><p>Peers report a steady focus on problem resolution and cross-functional feature deployment.</p></div>
-                <div class="news-col"><h4>Status &amp; Availability</h4><p>Open for full-time engineering appointments, research internships, and select contract initiatives worldwide.</p><p>Direct line active: +91 7250171036 · GitHub @re-etikk · LinkedIn @reetikk.</p></div>`;
+                <div class="news-headline">
+                    <h2>THE SPECIAL INVESTIGATION DESK</h2>
+                    <div class="sub">VOL. I · INQUIRY INTO FULL STACK WEB ARCHITECTURE &amp; DEEP LEARNING · NOIDA BUREAU</div>
+                </div>
+                <div class="news-col">
+                    <h4>Front-End &amp; Systems</h4>
+                    <p>React and Next.js interfaces engineered with strict state boundaries and performant render cycles. The subject crafts solutions balancing high-density information with fluid responsive aesthetics.</p>
+                    <div class="classified-box">
+                        <b>SPECIAL NOTICE</b>
+                        Subject: Ritik Kumar.<br>
+                        Affiliation: JSSATE, Noida (B.Tech IT).<br>
+                        Direct Dispatch: ritik45chaurasia@gmail.com
+                    </div>
+                    <p>Observed shipping the REDO fleet marketplace and customer booking pipelines with full synchronization.</p>
+                </div>
+                <div class="news-col">
+                    <h4>Machine Learning Dossier</h4>
+                    <p>Deep neural architectures verified: CNNs trained with 94% accuracy in TensorFlow/Keras, alongside transformer sentiment models using HuggingFace and PyTorch.</p>
+                    <p>Rigorous study in computational mathematics, linear algebra, and data science pipelines running on Python.</p>
+                </div>
+                <div class="news-col">
+                    <h4>Academic Docket</h4>
+                    <p>Enrolled in B.Tech Information Technology (2025–2029) at JSS Academy of Technical Education, Noida.</p>
+                    <p>Prior academic record logged at Purnea College, Bihar. 150+ competitive programming challenges logged on CodeChef and LeetCode.</p>
+                </div>
+                <div class="news-col">
+                    <h4>Field Testimony</h4>
+                    <p>Six months of continuous development at AI With Rajnish tested the subject's ability to ship under production conditions and collaborate in live repositories.</p>
+                    <p>Peers report a steady focus on problem resolution and cross-functional feature deployment.</p>
+                </div>
+                <div class="news-col">
+                    <h4>Status &amp; Availability</h4>
+                    <p>Open for full-time engineering appointments, research internships, and select contract initiatives worldwide.</p>
+                    <p>Direct line active: +91 7250171036 · GitHub @re-etikk · LinkedIn @reetikk.</p>
+                </div>`;
 
-            document.getElementById('canvas-blurred').innerHTML = newsContent;
-            document.getElementById('canvas-sharp').innerHTML = newsContent;
+            var cb = document.getElementById('canvas-blurred');
+            var cs = document.getElementById('canvas-sharp');
+            if (cb) cb.innerHTML = newsContent;
+            if (cs) cs.innerHTML = newsContent;
         })();
 
-        // Magnifier Intro
+        // Magnifier Intro (Touch-Safe & Responsive)
         (function() {
             var intro = document.getElementById('intro-screen');
             var glassRig = document.getElementById('glass-rig');
             var sharpLayer = document.getElementById('intro-sharp-layer');
             var skipBtn = document.getElementById('skipIntro');
+            if (!intro || !glassRig || !sharpLayer) return;
+
             var targetX = window.innerWidth / 2;
             var targetY = window.innerHeight / 2;
             var currentX = targetX;
             var currentY = targetY;
             var isIntroActive = true;
-            var LENS_RADIUS = 125;
 
-            window.addEventListener('mousemove', function(e) { targetX = e.clientX;
-                targetY = e.clientY; });
+            function getLensRadius() {
+                var lens = document.getElementById('glass-lens');
+                return lens ? lens.offsetWidth / 2 : 100;
+            }
+
+            window.addEventListener('mousemove', function(e) {
+                targetX = e.clientX;
+                targetY = e.clientY;
+            });
+
             window.addEventListener('touchmove', function(e) {
-                if (e.touches.length > 0) { targetX = e.touches[0].clientX;
-                    targetY = e.touches[0].clientY; }
+                if (e.touches && e.touches.length > 0) {
+                    targetX = e.touches[0].clientX;
+                    targetY = e.touches[0].clientY;
+                }
             }, { passive: true });
 
             function renderLoop() {
@@ -1816,8 +2403,10 @@
                 currentX += (targetX - currentX) * 0.16;
                 currentY += (targetY - currentY) * 0.16;
                 glassRig.style.transform = 'translate(' + currentX + 'px, ' + currentY + 'px)';
-                var sharpX = LENS_RADIUS - currentX;
-                var sharpY = LENS_RADIUS - currentY;
+                
+                var r = getLensRadius();
+                var sharpX = r - currentX;
+                var sharpY = r - currentY;
                 sharpLayer.style.transform = 'translate(' + sharpX + 'px, ' + sharpY + 'px)';
                 requestAnimationFrame(renderLoop);
             }
@@ -1827,25 +2416,44 @@
                 if (!isIntroActive) return;
                 isIntroActive = false;
                 intro.classList.add('hide');
-                setTimeout(function() { intro.style.display = 'none'; }, 800);
+                setTimeout(function() {
+                    intro.style.display = 'none';
+                }, 750);
             }
-            skipBtn.addEventListener('click', function(e) { e.stopPropagation();
-                closeIntro(); });
+
+            if (skipBtn) {
+                skipBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeIntro();
+                });
+            }
+
             intro.addEventListener('click', closeIntro);
-            setTimeout(closeIntro, 12000);
+
+            // Auto dismiss after 6s so mobile users aren't delayed
+            setTimeout(closeIntro, 6000);
         })();
 
-        // Case Files
+        // Case Files Data
         var caseFilesData = {
             'redo-trucks': {
                 exhibit: 'EXHIBIT A',
                 figCaption: 'Fig. 1 — The Fleet Management & Owner Portal, active dispatch dashboard.',
                 title: 'REDO: Fleet & Truck Owner Platform',
+                badgeText: 'CASE CLOSED · VERIFIED',
                 previewType: 'iframe',
                 previewSrc: 'https://redo-trucks.vercel.app/',
                 dropCap: 'M',
                 articleText: `<p class="case-drop-cap">ost logistics in freight transport run on scattered phone calls, handwritten invoices, and messy WhatsApp groups. REDO Fleet was engineered to put an entire multi-truck enterprise into a single command dashboard.</p><p>Built front to back by the subject, the platform allows fleet operators to register trucks, assign certified drivers, track continuous trip telemetry, and calculate instant earnings without spreadsheets.</p><p>The interface relies on high-speed React components designed for quick operational decisions under dispatch deadlines. Underneath, REST endpoints handle concurrent vehicle schedules and booking synchronizations with the customer mobile portal.</p>`,
-                specs: [{ label: 'FRONT-END', val: 'React · Tailwind CSS' }, { label: 'BACKEND & DATA', val: 'Python · RESTful API Architecture' }, { label: 'BOOKING FLOW', val: 'Two-way sync with Customer Portal' }, { label: 'DISPATCH TELEMETRY', val: 'Real-time vehicle status & loads' }, { label: 'ROLE', val: 'Lead Full-Stack Architect (Solo)' }, { label: 'ENTERED', val: '2024 — 2025' }, { label: 'STATUS', val: 'Live in Production' }],
+                specs: [
+                    { label: 'FRONT-END', val: 'React · Tailwind CSS' },
+                    { label: 'BACKEND & DATA', val: 'Python · RESTful API Architecture' },
+                    { label: 'BOOKING FLOW', val: 'Two-way sync with Customer Portal' },
+                    { label: 'DISPATCH TELEMETRY', val: 'Real-time vehicle status & loads' },
+                    { label: 'ROLE', val: 'Lead Full-Stack Architect (Solo)' },
+                    { label: 'ENTERED', val: '2024 — 2025' },
+                    { label: 'STATUS', val: 'Live in Production' }
+                ],
                 liveUrl: 'https://redo-trucks.vercel.app/',
                 liveBtnText: 'Launch REDO Fleet Portal →'
             },
@@ -1853,11 +2461,20 @@
                 exhibit: 'EXHIBIT B',
                 figCaption: 'Fig. 2 — The Customer Freight Booking application, live shipment tracking.',
                 title: 'REDO: Customer Freight Booking App',
+                badgeText: 'CASE CLOSED · VERIFIED',
                 previewType: 'iframe',
                 previewSrc: 'https://redo-customer.vercel.app/',
                 dropCap: 'T',
                 articleText: `<p class="case-drop-cap">he customer-facing counterpart of REDO addresses shippers, factories, and consignees who need guaranteed freight capacity on demand.</p><p>Instead of negotiating with middlemen, shippers select vehicle classes, input consignment weights, specify pickup and drop-off coordinates, and lock in transparent pricing in seconds.</p><p>The application communicates with the fleet engine in real time: once an owner confirms a load, status milestones reflect instantly on the customer screen. Engineered with high-accessibility principles and optimized for touch devices.</p>`,
-                specs: [{ label: 'FRONT-END', val: 'React · Responsive Mobile Architecture' }, { label: 'BACKEND & DATA', val: 'Python · Shared Telemetry Engine' }, { label: 'AUTHENTICATION', val: 'Secure Customer Account Flow' }, { label: 'ESTIMATOR', val: 'Automated distance & cargo rate calculation' }, { label: 'ROLE', val: 'Full-Stack Developer' }, { label: 'ENTERED', val: '2024 — 2025' }, { label: 'STATUS', val: 'Live in Production' }],
+                specs: [
+                    { label: 'FRONT-END', val: 'React · Responsive Mobile Architecture' },
+                    { label: 'BACKEND & DATA', val: 'Python · Shared Telemetry Engine' },
+                    { label: 'AUTHENTICATION', val: 'Secure Customer Account Flow' },
+                    { label: 'ESTIMATOR', val: 'Automated distance & cargo rate calculation' },
+                    { label: 'ROLE', val: 'Full-Stack Developer' },
+                    { label: 'ENTERED', val: '2024 — 2025' },
+                    { label: 'STATUS', val: 'Live in Production' }
+                ],
                 liveUrl: 'https://redo-customer.vercel.app/',
                 liveBtnText: 'Launch Customer Booking App →'
             },
@@ -1865,12 +2482,21 @@
                 exhibit: 'EXHIBIT C',
                 figCaption: 'Fig. 3 — Convolutional feature map weights and visual classification layers.',
                 title: 'Deep Learning: CNN Image Classifier',
+                badgeText: '94% ACCURACY · RESEARCH BENCHMARK',
                 previewType: 'art',
                 artIcon: 'fa-brain',
                 artTitle: 'CONVOLUTIONAL NEURAL NETWORK ARCHITECTURE',
                 dropCap: 'E',
                 articleText: `<p class="case-drop-cap">xtracting high-dimensional spatial features from image data requires careful regularization and disciplined layer design. This deep convolutional neural network was engineered to classify complex imagery with 94% test accuracy.</p><p>The model architecture applies stacks of Conv2D filters, Batch Normalization, and MaxPooling, followed by Dense layers with Dropout to eliminate overfitting. Training pipelines incorporate aggressive data augmentation (random flips, rotations, color jitter).</p><p>Built with TensorFlow and Keras, the system outputs calibrated softmax probability distributions and provides saliency maps to explain which visual features drove the model's decision.</p>`,
-                specs: [{ label: 'FRAMEWORK', val: 'TensorFlow · Keras · Python 3.11' }, { label: 'ARCHITECTURE', val: 'Deep Conv2D · BatchNorm · MaxPool' }, { label: 'ACCURACY BENCHMARK', val: '94% Validation Accuracy' }, { label: 'OPTIMIZER', val: 'Adam with Learning Rate Decay' }, { label: 'APPLICATION', val: 'Multi-class visual object classification' }, { label: 'ROLE', val: 'ML Engineer' }, { label: 'STATUS', val: 'Verified Research Benchmark' }],
+                specs: [
+                    { label: 'FRAMEWORK', val: 'TensorFlow · Keras · Python 3.11' },
+                    { label: 'ARCHITECTURE', val: 'Deep Conv2D · BatchNorm · MaxPool' },
+                    { label: 'ACCURACY BENCHMARK', val: '94% Validation Accuracy' },
+                    { label: 'OPTIMIZER', val: 'Adam with Learning Rate Decay' },
+                    { label: 'APPLICATION', val: 'Multi-class visual object classification' },
+                    { label: 'ROLE', val: 'ML Engineer' },
+                    { label: 'STATUS', val: 'Verified Research Benchmark' }
+                ],
                 liveUrl: 'https://github.com/re-etikk',
                 liveBtnText: 'Inspect GitHub Repository →'
             },
@@ -1878,29 +2504,68 @@
                 exhibit: 'EXHIBIT D',
                 figCaption: 'Fig. 4 — Transformer attention matrix and sentiment classification pipeline.',
                 title: 'NLP: Transformer Sentiment Engine',
+                badgeText: 'TRANSFORMER · BERT/ROBERTA',
                 previewType: 'art',
                 artIcon: 'fa-comments',
                 artTitle: 'TRANSFORMER ATTENTION MECHANISM PIPELINE',
                 dropCap: 'U',
                 articleText: `<p class="case-drop-cap">nderstanding nuanced human emotion in text requires looking beyond simple bag-of-words keyword counts. This NLP engine uses Transformer self-attention architectures to classify text into positive, negative, and neutral sentiment.</p><p>Tokenized sequences pass through multi-head self-attention mechanisms implemented with HuggingFace and PyTorch. The model accurately detects subtle linguistic cues, sarcasm, and domain-specific vocabulary in customer feedback.</p><p>Packaged with a fast inference pipeline suitable for batch document analysis or streaming real-time sentiment scoring across customer service feeds.</p>`,
-                specs: [{ label: 'FRAMEWORK', val: 'PyTorch · HuggingFace Transformers' }, { label: 'MODEL TYPE', val: 'Transformer Encoder with Attention Heads' }, { label: 'TOKENIZATION', val: 'Subword WordPiece / BPE Tokenizer' }, { label: 'PERFORMANCE', val: 'Sub-30ms inference on CPU/GPU' }, { label: 'DATA PIPELINE', val: 'Pandas · NumPy preprocessing' }, { label: 'ROLE', val: 'NLP / Deep Learning Engineer' }, { label: 'STATUS', val: 'Open Source Module' }],
+                specs: [
+                    { label: 'FRAMEWORK', val: 'PyTorch · HuggingFace Transformers' },
+                    { label: 'MODEL TYPE', val: 'Transformer Encoder with Attention Heads' },
+                    { label: 'TOKENIZATION', val: 'Subword WordPiece / BPE Tokenizer' },
+                    { label: 'PERFORMANCE', val: 'Sub-30ms inference on CPU/GPU' },
+                    { label: 'DATA PIPELINE', val: 'Pandas · NumPy preprocessing' },
+                    { label: 'ROLE', val: 'NLP / Deep Learning Engineer' },
+                    { label: 'STATUS', val: 'Open Source Module' }
+                ],
                 liveUrl: 'https://github.com/re-etikk',
                 liveBtnText: 'Inspect GitHub Repository →'
             }
         };
 
+        // Open Case File with Rich Dossier Animations
         function openCaseFile(id) {
             var item = caseFilesData[id];
             if (!item) return;
             var container = document.getElementById('caseFileDynamicContent');
+            
             var previewHtml = '';
             if (item.previewType === 'iframe') {
                 previewHtml = '<iframe src="' + item.previewSrc + '" loading="lazy"></iframe>';
             } else {
-                previewHtml = '<div class="case-canvas" style="height:380px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#181613; color:#eae2d3; text-align:center;"><i class="fas ' + item.artIcon + '" style="font-size:4rem; margin-bottom:14px; color:#a43425;"></i><div style="font-family:\'IBM Plex Mono\',monospace; font-size:15px; font-weight:700;">' + item.artTitle + '</div></div>';
+                previewHtml = '<div class="case-canvas" style="height:380px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#181613; color:#eae2d3; text-align:center;"><i class="fas ' + item.artIcon + '" style="font-size:3.8rem; margin-bottom:14px; color:#a43425;"></i><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:700;">' + item.artTitle + '</div></div>';
             }
-            var specsHtml = item.specs.map(function(s) { return '<tr><td class="how-label">' + s.label + '</td><td class="how-val">' + s.val + '</td></tr>'; }).join('');
-            container.innerHTML = `<div class="case-file-banner-frame">${previewHtml}<div class="case-file-caption"><span>${item.exhibit} · ${item.title}</span><span>${item.figCaption}</span></div></div><div class="case-file-article-grid"><div class="case-story-col"><h2>${item.title}</h2>${item.articleText}</div><div><div class="how-it-was-built-box"><div class="how-header">HOW IT WAS BUILT</div><table class="how-table">${specsHtml}</table></div><div class="case-launch-box"><a href="${item.liveUrl}" target="_blank" rel="noopener" class="case-launch-btn">${item.liveBtnText}</a></div></div></div>`;
+            
+            var specsHtml = item.specs.map(function(s, idx) {
+                return '<tr style="opacity:0; animation: dossierFadeUp 0.4s cubic-bezier(0.16,1,0.3,1) ' + (0.4 + idx * 0.05) + 's forwards;"><td class="how-label">' + s.label + '</td><td class="how-val">' + s.val + '</td></tr>';
+            }).join('');
+
+            container.innerHTML = `
+                <div class="case-file-banner-frame dossier-anim-banner">
+                    <div class="case-stamp-badge">${item.badgeText}</div>
+                    ${previewHtml}
+                    <div class="case-file-caption">
+                        <span>${item.exhibit} · ${item.title}</span>
+                        <span>${item.figCaption}</span>
+                    </div>
+                </div>
+                <div class="case-file-article-grid">
+                    <div class="case-story-col dossier-anim-story">
+                        <h2>${item.title}</h2>
+                        ${item.articleText}
+                    </div>
+                    <div class="dossier-anim-specs">
+                        <div class="how-it-was-built-box">
+                            <div class="how-header">HOW IT WAS BUILT</div>
+                            <table class="how-table">${specsHtml}</table>
+                        </div>
+                        <div class="case-launch-box" style="opacity:0; animation: dossierFadeUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.75s forwards;">
+                            <a href="${item.liveUrl}" target="_blank" rel="noopener" class="case-launch-btn">${item.liveBtnText}</a>
+                        </div>
+                    </div>
+                </div>`;
+
             var overlay = document.getElementById('case-file-overlay');
             overlay.classList.add('active');
             overlay.scrollTop = 0;
@@ -1917,22 +2582,26 @@
             if (e.key === 'Escape') closeCaseFile();
         });
 
-        // Scroll Progress + Reveal + Stats + Magnetic
+        // -------------------------------------------------------------
+        // SMOOTH SCROLL REVEAL ENGINE + STATS + PROGRESS
+        // -------------------------------------------------------------
         (function() {
             // Scroll Progress
             var progress = document.getElementById('scroll-progress');
             window.addEventListener('scroll', function() {
                 var height = document.documentElement.scrollHeight - window.innerHeight;
-                if (progress) progress.style.width = (window.scrollY / height * 100) + '%';
+                if (progress && height > 0) {
+                    progress.style.width = (window.scrollY / height * 100) + '%';
+                }
             });
 
             // Nav shadow
             var nav = document.getElementById('mainnav');
             window.addEventListener('scroll', function() {
-                if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
+                if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
             });
 
-            // Reveal Observer
+            // Professional Intersection Observer for Reveals
             var observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
@@ -1940,13 +2609,16 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -40px 0px'
+            });
 
             document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
                 observer.observe(el);
             });
 
-            // Stats counter
+            // Stats Counter
             var statsObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
@@ -1954,7 +2626,7 @@
                         statsObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.3 });
+            }, { threshold: 0.25 });
 
             var statBar = document.querySelector('.stat-bar');
             if (statBar) statsObserver.observe(statBar);
@@ -1964,7 +2636,6 @@
                 stats.forEach(function(el) {
                     var target = parseFloat(el.getAttribute('data-count'));
                     var suffix = el.getAttribute('data-suffix') || '';
-                    var current = 0;
                     var duration = 1800;
                     var start = performance.now();
 
@@ -1972,7 +2643,7 @@
                         var elapsed = now - start;
                         var progress = Math.min(elapsed / duration, 1);
                         var eased = 1 - Math.pow(1 - progress, 3);
-                        current = Math.round(target * eased);
+                        var current = Math.round(target * eased);
                         el.textContent = current + suffix;
                         if (progress < 1) requestAnimationFrame(update);
                     }
@@ -1980,35 +2651,74 @@
                 });
             }
 
-            // Magnetic buttons
-            document.querySelectorAll('.btn').forEach(function(btn) {
-                btn.addEventListener('mousemove', function(e) {
-                    var rect = this.getBoundingClientRect();
-                    var x = e.clientX - rect.left - rect.width / 2;
-                    var y = e.clientY - rect.top - rect.height / 2;
-                    this.style.transform = 'translate(' + x * 0.12 + 'px, ' + y * 0.12 + 'px)';
+            // Magnetic Buttons (Desktop Only)
+            if (window.innerWidth >= 900) {
+                document.querySelectorAll('.btn').forEach(function(btn) {
+                    btn.addEventListener('mousemove', function(e) {
+                        var rect = this.getBoundingClientRect();
+                        var x = e.clientX - rect.left - rect.width / 2;
+                        var y = e.clientY - rect.top - rect.height / 2;
+                        this.style.transform = 'translate(' + (x * 0.1) + 'px, ' + (y * 0.1) + 'px)';
+                    });
+                    btn.addEventListener('mouseleave', function() {
+                        this.style.transform = '';
+                    });
                 });
-                btn.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                });
-            });
+            }
 
-            // Parallax on hero
+            // Subtle Hero Parallax
             var portrait = document.querySelector('.portrait-wrapper');
-            if (portrait) {
+            if (portrait && window.innerWidth >= 900) {
                 var heroTop = portrait.getBoundingClientRect().top + window.scrollY;
                 window.addEventListener('scroll', function() {
-                    var scrollY = window.scrollY;
-                    var offset = (scrollY - heroTop) * -0.04;
+                    var offset = (window.scrollY - heroTop) * -0.035;
                     portrait.style.transform = 'translateY(' + offset + 'px)';
                 });
             }
         })();
 
-        // Printable CV
+        // -------------------------------------------------------------
+        // LETTER SUBMISSION HANDLER (ROBERT TRAN STYLE)
+        // -------------------------------------------------------------
+        function handleLetterSubmit(e) {
+            e.preventDefault();
+            var name = document.getElementById('authorName').value.trim();
+            var email = document.getElementById('authorEmail').value.trim();
+            var subject = document.getElementById('letterSubject').value.trim();
+            var story = document.getElementById('letterStory').value.trim();
+            var status = document.getElementById('formStatusMsg');
+            var btn = document.getElementById('submitLetterBtn');
+
+            if (!name || !email || !story) return;
+
+            btn.disabled = true;
+            btn.textContent = 'DISPATCHING LETTER...';
+
+            setTimeout(function() {
+                status.style.display = 'block';
+                status.innerHTML = '✓ Letter received. Ritik will inspect your dispatch within 24 hours.<br><span style="font-size:10px; color:#555;">Opening your mail client for a direct copy...</span>';
+                
+                var mailtoLink = 'mailto:ritik45chaurasia@gmail.com?subject=' + encodeURIComponent(subject || 'Inquiry from ' + name) + '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')
+
+' + story);
+                window.location.href = mailtoLink;
+
+                btn.textContent = 'LETTER SENT';
+                setTimeout(function() {
+                    btn.disabled = false;
+                    btn.textContent = 'SEND THE LETTER';
+                    document.getElementById('broadsheetContactForm').reset();
+                }, 4000);
+            }, 600);
+        }
+
+        // Printable CV / Dossier
         function generatePrintableCV() {
             var win = window.open('', '_blank', 'width=800,height=950');
-            if (!win) { alert('Please allow popups to generate the printable dossier CV.'); return; }
+            if (!win) {
+                alert('Please allow popups to generate the printable dossier CV.');
+                return;
+            }
             win.document.write(`<!DOCTYPE html><html><head><title>Ritik Kumar — Official Dossier CV</title><style>body{font-family:'Georgia',serif;padding:40px;color:#181613;line-height:1.6;max-width:800px;margin:0 auto}h1{font-size:2.4rem;margin:0 0 4px;border-bottom:3px double #181613;padding-bottom:8px}h2{font-size:1.1rem;text-transform:uppercase;letter-spacing:.08em;font-family:monospace;color:#706a5a;margin-top:8px}.meta{margin:12px 0 24px;font-family:monospace;font-size:.85rem;border-bottom:1px solid #ddd;padding-bottom:12px}h3{font-size:1.2rem;text-transform:uppercase;letter-spacing:.06em;font-family:monospace;border-bottom:1.5px solid #181613;margin-top:24px;padding-bottom:4px}.entry{margin-bottom:14px}.entry b{font-size:1rem}.entry span{float:right;font-family:monospace;font-size:.85rem;color:#555}.tag{display:inline-block;border:1px solid #aaa;padding:2px 8px;font-size:.75rem;font-family:monospace;margin:2px}@media print{body{padding:15px}}</style></head><body><h1>RITIK KUMAR</h1><h2>Full Stack Web Developer &amp; ML/DL Engineer</h2><div class="meta">Noida, India · +91 7250171036 · ritik45chaurasia@gmail.com · github.com/re-etikk · linkedin.com/in/reetikk</div><h3>Education</h3><div class="entry"><b>B.Tech in Information Technology</b> <span>2025 – 2029</span><br>JSS Academy of Technical Education (JSSATE), Noida</div><div class="entry"><b>Higher Secondary (12th - Science &amp; Math)</b> <span>2022 – 2024</span><br>Purnea College, Purnea, Bihar</div><h3>Experience</h3><div class="entry"><b>Full-Stack Developer (Freelance)</b> <span>2025 – Present</span><br>Architected REDO logistics fleet portal and customer booking application. Built scalable REST APIs, React interfaces, and database synchronization.</div><div class="entry"><b>Web Developer Intern — AI With Rajnish</b> <span>6 Months</span><br>Shipped client web applications, debugged production codebases, and optimized responsive user interfaces.</div><h3>Technical Skills</h3><p><span class="tag">Python</span> <span class="tag">TensorFlow</span> <span class="tag">PyTorch</span> <span class="tag">CNNs</span> <span class="tag">NLP</span> <span class="tag">Transformers</span> <span class="tag">Pandas</span> <span class="tag">NumPy</span> <span class="tag">React</span> <span class="tag">Next.js</span> <span class="tag">Node.js</span> <span class="tag">C++ (DSA)</span> <span class="tag">MongoDB</span> <span class="tag">Docker</span> <span class="tag">Git</span></p><h3>Certifications</h3><p>TensorFlow Developer · Deep Learning Specialization · AWS Cloud Practitioner · Meta React Developer · NLP with HuggingFace · MongoDB Associate</p><div style="margin-top:40px;text-align:center;font-family:monospace;font-size:.8rem;color:#888;">— Official Case Record Generated from The Ritik Kumar Times —</div></body></html>`);
             win.document.close();
             setTimeout(function() { win.print(); }, 500);
