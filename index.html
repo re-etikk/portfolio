@@ -244,6 +244,11 @@
             visibility: hidden;
             pointer-events: none;
         }
+        @media (max-width: 768px) {
+            #intro-screen {
+                display: none !important;
+            }
+        }
 
         .newspaper-canvas {
             width: 100vw;
@@ -1827,18 +1832,76 @@
     <div class="custom-cursor-ring" id="cursorRing"><i class="fas fa-search cursor-icon"></i></div>
 
     <!-- Responsive Magnifying Glass Intro Screen -->
-    <div id="intro-screen">
+    <div id="intro-screen" onclick="closeIntro(event)">
         <div class="intro-controls">
-            <button id="skipIntro" class="skip-btn">SKIP INTRO →</button>
+            <button id="skipIntro" class="skip-btn" onclick="closeIntro(event)">SKIP INTRO →</button>
         </div>
-        <div class="intro-prompt">MOVE GLASS TO INSPECT · TAP TO ENTER</div>
+        <div class="intro-prompt">MOVE GLASS TO INSPECT · CLICK TO ENTER</div>
         <div id="intro-blurred-layer">
-            <div class="newspaper-canvas" id="canvas-blurred"></div>
+            <div class="newspaper-canvas" id="canvas-blurred">
+                <div class="news-headline">
+                    <h2>THE SPECIAL INVESTIGATION DESK</h2>
+                    <div class="sub">VOL. I · INQUIRY INTO FULL STACK WEB ARCHITECTURE &amp; DEEP LEARNING · NOIDA BUREAU</div>
+                </div>
+                <div class="news-col">
+                    <h4>Front-End &amp; Systems</h4>
+                    <p>React and Next.js interfaces engineered with strict state boundaries and performant render cycles. The subject crafts solutions balancing high-density information with fluid responsive aesthetics.</p>
+                    <div class="classified-box">
+                        <b>FIELD DOSSIER:</b> Active projects logged under SIH 2026, IIIT Delhi Top 60, and ISRO Antriksh Hackathon.
+                    </div>
+                </div>
+                <div class="news-col">
+                    <h4>Deep Learning Core</h4>
+                    <p>Production computer vision via YOLO architectures, PyTorch neural networks, and automated visual inference pipelines tailored for real-time mobile and edge applications.</p>
+                    <p>Continuous algorithmic problem solving across C++ and Python data structures.</p>
+                </div>
+                <div class="news-col">
+                    <h4>Microservices &amp; APIs</h4>
+                    <p>Robust backend APIs built on FastAPI with asynchronous event loops, Pydantic validation schemas, and real-time database synchronisation via Supabase and Firebase.</p>
+                    <p>Logistics telemetry routing, automated scheduling, and distributed state verification.</p>
+                </div>
+                <div class="news-col">
+                    <h4>Academic Ledger</h4>
+                    <p>Undergraduate in Computer Science &amp; Engineering at JSS Academy of Technical Education, Noida (Class of 2025–2029). Class XII from Purnea College, Bihar.</p>
+                    <div class="classified-box">
+                        <b>COMMISSION STATUS:</b> Available for Summer 2025/2026 Engineering Internships &amp; Research Collaborations.
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="glass-rig">
             <div id="glass-lens">
                 <div id="intro-sharp-layer">
-                    <div class="newspaper-canvas" id="canvas-sharp"></div>
+                    <div class="newspaper-canvas" id="canvas-sharp">
+                        <div class="news-headline">
+                            <h2>THE SPECIAL INVESTIGATION DESK</h2>
+                            <div class="sub">VOL. I · INQUIRY INTO FULL STACK WEB ARCHITECTURE &amp; DEEP LEARNING · NOIDA BUREAU</div>
+                        </div>
+                        <div class="news-col">
+                            <h4>Front-End &amp; Systems</h4>
+                            <p>React and Next.js interfaces engineered with strict state boundaries and performant render cycles. The subject crafts solutions balancing high-density information with fluid responsive aesthetics.</p>
+                            <div class="classified-box">
+                                <b>FIELD DOSSIER:</b> Active projects logged under SIH 2026, IIIT Delhi Top 60, and ISRO Antriksh Hackathon.
+                            </div>
+                        </div>
+                        <div class="news-col">
+                            <h4>Deep Learning Core</h4>
+                            <p>Production computer vision via YOLO architectures, PyTorch neural networks, and automated visual inference pipelines tailored for real-time mobile and edge applications.</p>
+                            <p>Continuous algorithmic problem solving across C++ and Python data structures.</p>
+                        </div>
+                        <div class="news-col">
+                            <h4>Microservices &amp; APIs</h4>
+                            <p>Robust backend APIs built on FastAPI with asynchronous event loops, Pydantic validation schemas, and real-time database synchronisation via Supabase and Firebase.</p>
+                            <p>Logistics telemetry routing, automated scheduling, and distributed state verification.</p>
+                        </div>
+                        <div class="news-col">
+                            <h4>Academic Ledger</h4>
+                            <p>Undergraduate in Computer Science &amp; Engineering at JSS Academy of Technical Education, Noida (Class of 2025–2029). Class XII from Purnea College, Bihar.</p>
+                            <div class="classified-box">
+                                <b>COMMISSION STATUS:</b> Available for Summer 2025/2026 Engineering Internships &amp; Research Collaborations.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="glass-handle"></div>
@@ -2294,6 +2357,24 @@
     </footer>
 
     <script>
+        // Global closeIntro handler (instant dismiss)
+        function closeIntro(e) {
+            if (e && e.stopPropagation) e.stopPropagation();
+            var intro = document.getElementById('intro-screen');
+            if (!intro) return;
+            intro.classList.add('hide');
+            setTimeout(function() {
+                intro.style.display = 'none';
+            }, 400);
+        }
+        window.closeIntro = closeIntro;
+
+        // Auto dismiss on mobile screens immediately
+        if (window.innerWidth <= 768) {
+            var el = document.getElementById('intro-screen');
+            if (el) el.style.display = 'none';
+        }
+
         // Dateline
         (function() {
             var d = new Date();
@@ -2441,26 +2522,23 @@
             }
             requestAnimationFrame(renderLoop);
 
-            function closeIntro() {
+            function dismiss() {
                 if (!isIntroActive) return;
                 isIntroActive = false;
-                intro.classList.add('hide');
-                setTimeout(function() {
-                    intro.style.display = 'none';
-                }, 750);
+                window.closeIntro();
             }
 
             if (skipBtn) {
                 skipBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    closeIntro();
+                    dismiss();
                 });
             }
 
-            intro.addEventListener('click', closeIntro);
+            intro.addEventListener('click', dismiss);
 
-            // Auto dismiss after 5s so mobile users aren't delayed
-            setTimeout(closeIntro, 5000);
+            // Auto dismiss after 3.5s so desktop users aren't delayed
+            setTimeout(dismiss, 3500);
         })();
 
         // Case Files Data
@@ -2564,7 +2642,7 @@
             if (item.previewType === 'iframe') {
                 previewHtml = '<iframe src="' + item.previewSrc + '" loading="lazy"></iframe>';
             } else {
-                previewHtml = '<div class="case-canvas" style="height:380px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#181613; color:#eae2d3; text-align:center;"><i class="fas ' + item.artIcon + '" style="font-size:3.8rem; margin-bottom:14px; color:#a43425;"></i><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:700;">' + item.artTitle + '</div></div>';
+                previewHtml = '<div class="case-canvas" style="height:380px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#181613; color:#eae2d3; text-align:center;"><i class="fas ' + item.artIcon + '" style="font-size:3.8rem; margin-bottom:14px; color:#a43425;"></i><div style="font-family:\'IBM Plex Mono\',monospace; font-size:15px; font-weight:700;">' + item.artTitle + '</div></div>';
             }
             
             var specsHtml = item.specs.map(function(s, idx) {
@@ -2768,9 +2846,7 @@
                 status.className = 'form-status-msg error';
                 status.style.display = 'block';
                 status.innerHTML = '<strong>NOTICE:</strong> Network dispatch paused. Opening your email client to send directly to ritik45chaurasia@gmail.com...';
-                var mailtoLink = 'mailto:ritik45chaurasia@gmail.com?subject=' + encodeURIComponent(subject || 'Inquiry from ' + name) + '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')
-
-' + story);
+                var mailtoLink = 'mailto:ritik45chaurasia@gmail.com?subject=' + encodeURIComponent(subject || 'Inquiry from ' + name) + '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + story);
                 window.location.href = mailtoLink;
                 btn.disabled = false;
                 btn.textContent = 'SEND THE LETTER';
