@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Ritik Kumar — Full Stack Web Developer &amp; ML/DL Engineer</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +20,7 @@
             --rule: #181613;
             --rule-light: rgba(24, 22, 19, 0.2);
             --red: #a43425;
+            --green: #1a6f3b;
             --footer-bg: #12110e;
             --footer-text: #eae4d8;
             --footer-sub: #9e9686;
@@ -49,6 +50,7 @@
             cursor: default;
         }
 
+        /* Subtle newspaper grain */
         body::before {
             content: "";
             position: fixed;
@@ -72,7 +74,7 @@
 
         @media (max-width: 768px) {
             .wrap {
-                padding: 0 18px;
+                padding: 0 16px;
             }
         }
 
@@ -100,7 +102,7 @@
             box-shadow: 0 0 8px rgba(164, 52, 37, .4);
         }
 
-        /* Scroll Reveal Animations */
+        /* Professional Scroll Reveal Animations */
         .reveal-up {
             opacity: 0;
             transform: translateY(35px);
@@ -267,8 +269,8 @@
         @media (max-width: 640px) {
             .newspaper-canvas {
                 grid-template-columns: 1fr;
-                padding: 60px 18px 80px 18px;
-                gap: 16px;
+                padding: 55px 16px 80px 16px;
+                gap: 14px;
                 overflow-y: hidden;
             }
         }
@@ -288,7 +290,7 @@
                 padding-right: 0;
                 font-size: 12.5px;
             }
-            .news-col:nth-child(n+4) {
+            .news-col:nth-child(n+3) {
                 display: none;
             }
         }
@@ -312,7 +314,7 @@
             text-align: center;
         }
         .news-headline h2 {
-            font-size: clamp(24px, 4.5vw, 56px);
+            font-size: clamp(22px, 4.5vw, 56px);
             letter-spacing: .02em;
             font-weight: 800;
             line-height: 1.1;
@@ -357,10 +359,10 @@
         }
         #glass-lens {
             position: absolute;
-            width: clamp(160px, 45vw, 240px);
-            height: clamp(160px, 45vw, 240px);
-            left: calc(clamp(160px, 45vw, 240px) / -2);
-            top: calc(clamp(160px, 45vw, 240px) / -2);
+            width: clamp(150px, 48vw, 240px);
+            height: clamp(150px, 48vw, 240px);
+            left: calc(clamp(150px, 48vw, 240px) / -2);
+            top: calc(clamp(150px, 48vw, 240px) / -2);
             border-radius: 50%;
             overflow: hidden;
             border: 4px solid #161513;
@@ -398,10 +400,10 @@
         }
         @media (max-width: 640px) {
             .glass-handle {
-                top: 55px;
-                left: 55px;
-                width: 14px;
-                height: 75px;
+                top: 50px;
+                left: 50px;
+                width: 13px;
+                height: 65px;
             }
         }
         .glass-handle::before {
@@ -418,8 +420,8 @@
 
         .intro-controls {
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 14px;
+            right: 14px;
             z-index: 100;
         }
         .skip-btn {
@@ -431,7 +433,7 @@
             background: var(--paper);
             color: var(--ink);
             border: 1.5px solid var(--ink);
-            padding: 9px 16px;
+            padding: 8px 15px;
             cursor: pointer;
             box-shadow: 2.5px 2.5px 0 var(--ink);
             transition: all .2s ease;
@@ -445,12 +447,12 @@
         }
         .intro-prompt {
             position: absolute;
-            bottom: 22px;
-            left: 12px;
-            right: 12px;
+            bottom: 20px;
+            left: 10px;
+            right: 10px;
             text-align: center;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: clamp(9px, 2.2vw, 11px);
+            font-size: clamp(8.5px, 2.2vw, 11px);
             letter-spacing: .16em;
             text-transform: uppercase;
             color: var(--ink-faint);
@@ -479,7 +481,7 @@
             .topstrip .wrap {
                 justify-content: center;
                 text-align: center;
-                font-size: 10px;
+                font-size: 9.5px;
             }
         }
 
@@ -490,7 +492,7 @@
             border-bottom: 2px solid var(--rule);
         }
         .masthead h1 {
-            font-size: clamp(42px, 9.5vw, 115px);
+            font-size: clamp(38px, 9.5vw, 115px);
             letter-spacing: -.01em;
             line-height: .95;
             font-weight: 800;
@@ -499,7 +501,7 @@
             font-family: 'IBM Plex Mono', monospace;
             text-transform: uppercase;
             letter-spacing: .2em;
-            font-size: clamp(10.5px, 2.2vw, 12.5px);
+            font-size: clamp(10px, 2.2vw, 12.5px);
             color: var(--ink-soft);
             margin-top: 12px;
             font-weight: 600;
@@ -509,7 +511,7 @@
             padding-top: 10px;
             border-top: 1px solid var(--rule);
             font-family: 'IBM Plex Mono', monospace;
-            font-size: clamp(9.5px, 2vw, 11px);
+            font-size: clamp(9px, 2vw, 11px);
             letter-spacing: .06em;
             color: var(--ink-soft);
             text-transform: uppercase;
@@ -544,7 +546,7 @@
         nav.mainnav .links {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 22px;
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11.5px;
             letter-spacing: .08em;
@@ -577,11 +579,11 @@
             display: none;
             background: var(--paper-card);
             border: 1.5px solid var(--ink);
-            padding: 6px 12px;
+            padding: 7px 13px;
             font-family: 'IBM Plex Mono', monospace;
             cursor: pointer;
             font-size: 11.5px;
-            font-weight: 600;
+            font-weight: 700;
         }
         @media (max-width: 860px) {
             nav.mainnav .links {
@@ -599,19 +601,21 @@
                 right: 0;
                 background: var(--paper);
                 border-bottom: 2px solid var(--rule);
-                padding: 18px 24px;
-                gap: 16px;
+                padding: 16px 20px;
+                gap: 14px;
                 box-shadow: 0 10px 24px rgba(0,0,0,0.12);
             }
             nav.mainnav.open .links a {
-                padding: 8px 0;
+                padding: 10px 0;
                 border-bottom: 1px solid var(--rule-light);
                 width: 100%;
+                font-size: 13px;
             }
             nav.mainnav.open .links .hire {
                 border-bottom: 1.5px solid var(--ink);
                 text-align: center;
                 margin-top: 6px;
+                padding: 12px;
             }
         }
 
@@ -642,7 +646,7 @@
         @media (max-width: 950px) {
             .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 36px;
+                gap: 32px;
             }
         }
         .kicker {
@@ -655,7 +659,7 @@
             font-weight: 700;
         }
         .hero h2 {
-            font-size: clamp(32px, 4.4vw, 60px);
+            font-size: clamp(30px, 4.4vw, 60px);
             line-height: 1.06;
             letter-spacing: -.01em;
         }
@@ -669,7 +673,7 @@
             border-left: 3px solid var(--ink);
             font-style: italic;
             color: var(--ink-soft);
-            font-size: clamp(16px, 2.4vw, 19px);
+            font-size: clamp(15.5px, 2.4vw, 19px);
             line-height: 1.55;
         }
         .byline {
@@ -682,7 +686,7 @@
         }
         .cta-row {
             display: flex;
-            gap: 14px;
+            gap: 12px;
             margin-top: 26px;
             flex-wrap: wrap;
         }
@@ -700,6 +704,16 @@
             font-weight: 600;
             cursor: pointer;
             transition: transform .2s ease, background .2s, border-color .2s, box-shadow .2s;
+        }
+        @media (max-width: 600px) {
+            .cta-row {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px;
+            }
         }
         .btn-solid {
             background: var(--ink);
@@ -831,8 +845,8 @@
         @media (max-width: 900px) {
             .exhibit-card {
                 grid-template-columns: 1fr;
-                gap: 28px;
-                padding: 34px 0;
+                gap: 24px;
+                padding: 32px 0;
             }
             .exhibit-card:nth-child(even) .shot-frame-wrapper {
                 order: 0;
@@ -969,7 +983,7 @@
             margin-bottom: 8px;
         }
         .exhibit-info h3 {
-            font-size: clamp(24px, 3.5vw, 34px);
+            font-size: clamp(23px, 3.5vw, 34px);
             margin-bottom: 12px;
             line-height: 1.15;
         }
@@ -1064,8 +1078,8 @@
         }
         @media (max-width: 768px) {
             .case-file-header-strip {
-                padding: 10px 16px;
-                font-size: 10.5px;
+                padding: 10px 14px;
+                font-size: 10px;
             }
         }
         .back-broadsheet-btn {
@@ -1095,7 +1109,7 @@
         }
         @media (max-width: 768px) {
             .case-file-content {
-                padding: 20px 16px 60px 16px;
+                padding: 18px 14px 60px 14px;
             }
         }
 
@@ -1147,7 +1161,7 @@
             .case-file-banner-frame iframe,
             .case-file-banner-frame img,
             .case-file-banner-frame .case-canvas {
-                height: 230px;
+                height: 220px;
             }
         }
 
@@ -1214,7 +1228,7 @@
             color: var(--ink-soft);
         }
         .case-story-col h2 {
-            font-size: clamp(26px, 4vw, 36px);
+            font-size: clamp(25px, 4vw, 36px);
             margin-bottom: 14px;
             color: var(--ink);
             line-height: 1.15;
@@ -1310,9 +1324,9 @@
         }
         table.lab {
             width: 100%;
-            min-width: 600px;
+            min-width: 580px;
             border-collapse: collapse;
-            font-size: 14.5px;
+            font-size: 14px;
             background: var(--paper);
         }
         table.lab th {
@@ -1327,7 +1341,7 @@
             background: var(--paper-card);
         }
         table.lab td {
-            padding: 13px 14px;
+            padding: 12px 14px;
             border-bottom: 1px solid var(--rule-light);
             vertical-align: middle;
             transition: background .2s;
@@ -1337,7 +1351,7 @@
         }
         table.lab .subst {
             font-family: 'Playfair Display', serif;
-            font-size: 17px;
+            font-size: 16.5px;
             font-weight: 700;
         }
         table.lab .code {
@@ -1363,7 +1377,7 @@
         }
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
             gap: 12px;
             margin-top: 22px;
         }
@@ -1438,14 +1452,13 @@
         }
 
         /* -------------------------------------------------------------
-           LETTERS & COMMISSIONS — ROBERT TRAN STYLE FORM SECTION
-           (MATCHING USER'S FIRST UPLOADED IMAGE EXACTLY)
+           LETTERS & COMMISSIONS — LIVE ACTIVATED CONTACT FORM
            ------------------------------------------------------------- */
         #contact {
             padding: 55px 0 35px;
         }
         .contact-heading {
-            font-size: clamp(34px, 5.5vw, 56px);
+            font-size: clamp(32px, 5.5vw, 56px);
             font-weight: 700;
             margin-bottom: 14px;
             letter-spacing: -.01em;
@@ -1470,22 +1483,22 @@
         }
         @media (max-width: 600px) {
             .contact-form-side {
-                padding: 26px 18px;
+                padding: 24px 16px;
             }
         }
         .contact-form-side h3 {
-            font-size: clamp(26px, 3.8vw, 36px);
+            font-size: clamp(24px, 3.8vw, 36px);
             font-weight: 700;
             margin-bottom: 8px;
         }
         .contact-form-side .form-sub {
-            font-size: 15px;
+            font-size: 14.5px;
             color: var(--ink-soft);
             line-height: 1.6;
-            margin-bottom: 28px;
+            margin-bottom: 26px;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .form-row-two {
             display: grid;
@@ -1515,7 +1528,7 @@
             background: var(--paper);
             padding: 12px 14px;
             font-family: 'Source Serif 4', Georgia, serif;
-            font-size: 14.5px;
+            font-size: 16px; /* 16px prevents iOS Safari from auto-zooming */
             color: var(--ink);
             outline: none;
             transition: border-color .2s, box-shadow .2s;
@@ -1526,12 +1539,13 @@
         .broadsheet-textarea:focus {
             border-color: var(--red);
             box-shadow: 0 0 0 1px var(--red);
-            background: #fff;
+            background: #ffffff;
         }
         .broadsheet-input::placeholder,
         .broadsheet-textarea::placeholder {
             color: #9e9686;
             font-style: italic;
+            font-size: 14.5px;
         }
         .broadsheet-textarea {
             resize: vertical;
@@ -1541,7 +1555,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 24px;
+            margin-top: 22px;
             flex-wrap: wrap;
             gap: 14px;
         }
@@ -1576,19 +1590,31 @@
             .send-letter-btn {
                 width: 100%;
                 text-align: center;
+                padding: 15px;
             }
         }
         .form-status-msg {
             display: none;
-            margin-top: 16px;
-            padding: 12px;
-            border: 1.5px solid var(--red);
+            margin-top: 18px;
+            padding: 14px;
+            border: 2px solid var(--ink);
             background: var(--paper-card);
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11.5px;
-            color: var(--red);
-            font-weight: 600;
+            line-height: 1.6;
+            color: var(--ink);
             text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .form-status-msg.success {
+            border-color: var(--green);
+            color: var(--green);
+            background: #eef7f0;
+        }
+        .form-status-msg.error {
+            border-color: var(--red);
+            color: var(--red);
+            background: #fdf2f0;
         }
 
         /* Right Column: Direct Line & Availability */
@@ -1604,12 +1630,12 @@
             .contact-info-side {
                 border-left: none;
                 border-top: 1.5px solid var(--rule-light);
-                padding: 30px 24px;
+                padding: 28px 20px;
             }
         }
         .info-block {
-            padding-bottom: 22px;
-            margin-bottom: 22px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
             border-bottom: 1px solid var(--rule-light);
         }
         .info-block:last-of-type {
@@ -1651,6 +1677,7 @@
             display: flex;
             gap: 10px;
             margin-top: 24px;
+            flex-wrap: wrap;
         }
         .contact-social-row a {
             width: 40px;
@@ -1684,7 +1711,7 @@
         }
         .footer-name {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(44px, 8.5vw, 95px);
+            font-size: clamp(40px, 8.5vw, 95px);
             font-weight: 800;
             letter-spacing: -.01em;
             margin-bottom: 40px;
@@ -1823,7 +1850,7 @@
         <div class="wrap">
             <span>Noida, Uttar Pradesh, India · JSSATE Bureau</span>
             <span>The Systems &amp; Machine Learning Edition</span>
-            <span>Est. 2024 · Vol. I No. 45 · CodeChef &amp; LeetCode Filed</span>
+            <span>Est. 2024 · Vol. I No. 45 · SIH 2026 &amp; IIIT Delhi Top 60</span>
         </div>
     </div>
 
@@ -1845,7 +1872,7 @@
                 <a href="#stack">Forensics</a>
                 <a href="#ledger">Career Ledger</a>
                 <a href="#contact">Contact</a>
-                <a class="hire" href="javascript:void(0)" onclick="generatePrintableCV()">Download CV</a>
+                <a class="hire" href="resume.html" target="_blank"><i class="fas fa-file-alt"></i> Download CV</a>
             </div>
             <button class="navToggle" id="navToggle" aria-label="Toggle navigation menu">MENU ☰</button>
         </div>
@@ -1863,21 +1890,21 @@
                 <div class="reveal-left">
                     <div class="kicker">Case No. 01 — Findings Published</div>
                     <h2>A Noida-based engineer building intelligent systems — <em>from web apps to deep neural networks.</em></h2>
-                    <blockquote class="dek">Currently pursuing B.Tech in Information Technology at JSSATE, Noida. Training CNNs and Transformer models while shipping production web applications like the REDO fleet platform.</blockquote>
-                    <div class="byline">By The Investigation Desk · Solved 100+ CodeChef &amp; 50+ LeetCode DSA Problems</div>
+                    <blockquote class="dek">Pursuing B.Tech in Computer Science &amp; Engineering at JSSATE, Noida. Architect of ReDo Smart Logistics, training YOLO and Transformer models, and competing in SIH 2026.</blockquote>
+                    <div class="byline">By The Investigation Desk · SIH 2026 Leader · IIIT Delhi Top 60 · ISRO Antriksh</div>
                     <div class="cta-row">
                         <a class="btn btn-solid" href="#work">Inspect the evidence →</a>
-                        <a class="btn btn-outline" href="javascript:void(0)" onclick="generatePrintableCV()"><i class="fas fa-file-pdf"></i> Download CV</a>
+                        <a class="btn btn-outline" href="resume.html" target="_blank"><i class="fas fa-file-pdf"></i> Download CV</a>
                         <a class="btn btn-outline" href="#contact"><i class="fas fa-envelope"></i> Inquire</a>
                     </div>
                     <div class="stat-bar">
                         <div>
                             <div class="big">JSSATE</div>
-                            <div class="small">B.Tech in IT (2025–29)</div>
+                            <div class="small">B.Tech CSE (2025–29)</div>
                         </div>
                         <div>
-                            <div class="big" data-count="7" data-suffix="+">7+</div>
-                            <div class="small">Shipped Web &amp; ML Builds</div>
+                            <div class="big" data-count="3" data-suffix="+">3+</div>
+                            <div class="small">Hackathon Laurels</div>
                         </div>
                         <div>
                             <div class="big" data-count="150" data-suffix="+">150+</div>
@@ -1898,8 +1925,8 @@
                         </div>
                     </div>
                     <div class="about-copy">
-                        <p>Full-stack developer transitioning into <strong>Machine Learning &amp; Deep Learning</strong>. With a strong engineering foundation in web technologies, he channels his passion into building neural networks, computer vision tools, and NLP pipelines.</p>
-                        <p>Currently studying Information Technology at JSSATE, Noida — working with PyTorch, TensorFlow, pandas, and scikit-learn alongside scalable React and Node.js production platforms.</p>
+                        <p>Full-stack developer focused on <strong>Machine Learning &amp; Generative AI</strong>. Hands-on expertise building production logistics networks, computer vision tools, and REST APIs.</p>
+                        <p>Currently studying Computer Science &amp; Engineering at JSSATE, Noida — working with Python, FastAPI, Flutter, Supabase/Firebase, TensorFlow, and PyTorch.</p>
                     </div>
                 </div>
             </div>
@@ -1914,7 +1941,7 @@
                 <span>Exhibits A – D · Entered 2024 – Now</span>
             </div>
             <div class="double-rule reveal-up delay-1"></div>
-            <h2 style="font-size: clamp(32px,4.5vw,54px); margin-bottom:18px;" class="reveal-up">Selected Works</h2>
+            <h2 style="font-size: clamp(30px,4.5vw,54px); margin-bottom:18px;" class="reveal-up">Selected Works</h2>
 
             <!-- Exhibit A -->
             <article class="exhibit-card inspectable-item reveal-up" onclick="openCaseFile('redo-trucks')">
@@ -1930,50 +1957,84 @@
                     </div>
                 </div>
                 <div class="exhibit-info">
-                    <div class="exhibit-tag">Exhibit A · Full Stack Logistics</div>
-                    <div class="exhibit-client">Client · REDO Fleet Platform</div>
-                    <h3>REDO — Fleet &amp; Truck Owner Portal</h3>
-                    <p>A logistics portal built for truck owners and fleet operators to manage their vehicles, trips and bookings from one place — replacing scattered calls and spreadsheets with a single dashboard. Built front to back, from the interface down to the data layer.</p>
+                    <div class="exhibit-tag">Exhibit A · Smart Backhaul Network</div>
+                    <div class="exhibit-client">Hackathon Project · Team Leader</div>
+                    <h3>ReDo Smart Logistics — Fleet &amp; Partner Platform</h3>
+                    <p>Logistics platform connecting shippers with truck owners/drivers to monetize unused freight capacity. Features location-based dispatch algorithms, time-bound driver offers, and atomic booking confirmations.</p>
                     <div class="tags">
-                        <span>React</span><span>Python</span><span>Fleet Telemetry</span><span>REST APIs</span><span>Dashboard</span>
+                        <span>Flutter</span><span>Python</span><span>FastAPI</span><span>Supabase/Firebase</span><span>Maps Telemetry</span>
                     </div>
                     <div class="exhibit-action-row">
-                        <span>2024–2025 · Lead Architect</span>
+                        <span>2026 · Project Leader</span>
                         <span class="open-case-btn">Open case file →</span>
                     </div>
                 </div>
             </article>
 
             <!-- Exhibit B -->
-            <article class="exhibit-card inspectable-item reveal-up delay-1" onclick="openCaseFile('redo-customer')">
+            <article class="exhibit-card inspectable-item reveal-up delay-1" onclick="openCaseFile('focus-ai')">
                 <div class="shot-frame-wrapper">
-                    <div class="stamp-badge-overlay">CONFIRMED</div>
+                    <div class="stamp-badge-overlay">YOLO DETECT</div>
                     <div class="shot-preview-box">
-                        <div class="iframe-overlay-touch"></div>
-                        <iframe src="https://redo-customer.vercel.app/" loading="lazy" title="REDO Customer App"></iframe>
+                        <div class="shot-canvas-art" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#1b1916; color:#eae2d3; padding:20px; text-align:center;">
+                            <i class="fas fa-eye" style="font-size:3.2rem; margin-bottom:12px; color:#d4af37;"></i>
+                            <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700;">FOCUS AI — COMPUTER VISION</div>
+                            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#888; margin-top:6px;">[ YOLO OBJECT DETECTION · STUDY PRODUCTIVITY ]</div>
+                        </div>
                     </div>
                     <div class="shot-frame-footer">
                         <span class="circled-stamp">EXHIBIT B</span>
-                        <span>recovered from redo-customer.vercel.app</span>
+                        <span>recovered from github.com/re-etikk</span>
                     </div>
                 </div>
                 <div class="exhibit-info">
-                    <div class="exhibit-tag">Exhibit B · Consumer Marketplace</div>
-                    <div class="exhibit-client">Client · REDO Logistics</div>
-                    <h3>REDO — Customer App</h3>
-                    <p>The customer-facing half of REDO — where shippers place and track bookings against the fleet managed on the owner side. Built to talk to the same backend as the truck owner portal, keeping both sides of the marketplace in sync.</p>
+                    <div class="exhibit-tag">Exhibit B · Computer Vision</div>
+                    <div class="exhibit-client">Productivity &amp; AI Research</div>
+                    <h3>FocusAI — AI-Based Study Focus System</h3>
+                    <p>Engineered a real-time study productivity concept using YOLO-based object detection to monitor mobile phone usage during study sessions. Equipped with custom focus timer, real-time distraction alerts, and analytics dashboards.</p>
                     <div class="tags">
-                        <span>React</span><span>Python</span><span>Booking Flow</span><span>Real-time Sync</span><span>Full Stack</span>
+                        <span>Python</span><span>YOLO</span><span>OpenCV</span><span>Computer Vision</span><span>Analytics</span>
                     </div>
                     <div class="exhibit-action-row">
-                        <span>2024–2025 · Lead Architect</span>
+                        <span>2026 · AI Engineer</span>
                         <span class="open-case-btn">Open case file →</span>
                     </div>
                 </div>
             </article>
 
             <!-- Exhibit C -->
-            <article class="exhibit-card inspectable-item reveal-up delay-2" onclick="openCaseFile('cnn-classifier')">
+            <article class="exhibit-card inspectable-item reveal-up delay-2" onclick="openCaseFile('attendance-system')">
+                <div class="shot-frame-wrapper">
+                    <div class="stamp-badge-overlay">CLOUD SYNC</div>
+                    <div class="shot-preview-box">
+                        <div class="shot-canvas-art" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#1b1916; color:#eae2d3; padding:20px; text-align:center;">
+                            <i class="fas fa-clipboard-check" style="font-size:3.2rem; margin-bottom:12px; color:#00e5c0;"></i>
+                            <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700;">ATTENDANCE MANAGEMENT SUITE</div>
+                            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#888; margin-top:6px;">[ REACT · VITE · FIREBASE CLOUD DB ]</div>
+                        </div>
+                    </div>
+                    <div class="shot-frame-footer">
+                        <span class="circled-stamp">EXHIBIT C</span>
+                        <span>recovered from github.com/re-etikk</span>
+                    </div>
+                </div>
+                <div class="exhibit-info">
+                    <div class="exhibit-tag">Exhibit C · Web Application</div>
+                    <div class="exhibit-client">Full Stack Engineering</div>
+                    <h3>Attendance Management System</h3>
+                    <p>Web-based enterprise attendance portal developed with React, Vite, and Firebase. Features role-based access control, realtime session logging, cloud database storage, and exportable reports.</p>
+                    <div class="tags">
+                        <span>React</span><span>Vite</span><span>Firebase</span><span>Cloud Data</span><span>Full Stack</span>
+                    </div>
+                    <div class="exhibit-action-row">
+                        <span>2026 · Full-Stack Developer</span>
+                        <span class="open-case-btn">Open case file →</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Exhibit D -->
+            <article class="exhibit-card inspectable-item reveal-up delay-3" onclick="openCaseFile('cnn-classifier')">
                 <div class="shot-frame-wrapper">
                     <div class="stamp-badge-overlay">94% ACCURACY</div>
                     <div class="shot-preview-box">
@@ -1984,51 +2045,20 @@
                         </div>
                     </div>
                     <div class="shot-frame-footer">
-                        <span class="circled-stamp">EXHIBIT C</span>
-                        <span>recovered from github.com/re-etikk</span>
-                    </div>
-                </div>
-                <div class="exhibit-info">
-                    <div class="exhibit-tag">Exhibit C · Deep Learning Model</div>
-                    <div class="exhibit-client">AI Research &amp; Computer Vision</div>
-                    <h3>Image Classifier (CNN Architecture)</h3>
-                    <p>Deep learning convolutional network engineered to classify multi-category visual patterns with 94% accuracy. Optimized with dropout regularization, Adam optimizer, and convolutional feature map visualization.</p>
-                    <div class="tags">
-                        <span>Python</span><span>TensorFlow</span><span>Keras</span><span>CNN</span><span>Computer Vision</span>
-                    </div>
-                    <div class="exhibit-action-row">
-                        <span>2026 · Deep Learning Model</span>
-                        <span class="open-case-btn">Open case file →</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Exhibit D -->
-            <article class="exhibit-card inspectable-item reveal-up delay-3" onclick="openCaseFile('nlp-sentiment')">
-                <div class="shot-frame-wrapper">
-                    <div class="stamp-badge-overlay">TRANSFORMER</div>
-                    <div class="shot-preview-box">
-                        <div class="shot-canvas-art" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#1b1916; color:#eae2d3; padding:20px; text-align:center;">
-                            <i class="fas fa-comments" style="font-size:3.2rem; margin-bottom:12px; color:#00e5c0;"></i>
-                            <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700;">TRANSFORMER SENTIMENT ENGINE</div>
-                            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#888; margin-top:6px;">[ HUGGINGFACE · PYTORCH · ATTENTION HEADS ]</div>
-                        </div>
-                    </div>
-                    <div class="shot-frame-footer">
                         <span class="circled-stamp">EXHIBIT D</span>
                         <span>recovered from github.com/re-etikk</span>
                     </div>
                 </div>
                 <div class="exhibit-info">
-                    <div class="exhibit-tag">Exhibit D · Natural Language Processing</div>
-                    <div class="exhibit-client">NLP Systems Pipeline</div>
-                    <h3>Sentiment Analysis &amp; Transformer Engine</h3>
-                    <p>NLP-powered transformer pipeline classifying nuanced textual sentiment into positive, negative, and neutral categories. Evaluates customer feedback and support tickets in real time.</p>
+                    <div class="exhibit-tag">Exhibit D · Deep Learning Model</div>
+                    <div class="exhibit-client">AI Research &amp; Computer Vision</div>
+                    <h3>Image Classifier (CNN Architecture)</h3>
+                    <p>Deep learning convolutional network engineered to classify multi-category visual patterns with 94% validation accuracy. Features dropout regularization, Adam optimizer, and convolutional feature map saliency maps.</p>
                     <div class="tags">
-                        <span>Python</span><span>PyTorch</span><span>HuggingFace</span><span>Transformers</span><span>NLP</span>
+                        <span>Python</span><span>TensorFlow</span><span>Keras</span><span>CNN</span><span>Computer Vision</span>
                     </div>
                     <div class="exhibit-action-row">
-                        <span>2026 · Open Source</span>
+                        <span>2026 · ML Engineer</span>
                         <span class="open-case-btn">Open case file →</span>
                     </div>
                 </div>
@@ -2062,29 +2092,29 @@
                         <tr><th>Substance</th><th>Code</th><th>Frequency</th><th>Finding</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="subst">Python (3.11)</td><td class="code">PY-CORE</td><td class="code">Daily</td><td><span class="typewriter-badge">Primary Tool</span></td></tr>
-                        <tr><td class="subst">Machine Learning / Deep Learning</td><td class="code">AI-NEURAL</td><td class="code">Active focus</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                        <tr><td class="subst">TensorFlow &amp; PyTorch</td><td class="code">DL-FRAME</td><td class="code">Coursework &amp; Projects</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                        <tr><td class="subst">React &amp; Next.js</td><td class="code">UI-REACT</td><td class="code">Most days</td><td><span class="typewriter-badge">Primary Tool</span></td></tr>
-                        <tr><td class="subst">Pandas, NumPy, Matplotlib</td><td class="code">DATA-SCI</td><td class="code">Daily</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                        <tr><td class="subst">C++ (Data Structures &amp; Algorithms)</td><td class="code">DSA-CPP</td><td class="code">150+ Solved</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                        <tr><td class="subst">Node.js, Express &amp; MongoDB</td><td class="code">BACK-API</td><td class="code">Most days</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
-                        <tr><td class="subst">Docker &amp; AWS Cloud</td><td class="code">INFRA-OPS</td><td class="code">Learning</td><td><span class="typewriter-badge">Trace Amount</span></td></tr>
+                        <tr><td class="subst">Python, C++, Dart, JavaScript</td><td class="code">PROG-CORE</td><td class="code">Daily</td><td><span class="typewriter-badge">Primary Tool</span></td></tr>
+                        <tr><td class="subst">Machine Learning (Pandas, NumPy, Scikit-learn)</td><td class="code">ML-DATA</td><td class="code">Daily</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">Generative AI, LLMs &amp; Transformers (Hugging Face)</td><td class="code">AI-LLM</td><td class="code">Active focus</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">FastAPI, REST APIs, Pydantic, Node.js</td><td class="code">API-BACK</td><td class="code">Daily</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">Flutter, Android &amp; React (Vite)</td><td class="code">APP-UI</td><td class="code">Most days</td><td><span class="typewriter-badge">Primary Tool</span></td></tr>
+                        <tr><td class="subst">Supabase, Firebase &amp; Git/GitHub</td><td class="code">DATA-OPS</td><td class="code">Most days</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">Data Visualization (Matplotlib, Seaborn, Plotly)</td><td class="code">VIZ-EXP</td><td class="code">Coursework</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
+                        <tr><td class="subst">C++ Data Structures &amp; Algorithms</td><td class="code">DSA-CPP</td><td class="code">150+ Solved</td><td><span class="typewriter-badge">Comfortable</span></td></tr>
                     </tbody>
                 </table>
             </div>
-            <p class="mono" style="margin-top:12px; font-size:10.5px; color:var(--ink-faint); font-style:italic;">Findings are illustrative — what he reaches for day to day, not a ranking.</p>
+            <p class="mono" style="margin-top:12px; font-size:10.5px; color:var(--ink-faint); font-style:italic;">Verified from official academic record and GitHub repository commits.</p>
 
-            <h3 style="margin-top:36px; font-size:24px;" class="reveal-up">Official Certifications On File</h3>
+            <h3 style="margin-top:36px; font-size:24px;" class="reveal-up">Official Laurels &amp; Hackathon Docket</h3>
             <div class="cert-grid reveal-up delay-1">
-                <div class="cert-item"><i class="fas fa-certificate"></i> TensorFlow Developer Certificate</div>
-                <div class="cert-item"><i class="fas fa-certificate"></i> Deep Learning Specialization</div>
-                <div class="cert-item"><i class="fas fa-certificate"></i> AWS Cloud Practitioner</div>
-                <div class="cert-item"><i class="fas fa-certificate"></i> Meta React Developer</div>
-                <div class="cert-item"><i class="fas fa-certificate"></i> NLP with HuggingFace</div>
-                <div class="cert-item"><i class="fas fa-certificate"></i> Data Science Professional</div>
-                <div class="cert-item"><i class="fas fa-certificate"></i> Docker &amp; Kubernetes Fundamentals</div>
-                <div class="cert-item"><i class="fas fa-certificate"></i> MongoDB Associate Developer</div>
+                <div class="cert-item"><i class="fas fa-trophy"></i> Smart India Hackathon (SIH) 2026</div>
+                <div class="cert-item"><i class="fas fa-medal"></i> IIIT Delhi Idea-Thon Top 60 (132 Teams)</div>
+                <div class="cert-item"><i class="fas fa-rocket"></i> ISRO Antriksh Hackathon (Project Astra)</div>
+                <div class="cert-item"><i class="fas fa-certificate"></i> IBM Certificate &amp; Course Completion</div>
+                <div class="cert-item"><i class="fas fa-users"></i> Team Leader: ReDo Smart Logistics</div>
+                <div class="cert-item"><i class="fas fa-comments"></i> IMPERIUM MUN Debate Delegate</div>
+                <div class="cert-item"><i class="fas fa-brain"></i> Machine Learning Specialization</div>
+                <div class="cert-item"><i class="fas fa-code"></i> 150+ DSA Problems (LeetCode/CodeChef)</div>
             </div>
         </div>
     </section>
@@ -2102,44 +2132,43 @@
             <div class="ledger-row reveal-up">
                 <div class="ledger-date">2025 — 2029</div>
                 <div class="ledger-title">
-                    <h3>B.Tech in Information Technology</h3>
-                    <div class="company">JSSATE (NOIDA)</div>
+                    <h3>B.Tech in Computer Science &amp; Engineering</h3>
+                    <div class="company">JSSATE (NOIDA, UP)</div>
                 </div>
-                <div class="ledger-desc">Undergraduate engineering curriculum covering computational theory, neural architectures, linear algebra, data science pipelines, algorithms, and full-stack software development.</div>
+                <div class="ledger-desc">Undergraduate engineering curriculum with focus on Machine Learning, Data Science, Software Development, APIs, and AI applications.</div>
             </div>
 
             <div class="ledger-row reveal-up delay-1">
-                <div class="ledger-date">2025 — Present</div>
+                <div class="ledger-date">2026 — Present</div>
                 <div class="ledger-title">
-                    <h3>Full-Stack Developer</h3>
-                    <div class="company">FREELANCE PRACTICE</div>
+                    <h3>Project Leader — ReDo Smart Logistics</h3>
+                    <div class="company">SIH &amp; IIIT DELHI</div>
                 </div>
-                <div class="ledger-desc">Observed building web applications — the REDO fleet management platform, customer booking engine, real-time dispatch systems, and REST API architectures.</div>
+                <div class="ledger-desc">Led product architecture, cross-platform Flutter client, backend APIs, and presentation. Selected Top 60 out of 132 teams at IIIT Delhi.</div>
             </div>
 
             <div class="ledger-row reveal-up delay-2">
-                <div class="ledger-date">6 Months</div>
+                <div class="ledger-date">2026</div>
                 <div class="ledger-title">
-                    <h3>Web Developer Intern</h3>
-                    <div class="company">AI WITH RAJNISH</div>
+                    <h3>Team Member — Project Astra</h3>
+                    <div class="company">ISRO ANTRIKSH HACKATHON</div>
                 </div>
-                <div class="ledger-desc">Embedded with the engineering team at aiwithrajnish.com, shipping user-facing features, resolving bug tickets, and participating in live agile sprint cycles.</div>
+                <div class="ledger-desc">Participated in team-based space research hackathon engineering technical solutions for space mission problem statements.</div>
             </div>
 
             <div class="ledger-row reveal-up delay-3">
                 <div class="ledger-date">2022 — 2024</div>
                 <div class="ledger-title">
-                    <h3>Higher Secondary (12th Science)</h3>
-                    <div class="company">PURNEA COLLEGE (BIHAR)</div>
+                    <h3>Class XII (Science &amp; Mathematics)</h3>
+                    <div class="company">PURNEA COLLEGE (BIHAR BOARD)</div>
                 </div>
-                <div class="ledger-desc">Completed senior secondary education focusing on Mathematics, Physics, and analytical problem-solving foundation.</div>
+                <div class="ledger-desc">Completed Senior Secondary education with analytical mathematics and physical sciences problem solving.</div>
             </div>
         </div>
     </section>
 
     <!-- -------------------------------------------------------------
-         LETTERS & COMMISSIONS — ROBERT TRAN STYLE FORM SECTION
-         (MATCHING USER'S FIRST UPLOADED IMAGE EXACTLY)
+         LETTERS & COMMISSIONS — LIVE FORM DIRECTLY TO EMAIL
          ------------------------------------------------------------- -->
     <section id="contact">
         <div class="wrap">
@@ -2152,26 +2181,26 @@
                     <h3>Put it in writing</h3>
                     <p class="form-sub">A project in mind, a role to fill, or just a good question - send it through and he'll get back to you.</p>
                     
-                    <form id="broadsheetContactForm" onsubmit="handleLetterSubmit(event)">
+                    <form id="broadsheetContactForm" onsubmit="handleLiveLetterSubmit(event)">
                         <div class="form-row-two">
                             <div class="form-group">
                                 <label class="field-label" for="authorName">YOUR NAME</label>
-                                <input type="text" id="authorName" class="broadsheet-input" placeholder="Jane Doe" required>
+                                <input type="text" id="authorName" name="name" class="broadsheet-input" placeholder="Jane Doe" required>
                             </div>
                             <div class="form-group">
                                 <label class="field-label" for="authorEmail">EMAIL</label>
-                                <input type="email" id="authorEmail" class="broadsheet-input" placeholder="jane@company.com" required>
+                                <input type="email" id="authorEmail" name="email" class="broadsheet-input" placeholder="jane@company.com" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="field-label" for="letterSubject">SUBJECT</label>
-                            <input type="text" id="letterSubject" class="broadsheet-input" placeholder="A new product, a rebuild, a contract..." required>
+                            <input type="text" id="letterSubject" name="subject" class="broadsheet-input" placeholder="A new product, a rebuild, a contract..." required>
                         </div>
 
                         <div class="form-group">
                             <label class="field-label" for="letterStory">THE STORY</label>
-                            <textarea id="letterStory" class="broadsheet-textarea" placeholder="Tell him what you're building." required></textarea>
+                            <textarea id="letterStory" name="message" class="broadsheet-textarea" placeholder="Tell him what you're building." required></textarea>
                         </div>
 
                         <div class="form-bottom-bar">
@@ -2203,7 +2232,7 @@
                         <div class="info-block">
                             <div class="info-block-label">AVAILABILITY</div>
                             <div class="info-block-value">Open for Hire &amp; Contracts</div>
-                            <div class="info-block-note">Pursuing B.Tech in IT at JSSATE, Noida. Taking on select freelance engineering builds, research internships, and full-time roles.</div>
+                            <div class="info-block-note">Pursuing B.Tech in CSE at JSSATE, Noida. Taking on select engineering builds, research internships, and full-time roles.</div>
                         </div>
                     </div>
 
@@ -2211,7 +2240,7 @@
                         <a href="https://github.com/re-etikk" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
                         <a href="https://linkedin.com/in/reetikk" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="mailto:ritik45chaurasia@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="https://x.com/re_etikk" target="_blank" rel="noopener" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://leetcode.com/u/re_etikk" target="_blank" rel="noopener" title="LeetCode"><i class="fas fa-code"></i></a>
                         <a href="tel:+917250171036" title="Phone: +91 7250171036"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
@@ -2226,7 +2255,7 @@
             <div class="foot-cols">
                 <div class="reveal-up">
                     <h5>Biography</h5>
-                    <p>Full-stack developer &amp; aspiring Machine Learning / Deep Learning engineer based in Noida, India. Pursuing B.Tech in IT at JSSATE, building intelligent systems from front to back.</p>
+                    <p>Full-stack developer &amp; Machine Learning engineer based in Noida, India. Pursuing B.Tech in Computer Science &amp; Engineering at JSSATE, building intelligent systems from front to back.</p>
                 </div>
                 <div class="reveal-up delay-1">
                     <h5>Sections</h5>
@@ -2234,7 +2263,7 @@
                     <a href="#stack">Forensics &amp; Stack</a>
                     <a href="#ledger">Career Ledger</a>
                     <a href="#contact">Contact</a>
-                    <a href="javascript:void(0)" onclick="generatePrintableCV()">Download Dossier (CV)</a>
+                    <a href="resume.html" target="_blank">Download Dossier (CV)</a>
                 </div>
                 <div class="reveal-up delay-2">
                     <h5>The Desk</h5>
@@ -2245,8 +2274,8 @@
                     <h5>Wire Services</h5>
                     <a href="https://github.com/re-etikk" target="_blank" rel="noopener">GitHub: @re-etikk</a>
                     <a href="https://linkedin.com/in/reetikk" target="_blank" rel="noopener">LinkedIn: @reetikk</a>
-                    <a href="https://x.com/re_etikk" target="_blank" rel="noopener">Twitter / X: @re_etikk</a>
-                    <a href="https://www.youtube.com/@AiWithRajnish" target="_blank" rel="noopener">YouTube: @AiWithRajnish</a>
+                    <a href="https://leetcode.com/u/re_etikk" target="_blank" rel="noopener">LeetCode: @re_etikk</a>
+                    <a href="resume.html" target="_blank">Curriculum Vitae (PDF)</a>
                 </div>
             </div>
             <div class="stamp-container">
@@ -2335,25 +2364,25 @@
                     <div class="classified-box">
                         <b>SPECIAL NOTICE</b>
                         Subject: Ritik Kumar.<br>
-                        Affiliation: JSSATE, Noida (B.Tech IT).<br>
-                        Direct Dispatch: ritik45chaurasia@gmail.com
+                        Affiliation: JSSATE, Noida (B.Tech CSE).<br>
+                        Direct Line: ritik45chaurasia@gmail.com
                     </div>
-                    <p>Observed shipping the REDO fleet marketplace and customer booking pipelines with full synchronization.</p>
+                    <p>Observed leading ReDo Smart Logistics — smart backhaul network for freight transport.</p>
                 </div>
                 <div class="news-col">
                     <h4>Machine Learning Dossier</h4>
-                    <p>Deep neural architectures verified: CNNs trained with 94% accuracy in TensorFlow/Keras, alongside transformer sentiment models using HuggingFace and PyTorch.</p>
-                    <p>Rigorous study in computational mathematics, linear algebra, and data science pipelines running on Python.</p>
+                    <p>Deep neural architectures verified: CNNs trained with 94% accuracy, YOLO object detection for study focus monitoring, and Hugging Face transformer pipelines.</p>
+                    <p>Active study in computational mathematics, linear algebra, and data science running on Python &amp; FastAPI.</p>
                 </div>
                 <div class="news-col">
                     <h4>Academic Docket</h4>
-                    <p>Enrolled in B.Tech Information Technology (2025–2029) at JSS Academy of Technical Education, Noida.</p>
-                    <p>Prior academic record logged at Purnea College, Bihar. 150+ competitive programming challenges logged on CodeChef and LeetCode.</p>
+                    <p>Enrolled in B.Tech Computer Science &amp; Engineering (2025–2029) at JSS Academy of Technical Education, Noida.</p>
+                    <p>Prior academic record logged at Purnea College, Bihar. 150+ competitive programming challenges solved.</p>
                 </div>
                 <div class="news-col">
-                    <h4>Field Testimony</h4>
-                    <p>Six months of continuous development at AI With Rajnish tested the subject's ability to ship under production conditions and collaborate in live repositories.</p>
-                    <p>Peers report a steady focus on problem resolution and cross-functional feature deployment.</p>
+                    <h4>Field Laurels</h4>
+                    <p>Smart India Hackathon (SIH) 2026 team leader; IIIT Delhi Idea-Thon Top 60 finalist; ISRO Antriksh Hackathon researcher on Project Astra.</p>
+                    <p>Consistent record of converting conceptual problems into deployable production systems.</p>
                 </div>
                 <div class="news-col">
                     <h4>Status &amp; Availability</h4>
@@ -2430,57 +2459,80 @@
 
             intro.addEventListener('click', closeIntro);
 
-            // Auto dismiss after 6s so mobile users aren't delayed
-            setTimeout(closeIntro, 6000);
+            // Auto dismiss after 5s so mobile users aren't delayed
+            setTimeout(closeIntro, 5000);
         })();
 
         // Case Files Data
         var caseFilesData = {
             'redo-trucks': {
                 exhibit: 'EXHIBIT A',
-                figCaption: 'Fig. 1 — The Fleet Management & Owner Portal, active dispatch dashboard.',
-                title: 'REDO: Fleet & Truck Owner Platform',
+                figCaption: 'Fig. 1 — ReDo Smart Logistics, active dispatch telemetry & backhaul matching.',
+                title: 'ReDo Smart Logistics — Backhaul Network',
                 badgeText: 'CASE CLOSED · VERIFIED',
                 previewType: 'iframe',
                 previewSrc: 'https://redo-trucks.vercel.app/',
                 dropCap: 'M',
-                articleText: `<p class="case-drop-cap">ost logistics in freight transport run on scattered phone calls, handwritten invoices, and messy WhatsApp groups. REDO Fleet was engineered to put an entire multi-truck enterprise into a single command dashboard.</p><p>Built front to back by the subject, the platform allows fleet operators to register trucks, assign certified drivers, track continuous trip telemetry, and calculate instant earnings without spreadsheets.</p><p>The interface relies on high-speed React components designed for quick operational decisions under dispatch deadlines. Underneath, REST endpoints handle concurrent vehicle schedules and booking synchronizations with the customer mobile portal.</p>`,
+                articleText: `<p class="case-drop-cap">ost freight journeys run with empty backhaul trips or underutilized truck capacity. ReDo Smart Logistics was engineered as a comprehensive smart backhaul network connecting shippers with available truck capacity in real time.</p><p>Led by the subject in SIH 2026 and IIIT Delhi Idea-Thon (Top 60), the system implements location-based dispatch algorithms, time-bound driver acceptance workflows, and atomic booking confirmations.</p><p>Built across Flutter, backend REST APIs, Supabase/Firebase, maps/location telemetry, and real-time push notification pipelines.</p>`,
                 specs: [
-                    { label: 'FRONT-END', val: 'React · Tailwind CSS' },
-                    { label: 'BACKEND & DATA', val: 'Python · RESTful API Architecture' },
-                    { label: 'BOOKING FLOW', val: 'Two-way sync with Customer Portal' },
-                    { label: 'DISPATCH TELEMETRY', val: 'Real-time vehicle status & loads' },
-                    { label: 'ROLE', val: 'Lead Full-Stack Architect (Solo)' },
-                    { label: 'ENTERED', val: '2024 — 2025' },
-                    { label: 'STATUS', val: 'Live in Production' }
+                    { label: 'FRONT-END', val: 'Flutter · Cross-Platform Mobile Architecture' },
+                    { label: 'BACKEND & DATA', val: 'FastAPI · RESTful Microservices' },
+                    { label: 'DATABASE', val: 'Supabase · Firebase Cloud Data' },
+                    { label: 'DISPATCH LOGIC', val: 'Location proximity & capacity matching' },
+                    { label: 'ROLE', val: 'Team Leader & Lead Architect' },
+                    { label: 'ENTERED', val: '2026 · SIH & IIIT Delhi' },
+                    { label: 'STATUS', val: 'Top 60 Finalist / Verified Benchmark' }
                 ],
                 liveUrl: 'https://redo-trucks.vercel.app/',
-                liveBtnText: 'Launch REDO Fleet Portal →'
+                liveBtnText: 'Launch ReDo Platform →'
             },
-            'redo-customer': {
+            'focus-ai': {
                 exhibit: 'EXHIBIT B',
-                figCaption: 'Fig. 2 — The Customer Freight Booking application, live shipment tracking.',
-                title: 'REDO: Customer Freight Booking App',
-                badgeText: 'CASE CLOSED · VERIFIED',
-                previewType: 'iframe',
-                previewSrc: 'https://redo-customer.vercel.app/',
-                dropCap: 'T',
-                articleText: `<p class="case-drop-cap">he customer-facing counterpart of REDO addresses shippers, factories, and consignees who need guaranteed freight capacity on demand.</p><p>Instead of negotiating with middlemen, shippers select vehicle classes, input consignment weights, specify pickup and drop-off coordinates, and lock in transparent pricing in seconds.</p><p>The application communicates with the fleet engine in real time: once an owner confirms a load, status milestones reflect instantly on the customer screen. Engineered with high-accessibility principles and optimized for touch devices.</p>`,
+                figCaption: 'Fig. 2 — Real-time bounding box detections and focus distraction scoring.',
+                title: 'FocusAI — AI Study Focus Application',
+                badgeText: 'YOLO · COMPUTER VISION',
+                previewType: 'art',
+                artIcon: 'fa-eye',
+                artTitle: 'YOLO-BASED COMPUTER VISION ARCHITECTURE',
+                dropCap: 'M',
+                articleText: `<p class="case-drop-cap">aintaining intense focus in modern study environments is constantly disrupted by mobile notifications and habitual screen checks. FocusAI leverages YOLO object detection to autonomously detect mobile phone usage during study sessions.</p><p>The system monitors visual video streams, identifies phone usage within milliseconds, and triggers real-time intervention alerts.</p><p>Integrated with automated focus timers, daily productivity breakdown charts, and weighted focus scores designed to build disciplined studying habits.</p>`,
                 specs: [
-                    { label: 'FRONT-END', val: 'React · Responsive Mobile Architecture' },
-                    { label: 'BACKEND & DATA', val: 'Python · Shared Telemetry Engine' },
-                    { label: 'AUTHENTICATION', val: 'Secure Customer Account Flow' },
-                    { label: 'ESTIMATOR', val: 'Automated distance & cargo rate calculation' },
-                    { label: 'ROLE', val: 'Full-Stack Developer' },
-                    { label: 'ENTERED', val: '2024 — 2025' },
-                    { label: 'STATUS', val: 'Live in Production' }
+                    { label: 'MODEL', val: 'YOLO Object Detection Pipeline' },
+                    { label: 'LANGUAGE', val: 'Python 3.11 · OpenCV' },
+                    { label: 'DETECTION LATENCY', val: 'Real-time &lt; 25ms per frame' },
+                    { label: 'FEATURES', val: 'Focus timer, distraction alerts, daily reports' },
+                    { label: 'ROLE', val: 'Computer Vision / AI Developer' },
+                    { label: 'ENTERED', val: '2026' },
+                    { label: 'STATUS', val: 'Research Prototype' }
                 ],
-                liveUrl: 'https://redo-customer.vercel.app/',
-                liveBtnText: 'Launch Customer Booking App →'
+                liveUrl: 'https://github.com/re-etikk',
+                liveBtnText: 'Inspect GitHub Repository →'
+            },
+            'attendance-system': {
+                exhibit: 'EXHIBIT C',
+                figCaption: 'Fig. 3 — Secure cloud-synchronized attendance tracking dashboard.',
+                title: 'Attendance Management System',
+                badgeText: 'FULL STACK · CLOUD DB',
+                previewType: 'art',
+                artIcon: 'fa-clipboard-check',
+                artTitle: 'REACT & FIREBASE ENTERPRISE ATTENDANCE',
+                dropCap: 'T',
+                articleText: `<p class="case-drop-cap">racking attendance across institutional departments requires an atomic, cloud-synced system with zero discrepancy and instant reporting.</p><p>This application was architected using React and Vite on the front-end, with Firebase handling realtime authentication and distributed database records.</p><p>Includes administrative portals, daily check-in logs, automated summary generators, and responsive mobile-first views for both students and instructors.</p>`,
+                specs: [
+                    { label: 'FRONT-END', val: 'React · Vite · Modern UI' },
+                    { label: 'BACKEND', val: 'Firebase Authentication & Firestore' },
+                    { label: 'DATA SYNC', val: 'Realtime Cloud Listeners' },
+                    { label: 'SECURITY', val: 'Role-Based Access Rules' },
+                    { label: 'ROLE', val: 'Full-Stack Developer' },
+                    { label: 'ENTERED', val: '2026' },
+                    { label: 'STATUS', val: 'Active Build' }
+                ],
+                liveUrl: 'https://github.com/re-etikk',
+                liveBtnText: 'Inspect GitHub Repository →'
             },
             'cnn-classifier': {
-                exhibit: 'EXHIBIT C',
-                figCaption: 'Fig. 3 — Convolutional feature map weights and visual classification layers.',
+                exhibit: 'EXHIBIT D',
+                figCaption: 'Fig. 4 — Convolutional feature map weights and visual classification layers.',
                 title: 'Deep Learning: CNN Image Classifier',
                 badgeText: '94% ACCURACY · RESEARCH BENCHMARK',
                 previewType: 'art',
@@ -2496,28 +2548,6 @@
                     { label: 'APPLICATION', val: 'Multi-class visual object classification' },
                     { label: 'ROLE', val: 'ML Engineer' },
                     { label: 'STATUS', val: 'Verified Research Benchmark' }
-                ],
-                liveUrl: 'https://github.com/re-etikk',
-                liveBtnText: 'Inspect GitHub Repository →'
-            },
-            'nlp-sentiment': {
-                exhibit: 'EXHIBIT D',
-                figCaption: 'Fig. 4 — Transformer attention matrix and sentiment classification pipeline.',
-                title: 'NLP: Transformer Sentiment Engine',
-                badgeText: 'TRANSFORMER · BERT/ROBERTA',
-                previewType: 'art',
-                artIcon: 'fa-comments',
-                artTitle: 'TRANSFORMER ATTENTION MECHANISM PIPELINE',
-                dropCap: 'U',
-                articleText: `<p class="case-drop-cap">nderstanding nuanced human emotion in text requires looking beyond simple bag-of-words keyword counts. This NLP engine uses Transformer self-attention architectures to classify text into positive, negative, and neutral sentiment.</p><p>Tokenized sequences pass through multi-head self-attention mechanisms implemented with HuggingFace and PyTorch. The model accurately detects subtle linguistic cues, sarcasm, and domain-specific vocabulary in customer feedback.</p><p>Packaged with a fast inference pipeline suitable for batch document analysis or streaming real-time sentiment scoring across customer service feeds.</p>`,
-                specs: [
-                    { label: 'FRAMEWORK', val: 'PyTorch · HuggingFace Transformers' },
-                    { label: 'MODEL TYPE', val: 'Transformer Encoder with Attention Heads' },
-                    { label: 'TOKENIZATION', val: 'Subword WordPiece / BPE Tokenizer' },
-                    { label: 'PERFORMANCE', val: 'Sub-30ms inference on CPU/GPU' },
-                    { label: 'DATA PIPELINE', val: 'Pandas · NumPy preprocessing' },
-                    { label: 'ROLE', val: 'NLP / Deep Learning Engineer' },
-                    { label: 'STATUS', val: 'Open Source Module' }
                 ],
                 liveUrl: 'https://github.com/re-etikk',
                 liveBtnText: 'Inspect GitHub Repository →'
@@ -2678,9 +2708,10 @@
         })();
 
         // -------------------------------------------------------------
-        // LETTER SUBMISSION HANDLER (ROBERT TRAN STYLE)
+        // LIVE CONTACT FORM DISPATCH TO ritik45chaurasia@gmail.com
+        // (FormSubmit.co Real AJAX Integration - No Demo)
         // -------------------------------------------------------------
-        function handleLetterSubmit(e) {
+        function handleLiveLetterSubmit(e) {
             e.preventDefault();
             var name = document.getElementById('authorName').value.trim();
             var email = document.getElementById('authorEmail').value.trim();
@@ -2693,35 +2724,57 @@
 
             btn.disabled = true;
             btn.textContent = 'DISPATCHING LETTER...';
+            status.style.display = 'none';
+            status.className = 'form-status-msg';
 
-            setTimeout(function() {
+            var payload = {
+                name: name,
+                email: email,
+                subject: subject || 'New Portfolio Dispatch from ' + name,
+                message: story,
+                _subject: 'Portfolio Letter: ' + (subject || name),
+                _template: 'table',
+                _captcha: 'false'
+            };
+
+            fetch('https://formsubmit.co/ajax/ritik45chaurasia@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(function(res) {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error('Server returned ' + res.status);
+                }
+            })
+            .then(function(data) {
+                status.className = 'form-status-msg success';
                 status.style.display = 'block';
-                status.innerHTML = '✓ Letter received. Ritik will inspect your dispatch within 24 hours.<br><span style="font-size:10px; color:#555;">Opening your mail client for a direct copy...</span>';
-                
+                status.innerHTML = '<strong>✓ DISPATCH CONFIRMED:</strong> Your letter has been securely transmitted directly to Ritik Kumar (<a href="mailto:ritik45chaurasia@gmail.com" style="color:inherit; text-decoration:underline;">ritik45chaurasia@gmail.com</a>). Expect a response within 24 hours.';
+                btn.textContent = 'LETTER SENT ✓';
+                document.getElementById('broadsheetContactForm').reset();
+                setTimeout(function() {
+                    btn.disabled = false;
+                    btn.textContent = 'SEND THE LETTER';
+                }, 5000);
+            })
+            .catch(function(err) {
+                // If offline or network issue, open mailto directly
+                status.className = 'form-status-msg error';
+                status.style.display = 'block';
+                status.innerHTML = '<strong>NOTICE:</strong> Network dispatch paused. Opening your email client to send directly to ritik45chaurasia@gmail.com...';
                 var mailtoLink = 'mailto:ritik45chaurasia@gmail.com?subject=' + encodeURIComponent(subject || 'Inquiry from ' + name) + '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')
 
 ' + story);
                 window.location.href = mailtoLink;
-
-                btn.textContent = 'LETTER SENT';
-                setTimeout(function() {
-                    btn.disabled = false;
-                    btn.textContent = 'SEND THE LETTER';
-                    document.getElementById('broadsheetContactForm').reset();
-                }, 4000);
-            }, 600);
-        }
-
-        // Printable CV / Dossier
-        function generatePrintableCV() {
-            var win = window.open('', '_blank', 'width=800,height=950');
-            if (!win) {
-                alert('Please allow popups to generate the printable dossier CV.');
-                return;
-            }
-            win.document.write(`<!DOCTYPE html><html><head><title>Ritik Kumar — Official Dossier CV</title><style>body{font-family:'Georgia',serif;padding:40px;color:#181613;line-height:1.6;max-width:800px;margin:0 auto}h1{font-size:2.4rem;margin:0 0 4px;border-bottom:3px double #181613;padding-bottom:8px}h2{font-size:1.1rem;text-transform:uppercase;letter-spacing:.08em;font-family:monospace;color:#706a5a;margin-top:8px}.meta{margin:12px 0 24px;font-family:monospace;font-size:.85rem;border-bottom:1px solid #ddd;padding-bottom:12px}h3{font-size:1.2rem;text-transform:uppercase;letter-spacing:.06em;font-family:monospace;border-bottom:1.5px solid #181613;margin-top:24px;padding-bottom:4px}.entry{margin-bottom:14px}.entry b{font-size:1rem}.entry span{float:right;font-family:monospace;font-size:.85rem;color:#555}.tag{display:inline-block;border:1px solid #aaa;padding:2px 8px;font-size:.75rem;font-family:monospace;margin:2px}@media print{body{padding:15px}}</style></head><body><h1>RITIK KUMAR</h1><h2>Full Stack Web Developer &amp; ML/DL Engineer</h2><div class="meta">Noida, India · +91 7250171036 · ritik45chaurasia@gmail.com · github.com/re-etikk · linkedin.com/in/reetikk</div><h3>Education</h3><div class="entry"><b>B.Tech in Information Technology</b> <span>2025 – 2029</span><br>JSS Academy of Technical Education (JSSATE), Noida</div><div class="entry"><b>Higher Secondary (12th - Science &amp; Math)</b> <span>2022 – 2024</span><br>Purnea College, Purnea, Bihar</div><h3>Experience</h3><div class="entry"><b>Full-Stack Developer (Freelance)</b> <span>2025 – Present</span><br>Architected REDO logistics fleet portal and customer booking application. Built scalable REST APIs, React interfaces, and database synchronization.</div><div class="entry"><b>Web Developer Intern — AI With Rajnish</b> <span>6 Months</span><br>Shipped client web applications, debugged production codebases, and optimized responsive user interfaces.</div><h3>Technical Skills</h3><p><span class="tag">Python</span> <span class="tag">TensorFlow</span> <span class="tag">PyTorch</span> <span class="tag">CNNs</span> <span class="tag">NLP</span> <span class="tag">Transformers</span> <span class="tag">Pandas</span> <span class="tag">NumPy</span> <span class="tag">React</span> <span class="tag">Next.js</span> <span class="tag">Node.js</span> <span class="tag">C++ (DSA)</span> <span class="tag">MongoDB</span> <span class="tag">Docker</span> <span class="tag">Git</span></p><h3>Certifications</h3><p>TensorFlow Developer · Deep Learning Specialization · AWS Cloud Practitioner · Meta React Developer · NLP with HuggingFace · MongoDB Associate</p><div style="margin-top:40px;text-align:center;font-family:monospace;font-size:.8rem;color:#888;">— Official Case Record Generated from The Ritik Kumar Times —</div></body></html>`);
-            win.document.close();
-            setTimeout(function() { win.print(); }, 500);
+                btn.disabled = false;
+                btn.textContent = 'SEND THE LETTER';
+            });
         }
     </script>
 </body>
